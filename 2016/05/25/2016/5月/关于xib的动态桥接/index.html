@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="多线程," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,34 +84,34 @@
 
 
 
-<meta name="description" content="##处理耗时任务
-###两个同步搞定
+<meta name="description" content="关于xib的动态桥接xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了
+当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了这篇文章，写的很好，等回头慢慢琢磨
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+
+另外xib创建的自定义控件 加载的时候用一下方法：
+
+NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&amp;quot;Visi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="处理耗时任务">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/24/2016/处理耗时任务/index.html">
+<meta property="og:title" content="关于xib的动态桥接">
+<meta property="og:url" content="http://lp380490944.github.io/2016/05/25/2016/5月/关于xib的动态桥接/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="##处理耗时任务
-###两个同步搞定
+<meta property="og:description" content="关于xib的动态桥接xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了
+当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了这篇文章，写的很好，等回头慢慢琢磨
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
-<meta property="og:updated_time" content="2016-05-25T02:51:30.000Z">
+
+另外xib创建的自定义控件 加载的时候用一下方法：
+
+NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&amp;quot;Visi">
+<meta property="og:updated_time" content="2016-05-25T15:22:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="处理耗时任务">
-<meta name="twitter:description" content="##处理耗时任务
-###两个同步搞定
+<meta name="twitter:title" content="关于xib的动态桥接">
+<meta name="twitter:description" content="关于xib的动态桥接xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了
+当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了这篇文章，写的很好，等回头慢慢琢磨
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+
+另外xib创建的自定义控件 加载的时候用一下方法：
+
+NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&amp;quot;Visi">
 
 
 
@@ -129,7 +129,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
   };
 </script>
 
-  <title> 处理耗时任务 | 钟灵毓秀 </title>
+  <title> 关于xib的动态桥接 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -249,7 +249,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
             
             
               
-                处理耗时任务
+                关于xib的动态桥接
               
             
           </h1>
@@ -261,8 +261,8 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
+            <time itemprop="dateCreated" datetime="2016-05-25T23:17:47+08:00" content="2016-05-25">
+              2016-05-25
             </time>
           </span>
 
@@ -289,40 +289,18 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
       
 
       
-        <p>##处理耗时任务</p>
-<p>###两个同步搞定</p>
-<ul>
-<li><p>一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：</p>
-<pre><code>dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;如果再看到关于纯代码,xib或storyboard,使用哪种方式进行UI布局更合适的讨论,请推荐他们先试用下 Masonry. Masonry,像xib一样快速,同时拥有作为纯代码方式的灵活性 — github关注度 7800 + 是有原因的!&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;无论如何,你总是需要一个提示框.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;SVProgressHUD是简单易用的显示器,用于指示一个持续进行的任务的进度.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;RestKit 是一个用于更好支持RESTful风格服务器接口的iOS库,可直接将联网获取的json/xml数据转换为iOS对象.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;FMDB 是SQLite的Objective-C封装库.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;Pop 是一个可扩展的动画引擎,可用于实现任意iOS对象的任意属性的动态变化,支持一般动画,弹性动画和渐变动画三种类型.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;高度可定制的应用欢迎页通用解决方案,可高度定制,不要仅限于现有的demo&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;JVFloatLabeledTextField 是注重用户体验的”浮动标签模式”(Float Label Patter)的第一个实现,可以有效解决移动设备上进行表单输入时,无法边看表单提示边进行输入的困境,用户体验非常好.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;用于为应用添加常用的上拉加载更多与下拉刷新效果,适用 UIScrollView、UITableView、UICollectionView、UIWebView.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;iOS-blur使用一种巧妙的方式,为任意视图添加一种非常奇妙的模糊效果.&quot;}
-
-                        ];
-
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LPModel * model = [LPModel new];
-        model.imgUrl = @&quot;https://raw.githubusercontent.com/ealeksandrov/EAIntroView/master/Screenshot02.png&quot;;
-        model.content = [obj objectForKey:@&quot;intro&quot;];
-        [self.dataList addObject:model];
-
-    }];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        [self.tableView reloadData];
-    });
-});
-</code></pre></li>
+        <h1 id="关于xib的动态桥接"><a href="#关于xib的动态桥接" class="headerlink" title="关于xib的动态桥接"></a>关于xib的动态桥接</h1><h2 id="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"><a href="#xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了" class="headerlink" title="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"></a>xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了</h2><ul>
+<li>当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了<a href="http://blog.sunnyxx.com/2014/07/01/ios_ib_bridge/" target="_blank" rel="external">这篇文章</a>，写的很好，等回头慢慢琢磨</li>
 </ul>
+<ul>
+<li>另外xib创建的自定义控件 加载的时候用一下方法：</li>
+</ul>
+<pre><code>NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&quot;VisitView&quot; owner:nil options:nil];
+VisitView * view = [nibView firstObject];
+view.backgroundColor = [UIColor redColor];
+
+return view;
+</code></pre><p> 这里的VisitView就是我用xib创建的自定义View。</p>
 
       
     </div>
@@ -342,28 +320,18 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/多线程/" rel="tag">#多线程</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/24/2016/my-frist-post/" rel="next" title="my frist post">
-                <i class="fa fa-chevron-left"></i> my frist post
+              <a href="/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/" rel="next" title="iOS 仿射变换CGAffineTransform详解">
+                <i class="fa fa-chevron-left"></i> iOS 仿射变换CGAffineTransform详解
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/25/2015/2015-10-29-HTTP和FTP协议的区别/" rel="prev" title="HTTP和FTP协议的区别">
-                HTTP和FTP协议的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -477,7 +445,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于xib的动态桥接"><span class="nav-number">1.</span> <span class="nav-text">关于xib的动态桥接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"><span class="nav-number">1.1.</span> <span class="nav-text">xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

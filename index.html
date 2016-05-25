@@ -170,7 +170,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -233,6 +233,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/25/2016/5月/关于xib的动态桥接/" itemprop="url">
+                  关于xib的动态桥接
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T23:17:47+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关于xib的动态桥接"><a href="#关于xib的动态桥接" class="headerlink" title="关于xib的动态桥接"></a>关于xib的动态桥接</h1><h2 id="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"><a href="#xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了" class="headerlink" title="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"></a>xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了</h2><ul>
+<li>当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了<a href="http://blog.sunnyxx.com/2014/07/01/ios_ib_bridge/" target="_blank" rel="external">这篇文章</a>，写的很好，等回头慢慢琢磨</li>
+</ul>
+<ul>
+<li>另外xib创建的自定义控件 加载的时候用一下方法：</li>
+</ul>
+<pre><code>NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&quot;VisitView&quot; owner:nil options:nil];
+VisitView * view = [nibView firstObject];
+view.backgroundColor = [UIColor redColor];
+
+return view;
+</code></pre><p> 这里的VisitView就是我用xib创建的自定义View。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/" itemprop="url">
                   iOS 仿射变换CGAffineTransform详解
                 </a>
@@ -246,7 +351,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T14:36:49+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -343,7 +448,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -521,6 +626,99 @@ C+r 搜索命令历史，这个较常用
             
               
                 
+                <a class="post-title-link" href="/2016/05/25/2016/关于博客的markdown语法/" itemprop="url">
+                  关于博客的markdown语法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字"><a href="#一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字" class="headerlink" title="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字"></a>一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字</h2><h3 id="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"><a href="#看来以后要改掉这个坏习惯了，哈哈。记录下轨迹" class="headerlink" title="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"></a>看来以后要改掉这个坏习惯了，哈哈。记录下轨迹</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/25/2015/2015-10-29-HTTP和FTP协议的区别/" itemprop="url">
                   HTTP和FTP协议的区别
                 </a>
@@ -534,7 +732,7 @@ C+r 搜索命令历史，这个较常用
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -635,316 +833,6 @@ C+r 搜索命令历史，这个较常用
             
               
                 
-                <a class="post-title-link" href="/2016/05/25/2016/关于博客的markdown语法/" itemprop="url">
-                  关于博客的markdown语法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字"><a href="#一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字" class="headerlink" title="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字"></a>一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字</h2><h3 id="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"><a href="#看来以后要改掉这个坏习惯了，哈哈。记录下轨迹" class="headerlink" title="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"></a>看来以后要改掉这个坏习惯了，哈哈。记录下轨迹</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">
-                  my frist post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###这是我的第一篇博客必须纪念一下哈非常的艰辛：看了很多的网站才学会是不是自己太笨了呢</p>
-<ul>
-<li><p>第一个介绍的很详细：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">原文</a>但是太繁琐</p>
-</li>
-<li><p>其实 主要用的是第二个：<a href="http://www.jianshu.com/p/821fe67e712b" target="_blank" rel="external">原文</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">
-                  关于tableView数组越界的问题处理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#关于tableView数组越界的问题处理</p>
-<p>###使用懒加载</p>
-<ul>
-<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<pre><code>[self.dataArray removeAllObjects];
-</code></pre></li>
-</ul>
-<ul>
-<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<pre><code>if(self.dataArray.count != 0){
-
- MOdel * model = self.dataArray[indexPath.row];
-}
-</code></pre></li>
-</ul>
-<ul>
-<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
-<pre><code>if(!indexpath.row &gt; self.dataArray.count){
-
-Model* model = slef.dataArray[indexpath.row];
-
-}
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/24/2016/处理耗时任务/" itemprop="url">
                   处理耗时任务
                 </a>
@@ -958,7 +846,7 @@ Model* model = slef.dataArray[indexpath.row];
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
               2016-05-24
             </time>
@@ -1072,6 +960,223 @@ Model* model = slef.dataArray[indexpath.row];
             
               
                 
+                <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">
+                  my frist post
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###这是我的第一篇博客必须纪念一下哈非常的艰辛：看了很多的网站才学会是不是自己太笨了呢</p>
+<ul>
+<li><p>第一个介绍的很详细：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">原文</a>但是太繁琐</p>
+</li>
+<li><p>其实 主要用的是第二个：<a href="http://www.jianshu.com/p/821fe67e712b" target="_blank" rel="external">原文</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">
+                  关于tableView数组越界的问题处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#关于tableView数组越界的问题处理</p>
+<p>###使用懒加载</p>
+<ul>
+<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
+<pre><code>[self.dataArray removeAllObjects];
+</code></pre></li>
+</ul>
+<ul>
+<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
+<pre><code>if(self.dataArray.count != 0){
+
+ MOdel * model = self.dataArray[indexPath.row];
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
+<pre><code>if(!indexpath.row &gt; self.dataArray.count){
+
+Model* model = slef.dataArray[indexpath.row];
+
+}
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/30/2016/2016-03-30mac技巧/" itemprop="url">
                   分享一个mac的小技巧
                 </a>
@@ -1085,7 +1190,7 @@ Model* model = slef.dataArray[indexpath.row];
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-30T16:10:57+08:00" content="2016-03-30">
               2016-03-30
             </time>
@@ -1097,7 +1202,7 @@ Model* model = slef.dataArray[indexpath.row];
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Mac/" itemprop="url" rel="index">
@@ -1137,7 +1242,7 @@ Model* model = slef.dataArray[indexpath.row];
           分享一个mac的小技巧
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/30/2016/2016-03-30mac技巧/">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -1200,7 +1305,7 @@ Model* model = slef.dataArray[indexpath.row];
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-12-29T16:27:58+08:00" content="2015-12-29">
               2015-12-29
             </time>
@@ -1212,7 +1317,7 @@ Model* model = slef.dataArray[indexpath.row];
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/lessons/" itemprop="url" rel="index">
@@ -1252,122 +1357,7 @@ Model* model = slef.dataArray[indexpath.row];
           iOS学习之Socket使用简明教程－ AsyncSocket
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/12/29/2015/2015-11-2-iOS学习之Socket使用简明教程－ AsyncSocket/">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/" itemprop="url">
-                  iOS中获取各种文件的目录路径的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-12-29T16:27:58+08:00" content="2015-12-29">
-              2015-12-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          精选
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -1441,8 +1431,8 @@ Model* model = slef.dataArray[indexpath.row];
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1450,7 +1440,7 @@ Model* model = slef.dataArray[indexpath.row];
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1459,7 +1449,7 @@ Model* model = slef.dataArray[indexpath.row];
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1503,7 +1493,7 @@ Model* model = slef.dataArray[indexpath.row];
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
