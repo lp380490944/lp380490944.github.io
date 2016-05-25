@@ -84,16 +84,25 @@
 
 
 
-<meta name="description" content="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字看来以后要改掉这个坏习惯了，哈哈。记录下轨迹">
+<meta name="description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
+但是我知道了 ：
+self.view.transform=CGAffineTransformIdentity；
+  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于博客的markdown语法">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/25/2016/关于博客的markdown语法/index.html">
+<meta property="og:title" content="iOS 仿射变换CGAffineTransform详解">
+<meta property="og:url" content="http://lp380490944.github.io/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字看来以后要改掉这个坏习惯了，哈哈。记录下轨迹">
-<meta property="og:updated_time" content="2016-05-25T01:49:52.000Z">
+<meta property="og:description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
+但是我知道了 ：
+self.view.transform=CGAffineTransformIdentity；
+  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
+<meta property="og:updated_time" content="2016-05-25T06:42:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于博客的markdown语法">
-<meta name="twitter:description" content="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字看来以后要改掉这个坏习惯了，哈哈。记录下轨迹">
+<meta name="twitter:title" content="iOS 仿射变换CGAffineTransform详解">
+<meta name="twitter:description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
+但是我知道了 ：
+self.view.transform=CGAffineTransformIdentity；
+  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
 
 
 
@@ -111,7 +120,7 @@
   };
 </script>
 
-  <title> 关于博客的markdown语法 | 钟灵毓秀 </title>
+  <title> iOS 仿射变换CGAffineTransform详解 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -231,7 +240,7 @@
             
             
               
-                关于博客的markdown语法
+                iOS 仿射变换CGAffineTransform详解
               
             
           </h1>
@@ -243,7 +252,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
+            <time itemprop="dateCreated" datetime="2016-05-25T14:36:49+08:00" content="2016-05-25">
               2016-05-25
             </time>
           </span>
@@ -271,7 +280,11 @@
       
 
       
-        <h2 id="一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字"><a href="#一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字" class="headerlink" title="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字"></a>一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字</h2><h3 id="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"><a href="#看来以后要改掉这个坏习惯了，哈哈。记录下轨迹" class="headerlink" title="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"></a>看来以后要改掉这个坏习惯了，哈哈。记录下轨迹</h3>
+        <h1 id="iOS-仿射变换CGAffineTransform详解"><a href="#iOS-仿射变换CGAffineTransform详解" class="headerlink" title="iOS 仿射变换CGAffineTransform详解"></a>iOS 仿射变换CGAffineTransform详解</h1><p>-原文在<a href="http://www.jianshu.com/p/6c09d138b31d" target="_blank" rel="external">这里</a>根本看不懂</p>
+<p>但是我知道了 ：</p>
+<pre><code>self.view.transform=CGAffineTransformIdentity；
+</code></pre><p>  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固定值。暂时就知道这些。</p>
+
       
     </div>
 
@@ -295,17 +308,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/24/2016/my-frist-post/" rel="next" title="my frist post">
-                <i class="fa fa-chevron-left"></i> my frist post
+              <a href="/2016/05/25/2016/iterm2_快捷键大全/" rel="next" title="iTerm2 快捷键大全">
+                <i class="fa fa-chevron-left"></i> iTerm2 快捷键大全
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/25/2015/2015-10-29-HTTP和FTP协议的区别/" rel="prev" title="HTTP和FTP协议的区别">
-                HTTP和FTP协议的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -419,7 +428,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字"><span class="nav-number">1.</span> <span class="nav-text">一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"><span class="nav-number">1.1.</span> <span class="nav-text">看来以后要改掉这个坏习惯了，哈哈。记录下轨迹</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-仿射变换CGAffineTransform详解"><span class="nav-number">1.</span> <span class="nav-text">iOS 仿射变换CGAffineTransform详解</span></a></li></ol></div>
             
           </div>
         </section>
