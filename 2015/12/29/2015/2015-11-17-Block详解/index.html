@@ -1,0 +1,823 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Block深度解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blocks 详解">
+<meta property="og:url" content="http://lp380490944.github.io/2015/12/29/2015/2015-11-17-Block详解/index.html">
+<meta property="og:site_name" content="钟灵毓秀">
+<meta property="og:description" content="Block深度解析">
+<meta property="og:updated_time" content="2016-05-25T02:22:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blocks 详解">
+<meta name="twitter:description" content="Block深度解析">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Blocks 详解 | 钟灵毓秀 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">钟灵毓秀</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">刘攀的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Blocks 详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-12-29T16:27:58+08:00" content="2015-12-29">
+              2015-12-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/lessons/" itemprop="url" rel="index">
+                    <span itemprop="name">lessons</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Blocks-详解"><a href="#Blocks-详解" class="headerlink" title="Blocks 详解"></a>Blocks 详解</h1><h2 id="什么是-Block？"><a href="#什么是-Block？" class="headerlink" title="什么是 Block？"></a>什么是 Block？</h2><ul>
+<li>block是能够截获自动变量(局部变量)的匿名函数</li>
+</ul>
+<h2 id="Blocks-模式"><a href="#Blocks-模式" class="headerlink" title="Blocks 模式"></a>Blocks 模式</h2><h3 id="Block-语法"><a href="#Block-语法" class="headerlink" title="Block 语法"></a>Block 语法</h3><ul>
+<li><p>完整形式的Block语法与一般的C语言定义相比，仅有两点不同</p>
+<ol>
+<li>没有函数名</li>
+<li>带有托字符：‘^’</li>
+</ol>
+</li>
+<li><p>通用说明</p>
+<blockquote>
+<p>^返回值类型（void 可省略）参数列表(void 可省略)表达式</p>
+</blockquote>
+<pre><code>^int (int count){
+
+return count + 1;
+</code></pre></li>
+</ul>
+<pre><code>}
+^{printf(&quot;blocks\n&quot;);
+}
+</code></pre><h2 id="Block变量类型"><a href="#Block变量类型" class="headerlink" title="Block变量类型"></a>Block变量类型</h2><ul>
+<li><p>C语言可以将定义的函数地址赋值给函数指针类型变量中</p>
+<pre><code>int func(int count)
+{
+return count +1;
+}
+int (*funcptr) (int) = &amp;func;
+</code></pre></li>
+<li><p>同样的Block语法下，可将Block语法生成的值赋值给Block类型的变量中</p>
+<pre><code>int(^blk)(int);
+</code></pre></li>
+<li>和C语言相比，仅仅是把*变成’^’，可以作为以下用途：</li>
+</ul>
+<ol>
+<li>自动变量</li>
+<li>函数参数</li>
+<li>静态变量</li>
+<li>静态全局变量</li>
+<li>全局变量</li>
+</ol>
+<pre><code>//赋值
+int (^blk1)(int) = ^int(int count){
+  return count + 1;
+};
+int (^blk2)(int) = blk1;
+blk = blk2;
+
+//参数传递
+void func (int (^blk) (int)) 
+   {
+    //do something
+    }
+</code></pre><ul>
+<li><p>在函数参数和返回值中使用Block类型的变量时，记述的方式十分复杂，这时使用typedef来简化</p>
+<pre><code>typedef int (^someBlk)(int);
+
+//原来的记述方式
+//void func (int (^blk)(int))
+void func (someBlk blk)
+{
+//这样调用
+blk(10);
+}
+</code></pre><ul>
+<li><p>Block类型变量可以像C语言中的其他类型变量一样使用。</p>
+<h2 id="截获自动变量值"><a href="#截获自动变量值" class="headerlink" title="截获自动变量值"></a>截获自动变量值</h2><p>一开始我有说明Block是带有“自动变量的匿名函数”，那什么是带有自动变量值呢？举个例子</p>
+<pre><code>int main（）
+{
+    int dmy = 256；
+    int val = 10；
+    const char *fmt =“val = %d \n”；
+    void（^blk）（void）= ^{printf（fmt，val）；}；
+    val = 2；
+    fmt =“These values were changed val = %d \n”；
+    blk（）；
+    return 0；
+}
+</code></pre><p>执行结果会是 val = 10</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>执行结果并不是改写后的值，而是执行Block语法时的自动变量的瞬间值。该Block语法在执行时，字符串指标“cal = %d \n”被赋值到自动变量fmt中，int值被赋值到val中，因此这边值被保存（即被截获），而在执行时被使用。<br>这就是自动变量值的截获。<br> <strong>block说明符<br> 实际上，截获变量只能保存Block 语法的瞬间值，保存后就不能改写该值。<br> 这时，若想在Block语法的表达式中将值赋给Block语法外声明的自动变量，需要在该自动变量上附加</strong>block。</p>
+<p> 使用附有block说明符的自动变量可在Block中赋值，该变量称为block变量。</p>
+<h2 id="Blocks-的实现"><a href="#Blocks-的实现" class="headerlink" title="Blocks 的实现"></a>Blocks 的实现</h2><h3 id="Block-本质"><a href="#Block-本质" class="headerlink" title="Block 本质"></a>Block 本质</h3><ul>
+<li><p>定义一个最简单block 打印hello world</p>
+<pre><code> int main(int argc, const char * argv[]) {
+
+    void (^block)() = ^{printf(&quot;Hello World!&quot;);};
+    block();
+
+    return 0;
+}
+</code></pre><p>使用clang指令</p>
+<blockquote>
+<p>clang -rewrite-objc main.m</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+printf(&quot;Hello World!&quot;);}
+</code></pre><p> 你定义完block之后，其实是创建了一个函数，在创建结构体的时候把函数的指针一起传给了block，所以之后可以拿出来调用。</p>
+<p>   其实，Block 是转化为 Block 结构体类型的自动变量，类型定义如下。通过void *isa;,可以知道 Block 也是一个 OC 的对象，这就是Block  的本质。</p>
+<pre><code>struct Block_descriptor {
+    unsigned long int reserved;    
+    unsigned long int size;
+    void (*copy)(void *dst, void *src);
+    void (*dispose)(void *);
+};
+
+
+struct Block_layout {
+    void *isa;
+    int flags;
+    int reserved; 
+    void (*invoke)(void *, ...);
+    struct Block_descriptor *descriptor;
+    /* Imported variables. */
+};
+</code></pre><h2 id="值捕获的问题"><a href="#值捕获的问题" class="headerlink" title="值捕获的问题"></a>值捕获的问题</h2><pre><code>int main(int argc, const char * argv[]) {
+    __block int a = 10;
+
+    void (^block)() = ^{printf(&quot;a = %d&quot;, a);};
+    block();
+
+    return 0;
+}
+
+
+            struct __Block_byref_a_0 {
+      void *__isa;
+    __Block_byref_a_0 *__forwarding;
+     int __flags;
+     int __size;
+     int a;
+    };
+
+    struct __main_block_impl_0 {
+      struct __block_impl impl;
+      struct __main_block_desc_0* Desc;
+      __Block_byref_a_0 *a; // by ref
+      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_a_0 *_a, int flags=0) : a(_a-&gt;__forwarding) {
+        impl.isa = &amp;_NSConcreteStackBlock;
+        impl.Flags = flags;
+        impl.FuncPtr = fp;
+        Desc = desc;
+      }
+    };
+    static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+      __Block_byref_a_0 *a = __cself-&gt;a; // bound by ref
+    printf(&quot;a = %d&quot;, (a-&gt;__forwarding-&gt;a));}
+</code></pre><p>block 说明符类似于 static、auto 和 register 说明符，加了 block 说明符以后，变量 a 变成了一个结构体实例，该结构体持有相当于原自动变量的成员变量，在像 block 内传递时把a-&gt;forwarding-&gt;a 的地址传过去了，所以在block内部便可以修改到外面的变量了。</p>
+<h2 id="Block-存储域"><a href="#Block-存储域" class="headerlink" title="Block 存储域"></a>Block 存储域</h2><p>在之前的 C++ 的代码中有一行 ``` impl.isa = &amp;_NSConcreteStackBlock;</p>
+<blockquote>
+<p>根据isa指针，block一共有3种类型的block</p>
+<ul>
+<li>_NSConcreteGlobalBlock 全局静态，保存在数据.data 区域</li>
+<li>_NSConcreteStackBlock 保存在栈中，出函数作用域就销毁</li>
+<li>_NSConcreteMallocBlock 保存在堆中，retainCount == 0销毁</li>
+</ul>
+<p>到现在的例子中都是使用的 _NSConcreteStackBlock 类，且都设置在栈上。</p>
+</blockquote>
+<p>【要点1】如果是定义在函数外面的block是global的，另外如果函数内部的block但是，没有捕获任何自动变量，那么它也是全局的。比如下面这样的代码：</p>
+<pre><code>typedef int (^blk_t)(int);
+for(...){
+blk_t blk = ^(int count) {return count;};
+}
+</code></pre><blockquote>
+<p>这是因为：block捕获了栈上的rate自动变量，此时rate已经变成了一个结构体，而block中拥有这个结构体的指针。即如果返回block的话就是返回局部变量的指针。而这一点恰是编译器已经断定了。在ARC下没有这个问题，是因为ARC使用了autorelease了。</p>
+</blockquote>
+<p>【要点3】有时候我们需要调用block 的copy函数，将block拷贝到堆上。看下面的代码：</p>
+<pre><code>        -(id) getBlockArray{
+        int val =10;
+        return [[NSArray alloc]initWithObjects:
+        ^{NSLog(@&quot;blk0:%d&quot;,val);},
+        ^{NSLog(@&quot;blk1:%d&quot;,val);},nil];
+        }
+
+        id obj = getBlockArray();
+        typedef void (^blk_t)(void);
+        blk_t blk = (blk_t){obj objectAtIndex:0};
+        blk();
+
+&gt;这段代码在最后一行blk()会异常，因为数组中的block是栈上的。因为val是栈上的。解决办法就是调用copy方法。
+</code></pre><p> 【要点4】不管block配置在何处，用copy方法复制都不会引起任何问题。在ARC环境下，如果不确定是否要copy block尽管copy即可。ARC会打扫战场。</p>
+<p>注意：在栈上调用copy那么复制到堆上，在全局block调用copy什么也不做，在堆上调用block 引用计数增加</p>
+<p>【注意】本人用Xcode 5.1.1 iOS sdk 7.1 编译发现：并非《Objective-C》高级编程这本书中描述的那样</p>
+<p>int val肯定是在栈上的，我保存了val的地址，看看block调用前后是否变化。输出一致说明是栈上，不一致说明是堆上。</p>
+<pre><code>typedef int (^blkt1)(void) ;
+-(void) stackOrHeap{
+__block int val =10;
+int valPtr = &amp;val;//使用int的指针，来检测block到底在栈上，还是堆上
+blkt1 s= ^{
+NSLog(@&quot;val_block = %d&quot;,++val);
+return val;};
+s();
+NSLog(@&quot;valPointer = %d&quot;,valPtr);
+}
+</code></pre><blockquote>
+<p>在ARC下——block捕获了自动变量，那么block就被会直接生成到堆上了。  val_block = 11 valPointer = 10</p>
+<p>在非ARC下——block捕获了自动变量，该block还是在栈上的。  val_block = 11 valPointer = 11<br>调用copy之后的结果呢：</p>
+</blockquote>
+<pre><code>-(void) stackOrHeap{
+__block int val =10;
+int valPtr = &amp;val;//使用int的指针，来检测block到底在栈上，还是堆上
+blkt1 s= ^{
+NSLog(@&quot;val_block = %d&quot;,++val);
+return val;};
+blkt1 h = [s copy];
+h();
+NSLog(@&quot;valPointer = %d&quot;,valPtr);
+}
+</code></pre><p>—————-在ARC下&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;无效果。 val_block = 11 valPointer = 10</p>
+<p>—————-在非ARC下&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;确实复制到堆上了。 val_block = 11 valPointer = 10</p>
+<pre><code>用这个表格来表示，当block捕获了自动变量时候
+
+|     where  block stay  |       ARC     |       非ARC   |
+|------------------------|----------------|-------------| 
+|                 copy          |       heap     |     heap         |
+|             no copy         |      heap     |      stack        |
+
+### __block变量存储区域
+当block被复制到堆上时，他所捕获的对象、变量也全部复制到堆上。
+
+回忆一下block捕获自动变量的时候，自动变量将编程一个结构体，结构体中有一个字段叫```__forwarding```，用于指向自动这个结构体。那么有了这个__forwarding指针，无论是栈上的block还是被拷贝到堆上，那么都会正确的访问自动变量的值。
+
+### 截获对象
+block会持有捕获的对象。编译器为了区分自动变量和对象，有一个类型来区分。
+</code></pre><p>&gt;</p>
+<pre><code>static void main_block_copy_0(struct main_block_impl_0 dst, struct __main_block_impl_0 src){
+_Block_objct_assign(&amp;dst-&gt;val,src-&gt;val,BLOCK_FIELD_IS_BYREF);
+}
+static void main_block_dispose_0(struct main_block_impl_0 *src){
+_block_object_dispose(src-&gt;val,BLOCK_FIELD_IS_BYREF);
+}
+
+BLOCK_FIELD_IS_BYREF代表是变量。BLOCK_FIELD_IS_OBJECT代表是对象
+</code></pre><p>__block修饰符可用于任何类型的自动变量</p>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>根据上面讲的内容，block在持有对象的时候，对象如果持有block，会造成循环引用。解决办法有两种：</p>
+<p> 1.使用weak修饰符。id weak obj = obj_</p>
+<p> 2.使用block修饰符。block id tmp = self;然后在block中tmp = nil；这样就打破循环了。这个办法需要记得将tmp=nil。不推荐！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/" rel="next" title="iOS中获取各种文件的目录路径的方法">
+                <i class="fa fa-chevron-left"></i> iOS中获取各种文件的目录路径的方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/30/2015/2016-03-30mac技巧/" rel="prev" title="分享一个mac的小技巧">
+                分享一个mac的小技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bluce Liu" />
+          <p class="site-author-name" itemprop="name">Bluce Liu</p>
+          <p class="site-description motion-element" itemprop="description">专注于技术分享</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Blocks-详解"><span class="nav-number">1.</span> <span class="nav-text">Blocks 详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-Block？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是 Block？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blocks-模式"><span class="nav-number">1.2.</span> <span class="nav-text">Blocks 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">Block 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block变量类型"><span class="nav-number">1.3.</span> <span class="nav-text">Block变量类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#截获自动变量值"><span class="nav-number">1.4.</span> <span class="nav-text">截获自动变量值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blocks-的实现"><span class="nav-number">1.5.</span> <span class="nav-text">Blocks 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-本质"><span class="nav-number">1.5.1.</span> <span class="nav-text">Block 本质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值捕获的问题"><span class="nav-number">1.6.</span> <span class="nav-text">值捕获的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block-存储域"><span class="nav-number">1.7.</span> <span class="nav-text">Block 存储域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环引用"><span class="nav-number">1.8.</span> <span class="nav-text">循环引用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bluce Liu</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

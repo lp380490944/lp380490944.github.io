@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS学习之Socket使用简明教程－ AsyncSocket">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS学习之Socket使用简明教程－ AsyncSocket">
+<meta property="og:url" content="http://lp380490944.github.io/2015/12/29/2015/2015-11-2-iOS学习之Socket使用简明教程－ AsyncSocket/index.html">
+<meta property="og:site_name" content="钟灵毓秀">
+<meta property="og:description" content="iOS学习之Socket使用简明教程－ AsyncSocket">
+<meta property="og:updated_time" content="2016-05-25T02:21:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS学习之Socket使用简明教程－ AsyncSocket">
+<meta name="twitter:description" content="iOS学习之Socket使用简明教程－ AsyncSocket">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> iOS学习之Socket使用简明教程－ AsyncSocket | 钟灵毓秀 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">钟灵毓秀</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">刘攀的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS学习之Socket使用简明教程－ AsyncSocket
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2015-12-29T16:27:58+08:00" content="2015-12-29">
+              2015-12-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/lessons/" itemprop="url" rel="index">
+                    <span itemprop="name">lessons</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#iOS学习之Socket使用简明教程－ AsyncSocket</p>
+<p>如果需要在项目中像QQ微信一样做到即时通讯，必须使用socket通讯，本人也是刚学习，分享一下，有什么不对的地方希望大家指正</p>
+<p>ios原生的socket用起来不是很直观，所以我用的是AsyncSocket这个第三方库，对socket的封装比较好，只是好像没有带外传输（out—of-band） 如果你的服务器需要发送带外数据，可能得想下别的办法</p>
+<p>环境</p>
+<p>下载AsyncSocket<a href="https://github.com/robbiehanson/CocoaAsyncSocket类库，将RunLoop文件夹下的AsyncSocket.h" target="_blank" rel="external">https://github.com/robbiehanson/CocoaAsyncSocket类库，将RunLoop文件夹下的AsyncSocket.h</a>, AsyncSocket.m, AsyncUdpSocket.h, AsyncUdpSocket.m 文件拷贝到自己的project中</p>
+<p>添加CFNetwork.framework, 在使用socket的文件头</p>
+<pre><code>#import &lt;sys/socket.h&gt;
+#import &lt;netinet/in.h&gt;
+#import &lt;arpa/inet.h&gt;
+#import &lt;unistd.h&gt;
+</code></pre><p>使用</p>
+<ol>
+<li>socket 连接</li>
+</ol>
+<p>即时通讯最大的特点就是实时性，基本感觉不到延时或是掉线，所以必须对socket的连接进行监视与检测，在断线时进行重新连接，如果用户退出登录，要将socket手动关闭，否则对服务器会造成一定的负荷。</p>
+<p>一般来说，一个用户（对于ios来说也就是我们的项目中）只能有一个正在连接的socket，所以这个socket变量必须是全局的，这里可以考虑使用单例或是AppDelegate进行数据共享，本文使用单例。如果对一个已经连接的socket对象再次进行连接操作，会抛出异常（不可对已经连接的socket进行连接）程序崩溃，所以在连接socket之前要对socket对象的连接状态进行判断</p>
+<p>使用socket进行即时通讯还有一个必须的操作，即对服务器发送心跳包，每隔一段时间对服务器发送长连接指令（指令不唯一，由服务器端指定，包括使用socket发送消息，发送的数据和格式都是由服务器指定），如果没有收到服务器的返回消息，AsyncSocket会得到失去连接的消息，我们可以在失去连接的回调方法里进行重新连接。</p>
+<p>先创建一个单例，命名为Singleton</p>
+<pre><code>  Singleton.h
+
+// Singleton.h
+ #import &quot;AsyncSocket.h&quot;
+
+ #define DEFINE_SHARED_INSTANCE_USING_BLOCK(block) \
+static dispatch_once_t onceToken = 0; \
+__strong static id sharedInstance = nil; \
+dispatch_once(&amp;onceToken, ^{ \
+sharedInstance = block(); \
+}); \
+return sharedInstance; \
+
+@interface Singleton : NSObject
+
++ (Singleton *)sharedInstance;
+
+@end
+Singleton.m
+
++(Singleton *) sharedInstance
+{
+
+static Singleton *sharedInstace = nil;
+static dispatch_once_t onceToken;
+dispatch_once(&amp;onceToken, ^{
+
+    sharedInstace = [[self alloc] init];
+});
+
+return sharedInstace;
+}
+</code></pre><p>这样一个单例就创建好了</p>
+<p>在.h文件中生命socket变量</p>
+<pre><code>@property (nonatomic, strong) AsyncSocket    *socket;       // socket
+@property (nonatomic, copy  ) NSString       *socketHost;   // socket的Host
+@property (nonatomic, assign) UInt16         socketPort;    // socket的prot
+</code></pre><p>下面是连接，心跳，失去连接后重连</p>
+<p>连接(长连接)</p>
+<pre><code>在.h文件中声明方法，并声明代理&lt;AsyncSocketDelegate&gt;
+
+-(void)socketConnectHost;// socket连接
+在.m中实现，连接时host与port都是由服务器指定，如果不是自己写的服务器，请与服务器端开发人员交流
+
+// socket连接
+-(void)socketConnectHost{
+
+    self.socket    = [[AsyncSocket alloc] initWithDelegate:self];
+
+    NSError *error = nil;
+
+    [self.socket connectToHost:self.socketHost onPort:self.socketPort withTimeout:3 error:&amp;error];
+
+}
+</code></pre><p>心跳</p>
+<p>心跳通过计时器来实现<br>在singleton.h中声明一个定时器</p>
+<pre><code>@property (nonatomic, retain) NSTimer        *connectTimer; // 计时器
+</code></pre><p>在.m中实现连接成功回调方法，并在此方法中初始化定时器，发送心跳在后文向服务器发送数据时说明</p>
+<pre><code>#pragma mark  - 连接成功回调
+-(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString  *)host port:(UInt16)port
+</code></pre><p>{<br>    NSLog(@”socket连接成功”);</p>
+<pre><code>// 每隔30s像服务器发送心跳包
+self.connectTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(longConnectToSocket) userInfo:nil repeats:YES];// 在longConnectToSocket方法中进行长连接需要向服务器发送的讯息
+
+[self.connectTimer fire];
+</code></pre><p>}</p>
+<ol>
+<li>socket 断开连接与重连</li>
+</ol>
+<p>断开连接</p>
+<p>失去连接有几种情况，服务器断开，用户主动cut，还可能有如QQ其他设备登录被掉线的情况，不管那种情况，我们都能收到socket回调方法返回给我们的讯息，如果是用户退出登录或是程序退出而需要手动cut，我们在cut前对socket的userData赋予一个值来标记为用户退出，这样我们可以在收到断开信息时判断究竟是什么原因导致的掉线</p>
+<p>在.h文件中声明一个枚举类型</p>
+<pre><code> enum{
+SocketOfflineByServer,// 服务器掉线，默认为0
+SocketOfflineByUser,  // 用户主动cut
+};
+</code></pre><p>声明断开连接方法</p>
+<pre><code>-(void)cutOffSocket; // 断开socket连接
+</code></pre><p>.m</p>
+<pre><code>// 切断socket
+-(void)cutOffSocket{
+
+self.socket.userData = SocketOfflineByUser;// 声明是由用户主动切断
+
+[self.connectTimer invalidate];
+
+[self.socket disconnect];
+}
+</code></pre><p>重连</p>
+<p>实现代理方法</p>
+<pre><code>-(void)onSocketDidDisconnect:(AsyncSocket *)sock
+{
+    NSLog(@&quot;sorry the connect is failure %ld&quot;,sock.userData);
+    if (sock.userData == SocketOfflineByServer) {
+        // 服务器掉线，重连
+        [self socketConnectHost];
+    }
+    else if (sock.userData == SocketOfflineByUser) {
+        // 如果由用户断开，不进行重连
+        return;
+    }
+
+}
+</code></pre><ol>
+<li>socket 发送与接收数据</li>
+</ol>
+<p>发送数据<br>我们补充上文心跳连接未完成的方法</p>
+<pre><code>// 心跳连接
+-(void)longConnectToSocket{
+
+// 根据服务器要求发送固定格式的数据，假设为指令@&quot;longConnect&quot;，但是一般不会是这么简单的指令
+
+NSString *longConnect = @&quot;longConnect&quot;;
+
+NSData   *dataStream  = [longConnect dataUsingEncoding:NSUTF8StringEncoding];
+
+[self.socket writeData:dataStream withTimeout:1 tag:1];
+</code></pre><p>}<br>socket发送数据是以栈的形式存放，所有数据放在一个栈中，存取时会出现粘包的现象，所以很多时候服务器在收发数据时是以先发送内容字节长度，再发送内容的形式，得到数据时也是先得到一个长度，再根据这个长度在栈中读取这个长度的字节流，如果是这种情况，发送数据时只需在发送内容前发送一个长度，发送方法与发送内容一样，假设长度为8</p>
+<pre><code>NSData   *dataStream  = [@8 dataUsingEncoding:NSUTF8StringEncoding];
+
+[self.socket writeData:dataStream withTimeout:1 tag:1];
+接收数据 
+为了能时刻接收到socket的消息，我们在长连接方法中进行读取数据
+
+ [self.socket readDataWithTimeout:30 tag:0];
+如果得到数据，会调用回调方法
+
+-(void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+// 对得到的data值进行解析与转换即可
+
+[self.socket readDataWithTimeout:30 tag:0];
+
+}
+</code></pre><ol>
+<li>简单使用说明</li>
+</ol>
+<p>我们在用户登录后的第一个界面进行socket的初始化连接操作，在得到数据后，将所需要显示的数据放在singleton中，对变量进行监听后做出相应的操作即可，延伸起来比较复杂，没有真实数据也不太方便说明，大家自己进行探索吧，有问题请在下方留言</p>
+<pre><code>[Singleton sharedInstance].socketHost = @&quot;192.186.100.21&quot;;// host设定
+[Singleton sharedInstance].socketPort = 10045;// port设定
+
+// 在连接前先进行手动断开
+[Singleton sharedInstance].socket.userData = SocketOfflineByUser;
+[[Singleton sharedInstance] cutOffSocket];
+
+// 确保断开后再连，如果对一个正处于连接状态的socket进行连接，会出现崩溃
+[Singleton sharedInstance].socket.userData = SocketOfflineByServer;
+[[Singleton sharedInstance] socketConnectHost];
+</code></pre><p> 本文转自<a href="http://my.oschina.net/joanfen/blog/287238" target="_blank" rel="external">这里</a>本文涉及到的代码在<a href="http://www.oschina.net/code/snippet_735123_36974" target="_blank" rel="external">这里</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/10/2015/2015-11-1-关于TCP&%IP和socket详解/" rel="next" title="关于TCP/IP还有socket详解原创">
+                <i class="fa fa-chevron-left"></i> 关于TCP/IP还有socket详解原创
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/" rel="prev" title="iOS中获取各种文件的目录路径的方法">
+                iOS中获取各种文件的目录路径的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bluce Liu" />
+          <p class="site-author-name" itemprop="name">Bluce Liu</p>
+          <p class="site-description motion-element" itemprop="description">专注于技术分享</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bluce Liu</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
