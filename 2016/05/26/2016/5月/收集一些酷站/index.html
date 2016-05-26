@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="tableview," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,43 +84,55 @@
 
 
 
-<meta name="description" content="#关于tableView数组越界的问题处理
-###使用懒加载
-
-使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素
-[self.dataArray removeAllObjects];
+<meta name="description" content="#分享一些我收集的酷站
 
 
 
-判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：
-if(self.dataArray.count !">
+站名
+链接
+介绍
+
+
+
+
+知笔墨
+http://zhibimo.com/
+这是李笑来老师出的一个很好网站">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于tableView数组越界的问题处理">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/24/2016/关于tableview数组越界的问题处理/index.html">
+<meta property="og:title" content="收集一些酷站">
+<meta property="og:url" content="http://lp380490944.github.io/2016/05/26/2016/5月/收集一些酷站/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="#关于tableView数组越界的问题处理
-###使用懒加载
-
-使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素
-[self.dataArray removeAllObjects];
+<meta property="og:description" content="#分享一些我收集的酷站
 
 
 
-判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：
-if(self.dataArray.count !">
-<meta property="og:updated_time" content="2016-05-25T02:24:15.000Z">
+站名
+链接
+介绍
+
+
+
+
+知笔墨
+http://zhibimo.com/
+这是李笑来老师出的一个很好网站">
+<meta property="og:updated_time" content="2016-05-26T02:28:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于tableView数组越界的问题处理">
-<meta name="twitter:description" content="#关于tableView数组越界的问题处理
-###使用懒加载
-
-使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素
-[self.dataArray removeAllObjects];
+<meta name="twitter:title" content="收集一些酷站">
+<meta name="twitter:description" content="#分享一些我收集的酷站
 
 
 
-判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：
-if(self.dataArray.count !">
+站名
+链接
+介绍
+
+
+
+
+知笔墨
+http://zhibimo.com/
+这是李笑来老师出的一个很好网站">
 
 
 
@@ -138,7 +150,7 @@ if(self.dataArray.count !">
   };
 </script>
 
-  <title> 关于tableView数组越界的问题处理 | 钟灵毓秀 </title>
+  <title> 收集一些酷站 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -246,8 +258,10 @@ if(self.dataArray.count !">
   
   
   
+    
+  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal  post-sticky" itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -258,7 +272,7 @@ if(self.dataArray.count !">
             
             
               
-                关于tableView数组越界的问题处理
+                收集一些酷站
               
             
           </h1>
@@ -270,8 +284,8 @@ if(self.dataArray.count !">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
+            <time itemprop="dateCreated" datetime="2016-05-26T10:07:51+08:00" content="2016-05-26">
+              2016-05-26
             </time>
           </span>
 
@@ -298,30 +312,23 @@ if(self.dataArray.count !">
       
 
       
-        <p>#关于tableView数组越界的问题处理</p>
-<p>###使用懒加载</p>
-<ul>
-<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<pre><code>[self.dataArray removeAllObjects];
-</code></pre></li>
-</ul>
-<ul>
-<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<pre><code>if(self.dataArray.count != 0){
-
- MOdel * model = self.dataArray[indexPath.row];
-}
-</code></pre></li>
-</ul>
-<ul>
-<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
-<pre><code>if(!indexpath.row &gt; self.dataArray.count){
-
-Model* model = slef.dataArray[indexpath.row];
-
-}
-</code></pre></li>
-</ul>
+        <p>#分享一些我收集的酷站</p>
+<table>
+<thead>
+<tr>
+<th>站名</th>
+<th>链接</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>知笔墨</td>
+<td><a href="http://zhibimo.com/" target="_blank" rel="external">http://zhibimo.com/</a></td>
+<td>这是李笑来老师出的一个很好网站</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -341,28 +348,18 @@ Model* model = slef.dataArray[indexpath.row];
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/tableview/" rel="tag">#tableview</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/24/2016/my-frist-post/" rel="next" title="my frist post">
-                <i class="fa fa-chevron-left"></i> my frist post
+              <a href="/2016/05/25/2016/5月/关于xib的动态桥接/" rel="next" title="关于xib的动态桥接">
+                <i class="fa fa-chevron-left"></i> 关于xib的动态桥接
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/24/2016/处理耗时任务/" rel="prev" title="处理耗时任务">
-                处理耗时任务 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
