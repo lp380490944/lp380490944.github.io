@@ -170,7 +170,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -190,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -266,7 +266,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-26T10:37:41+08:00" content="2016-05-26">
               2016-05-26
             </time>
@@ -368,7 +368,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-26T10:07:51+08:00" content="2016-05-26">
               2016-05-26
             </time>
@@ -478,7 +478,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T23:17:47+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -583,7 +583,7 @@ return view;
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T14:36:49+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -680,7 +680,7 @@ return view;
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -794,7 +794,7 @@ return view;
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -887,7 +887,7 @@ return view;
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
               2016-05-25
             </time>
@@ -1065,6 +1065,123 @@ C+r 搜索命令历史，这个较常用
             
               
                 
+                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">
+                  关于tableView数组越界的问题处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#关于tableView数组越界的问题处理</p>
+<p>###使用懒加载</p>
+<ul>
+<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
+<pre><code>[self.dataArray removeAllObjects];
+</code></pre></li>
+</ul>
+<ul>
+<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
+<pre><code>if(self.dataArray.count != 0){
+
+ MOdel * model = self.dataArray[indexPath.row];
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
+<pre><code>if(!indexpath.row &gt; self.dataArray.count){
+
+Model* model = slef.dataArray[indexpath.row];
+
+}
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/24/2016/处理耗时任务/" itemprop="url">
                   处理耗时任务
                 </a>
@@ -1078,7 +1195,7 @@ C+r 搜索命令历史，这个较常用
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
               2016-05-24
             </time>
@@ -1192,123 +1309,6 @@ C+r 搜索命令历史，这个较常用
             
               
                 
-                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">
-                  关于tableView数组越界的问题处理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#关于tableView数组越界的问题处理</p>
-<p>###使用懒加载</p>
-<ul>
-<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<pre><code>[self.dataArray removeAllObjects];
-</code></pre></li>
-</ul>
-<ul>
-<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<pre><code>if(self.dataArray.count != 0){
-
- MOdel * model = self.dataArray[indexPath.row];
-}
-</code></pre></li>
-</ul>
-<ul>
-<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
-<pre><code>if(!indexpath.row &gt; self.dataArray.count){
-
-Model* model = slef.dataArray[indexpath.row];
-
-}
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">
                   my frist post
                 </a>
@@ -1322,7 +1322,7 @@ Model* model = slef.dataArray[indexpath.row];
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
               2016-05-24
             </time>
@@ -1434,7 +1434,7 @@ Model* model = slef.dataArray[indexpath.row];
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">15</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1442,7 +1442,7 @@ Model* model = slef.dataArray[indexpath.row];
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -1451,7 +1451,7 @@ Model* model = slef.dataArray[indexpath.row];
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1495,7 +1495,7 @@ Model* model = slef.dataArray[indexpath.row];
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
