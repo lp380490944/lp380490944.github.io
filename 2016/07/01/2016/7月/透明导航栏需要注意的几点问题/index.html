@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="多线程," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,34 +84,24 @@
 
 
 
-<meta name="description" content="##处理耗时任务
-###两个同步搞定
-
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+<meta name="description" content="透明导航栏需要注意的几点问题导航栏的透明度设置  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话
+self.navigationBar.translucent = NO;
+  竟然是NO！NO！好吧，英文不好原来是透明">
 <meta property="og:type" content="article">
-<meta property="og:title" content="处理耗时任务">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/24/2016/处理耗时任务/index.html">
+<meta property="og:title" content="透明导航栏需要注意的几点问题">
+<meta property="og:url" content="http://lp380490944.github.io/2016/07/01/2016/7月/透明导航栏需要注意的几点问题/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="##处理耗时任务
-###两个同步搞定
-
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
-<meta property="og:updated_time" content="2016-05-25T02:51:30.000Z">
+<meta property="og:description" content="透明导航栏需要注意的几点问题导航栏的透明度设置  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话
+self.navigationBar.translucent = NO;
+  竟然是NO！NO！好吧，英文不好原来是透明">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/67179-716b4afa201ecd19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-07-01T02:39:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="处理耗时任务">
-<meta name="twitter:description" content="##处理耗时任务
-###两个同步搞定
-
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+<meta name="twitter:title" content="透明导航栏需要注意的几点问题">
+<meta name="twitter:description" content="透明导航栏需要注意的几点问题导航栏的透明度设置  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话
+self.navigationBar.translucent = NO;
+  竟然是NO！NO！好吧，英文不好原来是透明">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/67179-716b4afa201ecd19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -129,7 +119,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
   };
 </script>
 
-  <title> 处理耗时任务 | 钟灵毓秀 </title>
+  <title> 透明导航栏需要注意的几点问题 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -269,7 +259,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
             
             
               
-                处理耗时任务
+                透明导航栏需要注意的几点问题
               
             
           </h1>
@@ -281,8 +271,8 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
+            <time itemprop="dateCreated" datetime="2016-07-01T10:38:35+08:00" content="2016-07-01">
+              2016-07-01
             </time>
           </span>
 
@@ -309,40 +299,15 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
       
 
       
-        <p>##处理耗时任务</p>
-<p>###两个同步搞定</p>
-<ul>
-<li><p>一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：</p>
-<pre><code>dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;如果再看到关于纯代码,xib或storyboard,使用哪种方式进行UI布局更合适的讨论,请推荐他们先试用下 Masonry. Masonry,像xib一样快速,同时拥有作为纯代码方式的灵活性 — github关注度 7800 + 是有原因的!&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;无论如何,你总是需要一个提示框.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;SVProgressHUD是简单易用的显示器,用于指示一个持续进行的任务的进度.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;RestKit 是一个用于更好支持RESTful风格服务器接口的iOS库,可直接将联网获取的json/xml数据转换为iOS对象.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;FMDB 是SQLite的Objective-C封装库.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;Pop 是一个可扩展的动画引擎,可用于实现任意iOS对象的任意属性的动态变化,支持一般动画,弹性动画和渐变动画三种类型.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;高度可定制的应用欢迎页通用解决方案,可高度定制,不要仅限于现有的demo&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;JVFloatLabeledTextField 是注重用户体验的”浮动标签模式”(Float Label Patter)的第一个实现,可以有效解决移动设备上进行表单输入时,无法边看表单提示边进行输入的困境,用户体验非常好.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;用于为应用添加常用的上拉加载更多与下拉刷新效果,适用 UIScrollView、UITableView、UICollectionView、UIWebView.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;iOS-blur使用一种巧妙的方式,为任意视图添加一种非常奇妙的模糊效果.&quot;}
-
-                        ];
-
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LPModel * model = [LPModel new];
-        model.imgUrl = @&quot;https://raw.githubusercontent.com/ealeksandrov/EAIntroView/master/Screenshot02.png&quot;;
-        model.content = [obj objectForKey:@&quot;intro&quot;];
-        [self.dataList addObject:model];
-
-    }];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        [self.tableView reloadData];
-    });
-});
-</code></pre></li>
-</ul>
+        <h1 id="透明导航栏需要注意的几点问题"><a href="#透明导航栏需要注意的几点问题" class="headerlink" title="透明导航栏需要注意的几点问题"></a>透明导航栏需要注意的几点问题</h1><h4 id="导航栏的透明度设置"><a href="#导航栏的透明度设置" class="headerlink" title="导航栏的透明度设置"></a>导航栏的透明度设置</h4><p>  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话</p>
+<pre><code>self.navigationBar.translucent = NO;
+</code></pre><p>  竟然是NO！NO！好吧，英文不好原来是透明度的意思，把透明度关闭了当然不行啦。。</p>
+<p>  然后就有效果了。</p>
+<h3 id="scrollView（或者是tableView）的偏移量问题"><a href="#scrollView（或者是tableView）的偏移量问题" class="headerlink" title="scrollView（或者是tableView）的偏移量问题"></a>scrollView（或者是tableView）的偏移量问题</h3><p>在实践的过程中发现不能完全按照demo来 透明度一直有问题不知道为什么，，最后发现storyboard里面的scrollView的偏移量设置不一样 导致原来的计算方法失效，好吧，是我SB了。。</p>
+<h3 id="关于推出透明导航栏有黑影问题"><a href="#关于推出透明导航栏有黑影问题" class="headerlink" title="关于推出透明导航栏有黑影问题"></a>关于推出透明导航栏有黑影问题</h3><p>透明导航栏做的差不多的但是发现每次推出的时候有黑影就是这样子的：<br><img src="http://upload-images.jianshu.io/upload_images/67179-716b4afa201ecd19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>最后也是Google到了答案需要在baseNv的viewdidload里面加上一句</p>
+<pre><code>self.backGroundColor = [UIcolor whitecolor];
+</code></pre><p>   是的，你没看错就是这句，然后就完美了</p>
 
       
     </div>
@@ -362,28 +327,18 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/多线程/" rel="tag">#多线程</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/24/2016/my-frist-post/" rel="next" title="my frist post">
-                <i class="fa fa-chevron-left"></i> my frist post
+              <a href="/2016/06/04/2016/6月/用Charles抓ssl的包/" rel="next" title="用Charles抓ssl的包">
+                <i class="fa fa-chevron-left"></i> 用Charles抓ssl的包
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/25/2016/关于博客的markdown语法/" rel="prev" title="关于博客的markdown语法">
-                关于博客的markdown语法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,7 +452,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#透明导航栏需要注意的几点问题"><span class="nav-number">1.</span> <span class="nav-text">透明导航栏需要注意的几点问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导航栏的透明度设置"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">导航栏的透明度设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollView（或者是tableView）的偏移量问题"><span class="nav-number">1.0.1.</span> <span class="nav-text">scrollView（或者是tableView）的偏移量问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于推出透明导航栏有黑影问题"><span class="nav-number">1.0.2.</span> <span class="nav-text">关于推出透明导航栏有黑影问题</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
