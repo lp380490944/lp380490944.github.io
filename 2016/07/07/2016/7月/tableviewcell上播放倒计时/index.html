@@ -98,7 +98,7 @@
 
 // 第一种创建一个self弱引用
 #define WS(weakSelf)  __weak __typeof(&amp;amp;*self)weakSelf = sel">
-<meta property="og:updated_time" content="2016-07-12T02:03:04.000Z">
+<meta property="og:updated_time" content="2016-07-12T03:06:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tableview cell上播放倒计时">
 <meta name="twitter:description" content="tableview cell 上播放倒计时项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到
@@ -310,14 +310,14 @@
 #define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;
 //第二种就是如果项目中用到了reactivecocoa这个第三方的话 使用     @weakify（self）
 @Strongify（self）
-</code></pre><h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><ul>
+</code></pre><a id="more"></a>
+<h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><ul>
 <li><p>2 这里只说我自己遇到的问题及解决办法，基本的介绍就不再说了 </p>
 <p>（1）定时器如果要循环的话需要加入到runloop中</p>
 </li>
 </ul>
 <pre><code>[[NSrunLoop currenRunLoop] addTimer:_timerforMode:NSRunLoopCommonModes]
 </code></pre><p>   (2)定时器创建的线程和释放的线程应该在同一个线程，否则的话无法释放有兴趣的同学可以试一下</p>
-  <a id="more"></a>
 <pre><code>  //创建
   dispatch_async(dispatch_get_main_queue(), ^{
     if (self.time) {

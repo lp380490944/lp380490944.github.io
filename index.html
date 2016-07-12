@@ -303,13 +303,7 @@
 #define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;
 //第二种就是如果项目中用到了reactivecocoa这个第三方的话 使用     @weakify（self）
 @Strongify（self）
-</code></pre><h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><ul>
-<li><p>2 这里只说我自己遇到的问题及解决办法，基本的介绍就不再说了 </p>
-<p>（1）定时器如果要循环的话需要加入到runloop中</p>
-</li>
-</ul>
-<pre><code>[[NSrunLoop currenRunLoop] addTimer:_timerforMode:NSRunLoopCommonModes]
-</code></pre><p>   (2)定时器创建的线程和释放的线程应该在同一个线程，否则的话无法释放有兴趣的同学可以试一下</p>
+</code></pre>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/07/2016/7月/tableviewcell上播放倒计时/#more" rel="contents">
               阅读全文 &raquo;
@@ -1145,6 +1139,99 @@ return view;
             
               
                 
+                <a class="post-title-link" href="/2016/05/25/2016/关于博客的markdown语法/" itemprop="url">
+                  关于博客的markdown语法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字"><a href="#一直发现以前写的文章都是-标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须-空格-文字" class="headerlink" title="一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字"></a>一直发现以前写的文章都是#+标题的所有的markdown软件都可以识别唯独博客的不行，搜了一下，原来是必须##+空格+文字</h2><h3 id="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"><a href="#看来以后要改掉这个坏习惯了，哈哈。记录下轨迹" class="headerlink" title="看来以后要改掉这个坏习惯了，哈哈。记录下轨迹"></a>看来以后要改掉这个坏习惯了，哈哈。记录下轨迹</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/25/2016/iterm2_快捷键大全/" itemprop="url">
                   iTerm2 快捷键大全
                 </a>
@@ -1287,120 +1374,6 @@ C+r 搜索命令历史，这个较常用
 <h2 id="剪切历史"><a href="#剪切历史" class="headerlink" title="剪切历史"></a>剪切历史</h2><ul>
 <li>输入 command+shift+h，iterm2 将自动列出剪切板的历史记录。如果需要将剪切板的历史记录保存到磁盘，在 Preferences &gt; General &gt; Save copy/paste history to disk 中设置。</li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/2015/2015-10-29-HTTP和FTP协议的区别/" itemprop="url">
-                  HTTP和FTP协议的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T09:47:34+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HTTP和FTP协议的区别"><a href="#HTTP和FTP协议的区别" class="headerlink" title="HTTP和FTP协议的区别"></a>HTTP和FTP协议的区别</h1><ol>
-<li>HTTP协议是用来浏览网站的，而FTP时候hi用来访问和传输文件的，例如有些博客系统中允许用户上传下载文件</li>
-<li>HTTP和FTP客户端：通常HTTP客户端就是浏览器，而FTP服务可以通过命令行或者用户自有图形界面客户端</li>
-<li>HTTP头：HTTP头包含了metadata，比如说最后更改的日期，编码方式，服务器名称版本还有其他的一些信息，而这些在FTP头重视不存在的。</li>
-<li>FTP要比HTTP早出现先十年左右</li>
-<li>数据格式：FTP能够传输ACSII数据或者是二进制格式的数据，而HTTP只能使用二进制格式的数据</li>
-<li>HTTP流水线：HTTP支持流水线，这就意味着客户端可以在一个请求处理完之前，发出下一个请求，其结果就是多次请求数据之前省掉了部分服务器端往返时延，而FTP没有这个支持</li>
-<li>HTTP中的动态端口：FTP一个最大的问题就是它使用两个链接，第一个链接用来发送控制指令，当接受或发送数据的时候，又打开第二个TCP链接，而HTTP在双向传输中使用动态端口</li>
-<li>HTTP中的持久链接：对一个HTTP会话来讲，客户端可以维护一个单个链接并使用它进行任意数量的数据传输。FTP每次有数据的需要时都创建一个新连接，重复创建新连接带来的体验并不好，因为每次创建链接都必须让双方握手验证，这消耗了很多的时间。</li>
-<li>HTTP中的压缩算法：HTTP中提供了一个压缩的算法在客户端中和服务器之间共同协商选择的办法。其中gzip可以说是最具有影响力的一种，而FTP中并不存在这种复杂的算法</li>
-<li>HTTP支持代理：HTTP一个很大的特点是支持代理，这种功能在构建协议里的，而FTP并不支持，</li>
-<li>而FTP也能脱颖而出的一点是直接面向文件级别的，这意味着FTP有例如可以通过命令行列出服务器上的目录列表，而HTTP没有这个概念</li>
-<li>速度：可能最通常的一个问题了？</li>
-</ol>
-<h5 id="什么使FTP服务更快？"><a href="#什么使FTP服务更快？" class="headerlink" title="什么使FTP服务更快？"></a>什么使FTP服务更快？</h5><p>1、没有在发出的数据中加入meta-data，仅传输原二进制文件。</p>
-<p>2、没有过度的分块编码</p>
-<h5 id="什么使HTTP服务更快？"><a href="#什么使HTTP服务更快？" class="headerlink" title="什么使HTTP服务更快？"></a>什么使HTTP服务更快？</h5><p>1、重用已存在的持久连接，从而有更好的TCP表现。</p>
-<p>2、流水线的支持使得从同一个服务器上请求多个文件更快。</p>
-<p>3、自动的压缩机制使得传输的数据更少。</p>
-<p>4、没有命令/应答机制最大限度的减少了往返时延。</p>
-<p>总结：当然最终的结果会因具体的情况而异，但我想说的是，单次传输一个静态的文件，很难衡量两者的区别对单个的小文件来说，FTP传输更快，当传输多个文件时，HTTP更快。</p>
 
           
         
