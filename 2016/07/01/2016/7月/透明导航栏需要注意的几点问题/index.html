@@ -95,7 +95,7 @@ self.navigationBar.translucent = NO;
 self.navigationBar.translucent = NO;
   竟然是NO！NO！好吧，英文不好原来是透明">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/67179-716b4afa201ecd19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-07-01T02:39:29.000Z">
+<meta property="og:updated_time" content="2016-07-12T03:10:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="透明导航栏需要注意的几点问题">
 <meta name="twitter:description" content="透明导航栏需要注意的几点问题导航栏的透明度设置  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话
@@ -303,6 +303,7 @@ self.navigationBar.translucent = NO;
 <pre><code>self.navigationBar.translucent = NO;
 </code></pre><p>  竟然是NO！NO！好吧，英文不好原来是透明度的意思，把透明度关闭了当然不行啦。。</p>
 <p>  然后就有效果了。</p>
+<a id="more"></a>
 <h3 id="scrollView（或者是tableView）的偏移量问题"><a href="#scrollView（或者是tableView）的偏移量问题" class="headerlink" title="scrollView（或者是tableView）的偏移量问题"></a>scrollView（或者是tableView）的偏移量问题</h3><p>在实践的过程中发现不能完全按照demo来 透明度一直有问题不知道为什么，，最后发现storyboard里面的scrollView的偏移量设置不一样 导致原来的计算方法失效，好吧，是我SB了。。</p>
 <h3 id="关于推出透明导航栏有黑影问题"><a href="#关于推出透明导航栏有黑影问题" class="headerlink" title="关于推出透明导航栏有黑影问题"></a>关于推出透明导航栏有黑影问题</h3><p>透明导航栏做的差不多的但是发现每次推出的时候有黑影就是这样子的：<br><img src="http://upload-images.jianshu.io/upload_images/67179-716b4afa201ecd19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>最后也是Google到了答案需要在baseNv的viewdidload里面加上一句</p>
