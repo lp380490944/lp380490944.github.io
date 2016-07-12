@@ -96,7 +96,7 @@
 1 第一条跟NStimer无关  只是平时项目中的细节问题，一定要注意block中的循环引用问题，这里有两种方法 
 
 12345// 第一种创建一个self弱引用#define WS(weakSelf)  __weak __typeof(&amp;amp;*self)weakSelf =">
-<meta property="og:updated_time" content="2016-07-12T06:35:46.000Z">
+<meta property="og:updated_time" content="2016-07-12T06:37:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tableview Cell上播放倒计时">
 <meta name="twitter:description" content="tableview cell 上播放倒计时项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到
@@ -324,36 +324,8 @@
 </ul>
 <pre><code>[[NSrunLoop currenRunLoop] addTimer:_timerforMode:NSRunLoopCommonModes]
 </code></pre><p>   (2)定时器创建的线程和释放的线程应该在同一个线程，否则的话无法释放有兴趣的同学可以试一下</p>
-<pre><code>  //创建
-  dispatch_async(dispatch_get_main_queue(), ^{
-    if (self.time) {
-        [self.time invalidate];
-    }
-    self.time = [NSTimer ez_scheduledTimerWithTimeInterval:1    block:^{
-        NSDate *currentDate =[NSDate date];
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-
-        NSCalendarUnit  unit = NSDayCalendarUnit | NSCalendarUnitHour | NSCalendarUnitMinute  | NSCalendarUnitSecond;
-        NSDateComponents *commponent = [calendar components:unit fromDate:currentDate toDate:[NSDate dateWithString:weakSelf.endTime ] options:NSCalendarWrapComponents];
-
-
-        NSDate *dt = [[NSDate dateWithString: weakSelf.endTime] earlierDate:currentDate];
-        NSLog(@&quot;-------------------%@&quot;,weakSelf.endTime);
-        //    self.getPrimeRate.enabled =YES;
-
-        if([dt isEqualToDate:[NSDate dateWithString:weakSelf.endTime ]])
-        {
-            [weakSelf.time invalidate];
-            weakSelf.countDownLabel.text = @&quot;⚡️距离开放认投剩余0天00时00分00秒&quot;;
-
-        }else
-        {
-            weakSelf.countDownLabel.text = [NSString stringWithFormat:@&quot;⚡️距离开放认投剩余%zd天%02zd时%02zd分%02zd秒&quot;,commponent.day,commponent.hour,commponent.minute,commponent.second];
-
-        }
-    } repeats:YES];
-});
-</code></pre><p>这里是释放  </p>
+  <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  <span class="comment">//创建</span></span><br><span class="line">  <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.time) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.time invalidate];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">self</span>.time = [<span class="built_in">NSTimer</span> ez_scheduledTimerWithTimeInterval:<span class="number">1</span>    block:^&#123;</span><br><span class="line">        <span class="built_in">NSDate</span> *currentDate =[<span class="built_in">NSDate</span> date];</span><br><span class="line">        <span class="built_in">NSCalendar</span> *calendar = [<span class="built_in">NSCalendar</span> currentCalendar];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSCalendarUnit</span>  unit = <span class="built_in">NSDayCalendarUnit</span> | <span class="built_in">NSCalendarUnitHour</span> | <span class="built_in">NSCalendarUnitMinute</span>  | <span class="built_in">NSCalendarUnitSecond</span>;</span><br><span class="line">        <span class="built_in">NSDateComponents</span> *commponent = [calendar components:unit fromDate:currentDate toDate:[<span class="built_in">NSDate</span> dateWithString:weakSelf.endTime ] options:<span class="built_in">NSCalendarWrapComponents</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSDate</span> *dt = [[<span class="built_in">NSDate</span> dateWithString: weakSelf.endTime] earlierDate:currentDate];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"-------------------%@"</span>,weakSelf.endTime);</span><br><span class="line">        <span class="comment">//    self.getPrimeRate.enabled =YES;</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>([dt isEqualToDate:[<span class="built_in">NSDate</span> dateWithString:weakSelf.endTime ]])</span><br><span class="line">        &#123;</span><br><span class="line">            [weakSelf.time invalidate];</span><br><span class="line">            weakSelf.countDownLabel.text = <span class="string">@"⚡️距离开放认投剩余0天00时00分00秒"</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            weakSelf.countDownLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"⚡️距离开放认投剩余%zd天%02zd时%02zd分%02zd秒"</span>,commponent.day,commponent.hour,commponent.minute,commponent.second];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; repeats:<span class="literal">YES</span>];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里是释放  </p>
 <pre><code>dispatch_async(dispatch_get_main_queue(), ^{
              @strongify(self)
              [self.time invalidate];
