@@ -98,7 +98,7 @@
 
 // 第一种创建一个self弱引用
 #define WS(weakSelf)  __weak __typeof(&amp;amp;*self)weakSelf = sel">
-<meta property="og:updated_time" content="2016-07-12T01:45:15.000Z">
+<meta property="og:updated_time" content="2016-07-12T01:53:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tableview cell上播放倒计时">
 <meta name="twitter:description" content="tableview cell 上播放倒计时项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到
@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -201,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -211,7 +211,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -274,7 +274,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-07-07T16:09:53+08:00" content="2016-07-07">
               2016-07-07
             </time>
@@ -310,7 +310,8 @@
 #define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;
 //第二种就是如果项目中用到了reactivecocoa这个第三方的话 使用     @weakify（self）
 @Strongify（self）
-</code></pre><h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><ul>
+</code></pre><h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><a id="more"></a>
+<ul>
 <li><p>2 这里只说我自己遇到的问题及解决办法，基本的介绍就不再说了 </p>
 <p>（1）定时器如果要循环的话需要加入到runloop中</p>
 </li>
@@ -474,10 +475,10 @@ return nil; }
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -494,7 +495,7 @@ return nil; }
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">19</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -502,7 +503,7 @@ return nil; }
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -511,7 +512,7 @@ return nil; }
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -566,7 +567,7 @@ return nil; }
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
