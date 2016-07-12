@@ -96,7 +96,7 @@
 1 第一条跟NStimer无关  只是平时项目中的细节问题，一定要注意block中的循环引用问题，这里有两种方法 
 
 12345// 第一种创建一个self弱引用#define WS(weakSelf)  __weak __typeof(&amp;amp;*self)weakSelf =">
-<meta property="og:updated_time" content="2016-07-12T06:39:43.000Z">
+<meta property="og:updated_time" content="2016-07-12T06:41:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tableview Cell上播放倒计时">
 <meta name="twitter:description" content="tableview cell 上播放倒计时项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到
@@ -326,48 +326,18 @@
 </code></pre><p>   (2)定时器创建的线程和释放的线程应该在同一个线程，否则的话无法释放有兴趣的同学可以试一下</p>
   <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">   <span class="comment">//创建</span></span><br><span class="line">  <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.time) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.time invalidate];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">self</span>.time = [<span class="built_in">NSTimer</span> ez_scheduledTimerWithTimeInterval:<span class="number">1</span>    block:^&#123;</span><br><span class="line">        <span class="built_in">NSDate</span> *currentDate =[<span class="built_in">NSDate</span> date];</span><br><span class="line">        <span class="built_in">NSCalendar</span> *calendar = [<span class="built_in">NSCalendar</span> currentCalendar];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSCalendarUnit</span>  unit = <span class="built_in">NSDayCalendarUnit</span> | <span class="built_in">NSCalendarUnitHour</span> | <span class="built_in">NSCalendarUnitMinute</span>  | <span class="built_in">NSCalendarUnitSecond</span>;</span><br><span class="line">        <span class="built_in">NSDateComponents</span> *commponent = [calendar components:unit fromDate:currentDate toDate:[<span class="built_in">NSDate</span> dateWithString:weakSelf.endTime ] options:<span class="built_in">NSCalendarWrapComponents</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSDate</span> *dt = [[<span class="built_in">NSDate</span> dateWithString: weakSelf.endTime] earlierDate:currentDate];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"-------------------%@"</span>,weakSelf.endTime);</span><br><span class="line">        <span class="comment">//    self.getPrimeRate.enabled =YES;</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>([dt isEqualToDate:[<span class="built_in">NSDate</span> dateWithString:weakSelf.endTime ]])</span><br><span class="line">        &#123;</span><br><span class="line">            [weakSelf.time invalidate];</span><br><span class="line">            weakSelf.countDownLabel.text = <span class="string">@"⚡️距离开放认投剩余0天00时00分00秒"</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            weakSelf.countDownLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"⚡️距离开放认投剩余%zd天%02zd时%02zd分%02zd秒"</span>,commponent.day,commponent.hour,commponent.minute,commponent.second];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; repeats:<span class="literal">YES</span>];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>这里是释放  </p>
-<pre><code>dispatch_async(dispatch_get_main_queue(), ^{
-             @strongify(self)
-             [self.time invalidate];
-             self.time = nil;
-             NSLog(@&quot;timer停止了&quot;);
-         });
-</code></pre><p> <strong>注 这里我使用的是一个NStimer的分类原文有详细介绍就是创建一个对self弱引用的Nstimer<a href="http://blog.callmewhy.com/2015/07/06/weak-timer-in-ios/" target="_blank" rel="external">原文</a></strong>  </p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">             @strongify(<span class="keyword">self</span>)</span><br><span class="line">             [<span class="keyword">self</span>.time invalidate];</span><br><span class="line">             <span class="keyword">self</span>.time = <span class="literal">nil</span>;</span><br><span class="line">             <span class="built_in">NSLog</span>(<span class="string">@"timer停止了"</span>);</span><br><span class="line">         &#125;);</span><br></pre></td></tr></table></figure>
+<p> <strong>注 这里我使用的是一个NStimer的分类原文有详细介绍就是创建一个对self弱引用的Nstimer<a href="http://blog.callmewhy.com/2015/07/06/weak-timer-in-ios/" target="_blank" rel="external">原文</a></strong>  </p>
 <ul>
 <li><p>3 由于cell的重用问题 每次控制pop或者dismiss的时候，都不能够释放所以尤其是在和定时器一起用的时候要特别的注意循环引用的问题 ，我就是 遇到了这样的问题感觉很坑的 ，我们要想释放cell就需要知道 控制器的UIviewcontroller的dealoc方法 那么我们怎么才能在cell中得到cell所在的控制器呢  为了降低耦合度 有网友想到了给view添加一个扩展的方法原文<a href="http://www.jianshu.com/p/94729046ea31" target="_blank" rel="external">在这</a>原文有循序渐进的讲解为什么但是最终没有完全解决我遇到的问题，很不错了</p>
 <p>核心代码 ：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - (<span class="built_in">UIViewController</span>*)getViewController</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">UIView</span>* next = [<span class="keyword">self</span> superview]; next; next = next.superview)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">UIResponder</span>* nextResponder = [next nextResponder];</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">if</span> ([nextResponder isKindOfClass:[<span class="built_in">UIViewController</span> class]])</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">return</span> (<span class="built_in">UIViewController</span>*)nextResponder;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">return</span> <span class="literal">nil</span>; &#125;</span><br></pre></td></tr></table></figure>
+<p>其实是使用响应者链得到对应的Controller 这样的话cell就可以得到对应的Controller 然后使用RAC得到控制器销毁的消息发送时刻释放定时器。</p>
+<p>核心代码如下 :</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">  - (<span class="keyword">void</span>)didMoveToSuperview</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIViewController</span> *controller = [<span class="keyword">self</span> getViewController];</span><br><span class="line">    <span class="comment">//这里需要判断相应的controller是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (controller)&#123;</span><br><span class="line">        @weakify(<span class="keyword">self</span>)</span><br><span class="line">        [controller.rac_willDeallocSignal</span><br><span class="line">         subscribeCompleted:^&#123;</span><br><span class="line">             @strongify(<span class="keyword">self</span>)</span><br><span class="line">             [<span class="keyword">self</span>.countDownTimer invalidate];</span><br><span class="line">             <span class="keyword">self</span>.countDownTimer = <span class="literal">nil</span>;</span><br><span class="line">         &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这里释放的时机很重要使用上面的扩展需要Cell被添加到视图树之后才能获取到需要的UIViewController,不然得到会是一个空。那么怎么保证Cell一定被添加到视图树呢。UIView有个方法叫didMoveToSuperview,它会在该视图的父视图改变的时候被调用</strong></p>
 </li>
 </ul>
-<pre><code>- (UIViewController*)getViewController
-{
-    for (UIView* next = [self superview]; next; next = next.superview)
-    {
-    UIResponder* nextResponder = [next nextResponder];
-
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-    {
-        return (UIViewController*)nextResponder;
-    }
-}
-
-return nil; }
-</code></pre><p> 其实是使用响应者链得到对应的Controller 这样的话cell就可以得到对应的Controller 然后使用RAC得到控制器销毁的消息发送时刻释放定时器。</p>
-<p> 核心代码如下 :</p>
-<pre><code>- (void)didMoveToSuperview
-    {
-        UIViewController *controller = [self getViewController];
-        //这里需要判断相应的controller是否存在
-        if (controller){
-            @weakify(self)
-            [controller.rac_willDeallocSignal
-             subscribeCompleted:^{
-                 @strongify(self)
-                 [self.countDownTimer invalidate];
-                 self.countDownTimer = nil;
-             }];
-        }
-    }
-</code></pre><p> <strong>这里释放的时机很重要使用上面的扩展需要Cell被添加到视图树之后才能获取到需要的UIViewController,不然得到会是一个空。那么怎么保证Cell一定被添加到视图树呢。UIView有个方法叫didMoveToSuperview,它会在该视图的父视图改变的时候被调用</strong></p>
 <ul>
 <li><p>4最后的时候发现虽然好了很多打印的时候仍然有一个定时器不能释放 ，试了很多的办法都不行 所以 就在cell 的dealoc方法中又释放了一次就好了具体是什么原因暂时还没发现，希望有知道的大神能够说一下啊，毕竟自己还是一个菜鸟。</p>
 <p>最后又发现了一个好的例文还没仔细看<a href="http://www.jianshu.com/p/8ae4c65f4313" target="_blank" rel="external">【iOS】TableViewCell上展示倒计时</a>;</p>
