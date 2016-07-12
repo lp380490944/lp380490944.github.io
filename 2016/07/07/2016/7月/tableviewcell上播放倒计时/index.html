@@ -96,7 +96,7 @@
 1 第一条跟NStimer无关  只是平时项目中的细节问题，一定要注意block中的循环引用问题，这里有两种方法 
 
 12345// 第一种创建一个self弱引用#define WS(weakSelf)  __weak __typeof(&amp;amp;*self)weakSelf =">
-<meta property="og:updated_time" content="2016-07-12T06:32:08.000Z">
+<meta property="og:updated_time" content="2016-07-12T06:35:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tableview Cell上播放倒计时">
 <meta name="twitter:description" content="tableview cell 上播放倒计时项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到
@@ -315,7 +315,7 @@
         <h1 id="tableview-cell-上播放倒计时"><a href="#tableview-cell-上播放倒计时" class="headerlink" title="tableview cell 上播放倒计时"></a>tableview cell 上播放倒计时</h1><h2 id="项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到"><a href="#项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到" class="headerlink" title="项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到"></a>项目中有用到cell上播放倒计时，遇到很多的坑，在这里总结一些以免下次再遇到</h2><ul>
 <li>1 第一条跟NStimer无关  只是平时项目中的细节问题，一定要注意block中的循环引用问题，这里有两种方法 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 第一种创建一个self弱引用</span><br><span class="line">#define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;</span><br><span class="line">//第二种就是如果项目中用到了reactivecocoa这个第三方的话 使用     @weakify（self）</span><br><span class="line">@Strongify（self）</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 第一种创建一个self弱引用</span></span><br><span class="line"><span class="meta">#define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;</span></span><br><span class="line"><span class="comment">//第二种就是如果项目中用到了reactivecocoa这个第三方的话 使用     @weakify（self）</span></span><br><span class="line">@Strongify（<span class="keyword">self</span>）</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"><a href="#这两个是成对出现的block外用-weakify-block里面用-strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）" class="headerlink" title="这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）"></a>这两个是成对出现的block外用@weakify block里面用@strongify（今天发现好多控制器请求数据的时候没有严格使用，导致很多控制器没有释放）</h3><ul>
 <li><p>2 这里只说我自己遇到的问题及解决办法，基本的介绍就不再说了 </p>
