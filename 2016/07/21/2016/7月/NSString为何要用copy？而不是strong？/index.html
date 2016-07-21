@@ -86,34 +86,22 @@
 
 <meta name="description" content="这里仅仅是一个备注。 
 在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。这里我们创建一个model类
-#import &amp;lt;Foundation/Foundation.h&amp;gt;
-
-
-  @interface Model : NSObject
-  @prope">
+1234567 #import &amp;lt;Foundation/Foundation.h&amp;gt; @interface Model : NSObject@prop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSString为何要用copy？而不是strong？">
 <meta property="og:url" content="http://lp380490944.github.io/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
 <meta property="og:description" content="这里仅仅是一个备注。 
 在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。这里我们创建一个model类
-#import &amp;lt;Foundation/Foundation.h&amp;gt;
-
-
-  @interface Model : NSObject
-  @prope">
+1234567 #import &amp;lt;Foundation/Foundation.h&amp;gt; @interface Model : NSObject@prop">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/67179-6885d05c13a76787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/67179-835f5ce30bb7c731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-07-21T03:19:35.000Z">
+<meta property="og:updated_time" content="2016-07-21T03:22:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSString为何要用copy？而不是strong？">
 <meta name="twitter:description" content="这里仅仅是一个备注。 
 在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。这里我们创建一个model类
-#import &amp;lt;Foundation/Foundation.h&amp;gt;
-
-
-  @interface Model : NSObject
-  @prope">
+1234567 #import &amp;lt;Foundation/Foundation.h&amp;gt; @interface Model : NSObject@prop">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/67179-6885d05c13a76787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -326,31 +314,11 @@
       
         <p><strong>  这里仅仅是一个备注。 </strong></p>
 <h4 id="在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"><a href="#在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。" class="headerlink" title="在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"></a>在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。</h4><p>这里我们创建一个model类</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-
-  @interface Model : NSObject
-  @property(nonatomic,strong)NSString * name;
-  @end
-</code></pre><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> #import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">@interface Model : NSObject</span><br><span class="line">@property(nonatomic,strong)NSString * name;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>在我们的控制器中引入model 并对model 的name 属性进行赋值</p>
-<pre><code> - (void)viewDidLoad {
-      [super viewDidLoad];
-
-    NSMutableString * str  = [[NSMutableString alloc] init];
-    str.string = @&quot;张三&quot;;
-    Model * model = [Model new];
-
-    model.name = str;
-    NSLog(@&quot;model.name = %@&quot;,model.name);
-
-
-
-    [str appendString:@&quot;新增加的&quot;];
-    NSLog(@&quot;model.name = %@&quot;,model.name);
-
-}
-</code></pre><p> 我们来看下打印结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    - (void)viewDidLoad &#123;</span><br><span class="line">      [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    NSMutableString * str  = [[NSMutableString alloc] init];</span><br><span class="line">    str.string = @&quot;张三&quot;;</span><br><span class="line">    Model * model = [Model new];</span><br><span class="line">    </span><br><span class="line">    model.name = str;</span><br><span class="line">    NSLog(@&quot;model.name = %@&quot;,model.name);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [str appendString:@&quot;新增加的&quot;];</span><br><span class="line">    NSLog(@&quot;model.name = %@&quot;,model.name);</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 我们来看下打印结果：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/67179-6885d05c13a76787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>*你会看到两次的打印结果不一样 同个model的名字竟然会改变这显然是不科学的  也就是说 在strong相当于MRC下的Retain 只是对name指向的对象进行了引用计数+1.当原始的字符串发生改变的时候 model.name 也会随着改变。</p>
 <p>而copy 这里指的是深拷贝，也就是拷贝的是对象，并不是指针哈。</p>
@@ -358,13 +326,8 @@
 <blockquote>
 <p><strong> talk is cheap show my code  </strong></p>
 </blockquote>
-<pre><code> #import &lt;Foundation/Foundation.h&gt;
-
-@interface Model : NSObject
-@property(nonatomic,copy)NSString * name;
-
-@end
-</code></pre><p>再次打印结果 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> </span><br><span class="line"> #import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">	</span><br><span class="line">@interface Model : NSObject</span><br><span class="line">@property(nonatomic,copy)NSString * name;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>再次打印结果 ：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/67179-835f5ce30bb7c731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <h3 id="OK-这次总算是弄明白了为什么要用copy了吧。哈哈-鼓掌。"><a href="#OK-这次总算是弄明白了为什么要用copy了吧。哈哈-鼓掌。" class="headerlink" title="OK 这次总算是弄明白了为什么要用copy了吧。哈哈  鼓掌。"></a>OK 这次总算是弄明白了为什么要用copy了吧。哈哈  鼓掌。</h3>
       

@@ -305,13 +305,7 @@
         
           <p><strong>  这里仅仅是一个备注。 </strong></p>
 <h4 id="在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"><a href="#在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。" class="headerlink" title="在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"></a>在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。</h4><p>这里我们创建一个model类</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-
-  @interface Model : NSObject
-  @property(nonatomic,strong)NSString * name;
-  @end
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> #import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">@interface Model : NSObject</span><br><span class="line">@property(nonatomic,strong)NSString * name;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/#more" rel="contents">
               阅读全文 &raquo;
