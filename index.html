@@ -303,8 +303,7 @@
 
       
         
-          
-            <p><strong>  这里仅仅是一个备注。 </strong></p>
+          <p><strong>  这里仅仅是一个备注。 </strong></p>
 <h4 id="在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"><a href="#在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。" class="headerlink" title="在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"></a>在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。</h4><p>这里我们创建一个model类</p>
 <pre><code>#import &lt;Foundation/Foundation.h&gt;
 
@@ -312,41 +311,12 @@
   @interface Model : NSObject
   @property(nonatomic,strong)NSString * name;
   @end
-</code></pre><p>在我们的控制器中引入model 并对model 的name 属性进行赋值</p>
-<pre><code> - (void)viewDidLoad {
-      [super viewDidLoad];
-
-    NSMutableString * str  = [[NSMutableString alloc] init];
-    str.string = @&quot;张三&quot;;
-    Model * model = [Model new];
-
-    model.name = str;
-    NSLog(@&quot;model.name = %@&quot;,model.name);
-
-
-
-    [str appendString:@&quot;新增加的&quot;];
-    NSLog(@&quot;model.name = %@&quot;,model.name);
-
-}
-</code></pre><p> 我们来看下打印结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/67179-6885d05c13a76787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>*你会看到两次的打印结果不一样 同个model的名字竟然会改变这显然是不科学的  也就是说 在strong相当于MRC下的Retain 只是对name指向的对象进行了引用计数+1.当原始的字符串发生改变的时候 model.name 也会随着改变。</p>
-<p>而copy 这里指的是深拷贝，也就是拷贝的是对象，并不是指针哈。</p>
-<p>无论原来的对象如何改变都不会影响到  model.name的。</p>
-<blockquote>
-<p><strong> talk is cheap show my code  </strong></p>
-</blockquote>
-<pre><code> #import &lt;Foundation/Foundation.h&gt;
-
-@interface Model : NSObject
-@property(nonatomic,copy)NSString * name;
-
-@end
-</code></pre><p>再次打印结果 ：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/67179-835f5ce30bb7c731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<h3 id="OK-这次总算是弄明白了为什么要用copy了吧。哈哈-鼓掌。"><a href="#OK-这次总算是弄明白了为什么要用copy了吧。哈哈-鼓掌。" class="headerlink" title="OK 这次总算是弄明白了为什么要用copy了吧。哈哈  鼓掌。"></a>OK 这次总算是弄明白了为什么要用copy了吧。哈哈  鼓掌。</h3>
-          
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
