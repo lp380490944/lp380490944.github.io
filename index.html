@@ -253,6 +253,123 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/25/2016/7月/使用jsonModel需要注意的/" itemprop="url">
+                  使用jsonModel需要注意的
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-25T15:15:34+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/25/2016/7月/使用jsonModel需要注意的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/2016/7月/使用jsonModel需要注意的/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用Jsonmodel需要注意事项"><a href="#使用Jsonmodel需要注意事项" class="headerlink" title="使用Jsonmodel需要注意事项"></a>使用Jsonmodel需要注意事项</h1><p>   <strong>我们知道josnmodel可以帮助我们很方面的把json字符转模型 ，但是使用中需要注意以下几点</strong></p>
+<ul>
+<li>当Model的属性和json 不一致时</li>
+</ul>
+ <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">   &#123;</span><br><span class="line">  <span class="string">"order_id"</span>: <span class="number">104</span>,</span><br><span class="line">  <span class="string">"order_details"</span> : [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"Product#1"</span>,   </span><br><span class="line">      <span class="string">"price"</span>: &#123;</span><br><span class="line">        <span class="string">"usd"</span>: <span class="number">12.95</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//以上是json字符串</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">OrderModel</span> : <span class="title">JSONModel</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>, <span class="keyword">nonatomic</span>) <span class="keyword">int</span> <span class="keyword">id</span>;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>, <span class="keyword">nonatomic</span>) <span class="keyword">float</span> price;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>* productName;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">OrderModel</span></span></span><br><span class="line"></span><br><span class="line">+(JSONKeyMapper*)keyMapper</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> [[JSONKeyMapper alloc] initWithDictionary:@&#123;</span><br><span class="line">    <span class="string">@"order_id"</span>: <span class="string">@"id"</span>,</span><br><span class="line">    <span class="string">@"order_details.name"</span>: <span class="string">@"productName"</span>,</span><br><span class="line">    <span class="string">@"order_details.price.usd"</span>: <span class="string">@"price"</span></span><br><span class="line">  &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span> </span><br><span class="line"><span class="comment">//以上是对应的 属性  只有返回的json和Model属性不一致的时候才需要这个方法keyMapper</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>可以设置全局的属性</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> [JSONModel setGlobalKeyMapper:[</span><br><span class="line">    [JSONKeyMapper alloc] initWithDictionary:@&#123;</span><br><span class="line">      <span class="string">@"item_id"</span>:<span class="string">@"ID"</span>,</span><br><span class="line">      <span class="string">@"item.name"</span>: <span class="string">@"itemName"</span></span><br><span class="line">   &#125;]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性为非必须的时候(也就是可选的，或者需要忽略的)</p>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>&lt;Optional&gt;* name;<span class="comment">//可选的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>&lt;Ignore&gt;* customProperty;<span class="comment">//忽略的</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="最后也是最重要的在实际使用中发现基本数据类型-float-NSInterger-等无法直接使用最后找到的解决办法是设置全局可选"><a href="#最后也是最重要的在实际使用中发现基本数据类型-float-NSInterger-等无法直接使用最后找到的解决办法是设置全局可选" class="headerlink" title="最后也是最重要的在实际使用中发现基本数据类型 float NSInterger 等无法直接使用最后找到的解决办法是设置全局可选"></a>最后也是最重要的在实际使用中发现基本数据类型 float NSInterger 等无法直接使用<optial>最后找到的解决办法是设置全局可选</optial></h3>例如我做的cell自适应高度的时候  cell的高度是存储在Model的属性中的需要设置可选</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     @property(nonatomic,assign)float  height;//缓存的高度</span><br><span class="line">     +(BOOL)propertyIsOptional:(NSString*)propertyName</span><br><span class="line">&#123;</span><br><span class="line">  if ([propertyName isEqualToString: @&quot;height&quot;]) return YES;</span><br><span class="line">  return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/21/2016/7月/别人总结的开源项目和库/" itemprop="url">
                   别人总结的开源项目和库
                 </a>
@@ -2435,118 +2552,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/2016/5月/关于xib的动态桥接/" itemprop="url">
-                  关于Xib的动态桥接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T23:17:47+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/25/2016/5月/关于xib的动态桥接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/2016/5月/关于xib的动态桥接/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="关于xib的动态桥接"><a href="#关于xib的动态桥接" class="headerlink" title="关于xib的动态桥接"></a>关于xib的动态桥接</h1><h2 id="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"><a href="#xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了" class="headerlink" title="xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了"></a>xib作为一个轻量级的IB非常好用，但是有些场景下就显得有些尴尬了</h2><ul>
-<li>当一个xib创建的自定义视图用到了另外的一个自定义视图的时候就特别的麻烦了，还好看到了<a href="http://blog.sunnyxx.com/2014/07/01/ios_ib_bridge/" target="_blank" rel="external">这篇文章</a>，写的很好，等回头慢慢琢磨</li>
-</ul>
-<ul>
-<li>另外xib创建的自定义控件 加载的时候用一下方法：</li>
-</ul>
-<pre><code>NSArray* nibView = [[NSBundle mainBundle] loadNibNamed:@&quot;VisitView&quot; owner:nil options:nil];
-VisitView * view = [nibView firstObject];
-view.backgroundColor = [UIColor redColor];
-
-return view;
-</code></pre><p> 这里的VisitView就是我用xib创建的自定义View。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2592,7 +2597,7 @@ return view;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

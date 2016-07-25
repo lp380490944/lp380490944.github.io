@@ -84,16 +84,28 @@
 
 
 
-<meta name="description" content="隐藏显示系统文件 ：http://blog.csdn.net/sinat_26790459/article/details/48912017">
+<meta name="description" content="使用Jsonmodel需要注意事项   我们知道josnmodel可以帮助我们很方面的把json字符转模型 ，但是使用中需要注意以下几点
+
+当Model的属性和json 不一致时
+
+ 123456789101112131415161718192021222324252627282930313233    &amp;#123;  &quot;order_id&quot;: 104,  &quot;order_details&quot; : [">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac使用的奇淫巧计">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/26/2016/5月/Mac使用的奇淫巧计/index.html">
+<meta property="og:title" content="使用jsonModel需要注意的">
+<meta property="og:url" content="http://lp380490944.github.io/2016/07/25/2016/7月/使用jsonModel需要注意的/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="隐藏显示系统文件 ：http://blog.csdn.net/sinat_26790459/article/details/48912017">
-<meta property="og:updated_time" content="2016-05-26T02:38:46.000Z">
+<meta property="og:description" content="使用Jsonmodel需要注意事项   我们知道josnmodel可以帮助我们很方面的把json字符转模型 ，但是使用中需要注意以下几点
+
+当Model的属性和json 不一致时
+
+ 123456789101112131415161718192021222324252627282930313233    &amp;#123;  &quot;order_id&quot;: 104,  &quot;order_details&quot; : [">
+<meta property="og:updated_time" content="2016-07-25T07:16:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac使用的奇淫巧计">
-<meta name="twitter:description" content="隐藏显示系统文件 ：http://blog.csdn.net/sinat_26790459/article/details/48912017">
+<meta name="twitter:title" content="使用jsonModel需要注意的">
+<meta name="twitter:description" content="使用Jsonmodel需要注意事项   我们知道josnmodel可以帮助我们很方面的把json字符转模型 ，但是使用中需要注意以下几点
+
+当Model的属性和json 不一致时
+
+ 123456789101112131415161718192021222324252627282930313233    &amp;#123;  &quot;order_id&quot;: 104,  &quot;order_details&quot; : [">
 
 
 
@@ -111,7 +123,7 @@
   };
 </script>
 
-  <title> Mac使用的奇淫巧计 | 钟灵毓秀 </title>
+  <title> 使用jsonModel需要注意的 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +263,7 @@
             
             
               
-                Mac使用的奇淫巧计
+                使用jsonModel需要注意的
               
             
           </h1>
@@ -263,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T10:37:41+08:00" content="2016-05-26">
-              2016-05-26
+            <time itemprop="dateCreated" datetime="2016-07-25T15:15:34+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
@@ -274,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/26/2016/5月/Mac使用的奇淫巧计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/2016/5月/Mac使用的奇淫巧计/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/2016/7月/使用jsonModel需要注意的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/2016/7月/使用jsonModel需要注意的/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -303,9 +315,23 @@
       
 
       
-        <ul>
-<li>隐藏显示系统文件 ：<a href="http://blog.csdn.net/sinat_26790459/article/details/48912017" target="_blank" rel="external">http://blog.csdn.net/sinat_26790459/article/details/48912017</a></li>
+        <h1 id="使用Jsonmodel需要注意事项"><a href="#使用Jsonmodel需要注意事项" class="headerlink" title="使用Jsonmodel需要注意事项"></a>使用Jsonmodel需要注意事项</h1><p>   <strong>我们知道josnmodel可以帮助我们很方面的把json字符转模型 ，但是使用中需要注意以下几点</strong></p>
+<ul>
+<li>当Model的属性和json 不一致时</li>
 </ul>
+ <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">   &#123;</span><br><span class="line">  <span class="string">"order_id"</span>: <span class="number">104</span>,</span><br><span class="line">  <span class="string">"order_details"</span> : [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"Product#1"</span>,   </span><br><span class="line">      <span class="string">"price"</span>: &#123;</span><br><span class="line">        <span class="string">"usd"</span>: <span class="number">12.95</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//以上是json字符串</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">OrderModel</span> : <span class="title">JSONModel</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>, <span class="keyword">nonatomic</span>) <span class="keyword">int</span> <span class="keyword">id</span>;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>, <span class="keyword">nonatomic</span>) <span class="keyword">float</span> price;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>* productName;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">OrderModel</span></span></span><br><span class="line"></span><br><span class="line">+(JSONKeyMapper*)keyMapper</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> [[JSONKeyMapper alloc] initWithDictionary:@&#123;</span><br><span class="line">    <span class="string">@"order_id"</span>: <span class="string">@"id"</span>,</span><br><span class="line">    <span class="string">@"order_details.name"</span>: <span class="string">@"productName"</span>,</span><br><span class="line">    <span class="string">@"order_details.price.usd"</span>: <span class="string">@"price"</span></span><br><span class="line">  &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span> </span><br><span class="line"><span class="comment">//以上是对应的 属性  只有返回的json和Model属性不一致的时候才需要这个方法keyMapper</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>可以设置全局的属性</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> [JSONModel setGlobalKeyMapper:[</span><br><span class="line">    [JSONKeyMapper alloc] initWithDictionary:@&#123;</span><br><span class="line">      <span class="string">@"item_id"</span>:<span class="string">@"ID"</span>,</span><br><span class="line">      <span class="string">@"item.name"</span>: <span class="string">@"itemName"</span></span><br><span class="line">   &#125;]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性为非必须的时候(也就是可选的，或者需要忽略的)</p>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>&lt;Optional&gt;* name;<span class="comment">//可选的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">NSString</span>&lt;Ignore&gt;* customProperty;<span class="comment">//忽略的</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="最后也是最重要的在实际使用中发现基本数据类型-float-NSInterger-等无法直接使用最后找到的解决办法是设置全局可选"><a href="#最后也是最重要的在实际使用中发现基本数据类型-float-NSInterger-等无法直接使用最后找到的解决办法是设置全局可选" class="headerlink" title="最后也是最重要的在实际使用中发现基本数据类型 float NSInterger 等无法直接使用最后找到的解决办法是设置全局可选"></a>最后也是最重要的在实际使用中发现基本数据类型 float NSInterger 等无法直接使用<optial>最后找到的解决办法是设置全局可选</optial></h3>例如我做的cell自适应高度的时候  cell的高度是存储在Model的属性中的需要设置可选</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     @property(nonatomic,assign)float  height;//缓存的高度</span><br><span class="line">     +(BOOL)propertyIsOptional:(NSString*)propertyName</span><br><span class="line">&#123;</span><br><span class="line">  if ([propertyName isEqualToString: @&quot;height&quot;]) return YES;</span><br><span class="line">  return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -330,17 +356,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/26/2016/5月/收集一些酷站/" rel="next" title="收集一些酷站">
-                <i class="fa fa-chevron-left"></i> 收集一些酷站
+              <a href="/2016/07/21/2016/7月/别人总结的开源项目和库/" rel="next" title="别人总结的开源项目和库">
+                <i class="fa fa-chevron-left"></i> 别人总结的开源项目和库
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/02/2016/6月/iOS开发资源终极汇总-转/" rel="prev" title="iOS开发资源终极汇总<转>">
-                iOS开发资源终极汇总<转> <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -366,8 +388,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/26/2016/5月/Mac使用的奇淫巧计/"
-           data-title="Mac使用的奇淫巧计" data-url="http://lp380490944.github.io/2016/05/26/2016/5月/Mac使用的奇淫巧计/">
+      <div class="ds-thread" data-thread-key="2016/07/25/2016/7月/使用jsonModel需要注意的/"
+           data-title="使用jsonModel需要注意的" data-url="http://lp380490944.github.io/2016/07/25/2016/7月/使用jsonModel需要注意的/">
       </div>
     
   </div>
@@ -487,7 +509,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Jsonmodel需要注意事项"><span class="nav-number">1.</span> <span class="nav-text">使用Jsonmodel需要注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最后也是最重要的在实际使用中发现基本数据类型-float-NSInterger-等无法直接使用最后找到的解决办法是设置全局可选"><span class="nav-number">1.0.1.</span> <span class="nav-text">最后也是最重要的在实际使用中发现基本数据类型 float NSInterger 等无法直接使用最后找到的解决办法是设置全局可选</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
