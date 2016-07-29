@@ -253,6 +253,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" itemprop="url">
+                  iOS UITableView 的beginUpdates和endUpdates
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-29T16:21:04+08:00" content="2016-07-29">
+              2016-07-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iOS-UITableView-的beginUpdates和endUpdates"><a href="#iOS-UITableView-的beginUpdates和endUpdates" class="headerlink" title="iOS UITableView 的beginUpdates和endUpdates"></a>iOS UITableView 的beginUpdates和endUpdates</h1><h4 id="今天在看大神写的代码的时候发现了这样的一段"><a href="#今天在看大神写的代码的时候发现了这样的一段" class="headerlink" title="今天在看大神写的代码的时候发现了这样的一段"></a>今天在看大神写的代码的时候发现了这样的一段</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (adapter.cellType == kShowTextCellNormalType) &#123;</span><br><span class="line">    </span><br><span class="line">    adapter.cellType = kShowTextCellExpendType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.expendStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> expendState];</span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    adapter.cellType = kShowTextCellNormalType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.normalStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> normalState];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里只看关键的两句<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">[<span class="keyword">self</span>.tableView endUpdates];</span><br></pre></td></tr></table></figure></p>
+<p>   第一次遇到这样的写法很是诧异看了一下苹果的官方文档是这样解释道的：</p>
+<blockquote>
+<p>Call this method if you want subsequent insertions, deletion, and selection operations (for example, cellForRowAtIndexPath: andindexPathsForVisibleRows) to be animated simultaneously. This group of methods must conclude with an invocation ofendUpdates. These method pairs can be nested.<br>If you do not make the insertion, deletion, and selection calls inside this block, table attributes such as row count might become invalid.<br>You should not call reloadData within the group; if you call this method within the group, you will need to perform any animations yourself.</p>
+</blockquote>
+<p><strong> 一般当tableview需要同时执行多个动画时，才会用到beginUpdates函数，它的本质就是建立了CATransaction这个事务。我们可以通过以下的代码验证这个结论 </strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        [<span class="built_in">CATransaction</span> begin];</span><br><span class="line"></span><br><span class="line">		[<span class="built_in">CATransaction</span> setCompletionBlock:^&#123;</span><br><span class="line">		    <span class="comment">// animation has finished</span></span><br><span class="line">		&#125;];</span><br><span class="line">		</span><br><span class="line">		[tableView beginUpdates];</span><br><span class="line">		<span class="comment">// do some work</span></span><br><span class="line">		[tableView endUpdates];</span><br><span class="line">		</span><br><span class="line">		[<span class="built_in">CATransaction</span> commit];</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line"><span class="meta">######  这段代码来自stackoverflow，它的作用就是在tableview的动画结束后，执行需要的操作。这段代码好用的原因就是beginUpdates本质上就是添加了一个动画事务，即CATransaction，当然这个事务可能包含许多操作，比如会重新调整每个cell的高度（但是默认不会重新加载cell）。如果你仅仅更改了UITableView的cell的样式，那么应该试试能否通过调用beginUpdates 和 reloadRowsAtIndexPaths 来实现效果，而不是调用tableview的reloadData方法去重新加载全部的cell！</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">带有动画效果重新加载cell的代码</span><br><span class="line">```objectivec</span><br><span class="line">	</span><br><span class="line">		[tableView beginUpdates];</span><br><span class="line">		[tableView reloadRowsAtIndexPaths:[<span class="built_in">NSArray</span> arrayWithObject:tmp] withRowAnimation:<span class="built_in">UITableViewRowAnimationAutomatic</span>];</span><br><span class="line">		[tableView endUpdates];</span><br></pre></td></tr></table></figure>
+<h5 id="一般的想要点击cell高度的时候可以在"><a href="#一般的想要点击cell高度的时候可以在" class="headerlink" title="一般的想要点击cell高度的时候可以在"></a>一般的想要点击cell高度的时候可以在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">改变cell的数据源然后调用 </span><br><span class="line"></span><br><span class="line">```objectivec</span><br><span class="line"></span><br><span class="line">	  [tableView beginUpdates];</span><br><span class="line">	  [tableView endUpdates];</span><br></pre></td></tr></table></figure></h5><p>就会自动的调用<code>heightForRow</code>方法了</p>
+<p><img src="http://images.cnitblog.com/blog/493542/201402/061151017595013.png" alt="此图转自网络"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/25/2016/7月/使用jsonModel需要注意的/" itemprop="url">
                   使用jsonModel需要注意的
                 </a>
@@ -1233,129 +1343,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-    
-  
-
-  <article class="post post-type-normal  post-sticky" itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                  <span class="post-sticky-flag" title="置顶">
-                    <i class="fa fa-thumb-tack"></i>
-                  </span>
-                
-                <a class="post-title-link" href="/2016/05/26/2016/5月/收集一些酷站/" itemprop="url">
-                  收集一些酷站
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T10:07:51+08:00" content="2016-05-26">
-              2016-05-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/26/2016/5月/收集一些酷站/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/2016/5月/收集一些酷站/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#分享一些我收集的酷站</p>
-<table>
-<thead>
-<tr>
-<th>站名</th>
-<th>链接</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>知笔墨</td>
-<td><a href="http://zhibimo.com/" target="_blank" rel="external">http://zhibimo.com/</a></td>
-<td>这是李笑来老师出的一个很好网站</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1401,7 +1388,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
