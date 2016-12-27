@@ -253,6 +253,161 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/27/2016/12月/Gitlab的安装升级以及汉化操作说明/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-27T17:48:36+08:00" content="2016-12-27">
+              2016-12-27
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/27/2016/12月/Gitlab的安装升级以及汉化操作说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/27/2016/12月/Gitlab的安装升级以及汉化操作说明/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Gitlab的安装，升级，以及汉化操作说明"><a href="#Gitlab的安装，升级，以及汉化操作说明" class="headerlink" title="Gitlab的安装，升级，以及汉化操作说明"></a>Gitlab的安装，升级，以及汉化操作说明</h1><p>注：仅指在CentOS6.5的64位版本上，进行Gitlab的相关安装，升级，汉化说明。</p>
+<h2 id="Gitlab的安装"><a href="#Gitlab的安装" class="headerlink" title="Gitlab的安装"></a>Gitlab的安装</h2><ol>
+<li><p>按顺序执行以下命令：</p>
+<p> sudo yum install curl openssh-server openssh-clients postfix cronie</p>
+<p> sudo service postfix start</p>
+<p> sudo chkconfig postfix on</p>
+<p> sudo lokkit -s http -s ssh</p>
+</li>
+<li><p>从清华镜像上下载rpm安装包。<a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6/" target="_blank" rel="external">下载页面</a></p>
+</li>
+<li><p>在服务器上的安装包所在目录执行安装命令。比如：8.14.0版本</p>
+<p> sudo rpm -i gitlab-ce-8.14.0-ce.0.el6.x86_64.rpm</p>
+</li>
+<li><p>执行配置命令。</p>
+<p> sudo gitlab-ctl reconfigure</p>
+</li>
+</ol>
+<p>完成上述步骤即实现Gitlab的原版安装。</p>
+<p>注：如果服务器有专门的数据硬盘，用于存储版本库，请将该硬盘挂载在目录/var/opt下。并请在配置文件/etc/fstab中增加服务器启动自动挂载该数据盘。</p>
+<h2 id="Gitlab的升级"><a href="#Gitlab的升级" class="headerlink" title="Gitlab的升级"></a>Gitlab的升级</h2><ol>
+<li><p>从清华镜像上下载rpm安装包。</p>
+</li>
+<li><p>停止unicorn、sidekiq：</p>
+<p> sudo gitlab-ctl stop unicorn</p>
+<p> sudo gitlab-ctl stop sidekiq</p>
+</li>
+<li><p>备份数据：</p>
+<p> sudo gitlab-rake gitlab:backup:create</p>
+</li>
+<li><p>升级安装新的rpm包：</p>
+<p> sudo rpm -Uvh gitlab-ce-8.14.0-ce.0.el6.x86_64.rpm</p>
+</li>
+<li><p>执行配置命令。</p>
+<p> sudo gitlab-ctl reconfigure</p>
+</li>
+</ol>
+<p>完成上述步骤即实现Gitlab的升级。</p>
+<h2 id="Gitlab的汉化"><a href="#Gitlab的汉化" class="headerlink" title="Gitlab的汉化"></a>Gitlab的汉化</h2><ol>
+<li><p>下载汉化包后上传服务器后解压。<a href="https://github.com/marbleqi/gitlab-ce-zh/archive/8-14-0-zh-rel.zip" target="_blank" rel="external">下载链接</a></p>
+</li>
+<li><p>停止Gitlab服务。</p>
+<p> sudo gitlab-ctl stop</p>
+</li>
+<li><p>备份服务器上的/opt/gitlab/embedded/service/gitlab-rails目录。<br>注：该目录下的内容主要是web应用部分，也是当前项目仓库的起始版本，也是汉化包要覆盖的目录。</p>
+</li>
+<li><p>将解压后的汉化包覆盖服务器上的/opt/gitlab/embedded/service/gitlab-rails目录。</p>
+</li>
+<li><p>启动Gitlab服务。</p>
+<p> sudo gitlab-ctl start</p>
+</li>
+<li><p>重新执行配置命令。</p>
+<p> sudo gitlab-ctl reconfigure</p>
+</li>
+</ol>
+<p>完成上述步骤即实现汉化。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" itemprop="url">
                   iOS UITableView 的beginUpdates和endUpdates
                 </a>
@@ -1240,109 +1395,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/26/2016/5月/Mac使用的奇淫巧计/" itemprop="url">
-                  Mac使用的奇淫巧计
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T10:37:41+08:00" content="2016-05-26">
-              2016-05-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/26/2016/5月/Mac使用的奇淫巧计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/2016/5月/Mac使用的奇淫巧计/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>隐藏显示系统文件 ：<a href="http://blog.csdn.net/sinat_26790459/article/details/48912017" target="_blank" rel="external">http://blog.csdn.net/sinat_26790459/article/details/48912017</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1388,7 +1440,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
