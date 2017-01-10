@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="内存管理," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈">
+<meta name="description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Charles抓ssl的包">
-<meta property="og:url" content="http://lp380490944.github.io/2016/06/04/2016/6月/用Charles抓ssl的包/index.html">
+<meta property="og:title" content=" IOS中的__block关键字简单使用">
+<meta property="og:url" content="http://lp380490944.github.io/2017/01/10/2017/1月/IOS中的-block关键字简单使用/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈">
-<meta property="og:updated_time" content="2016-06-04T03:17:42.000Z">
+<meta property="og:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
+<meta property="og:updated_time" content="2017-01-10T09:48:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Charles抓ssl的包">
-<meta name="twitter:description" content="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈">
+<meta name="twitter:title" content=" IOS中的__block关键字简单使用">
+<meta name="twitter:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
 
 
 
@@ -111,7 +117,7 @@
   };
 </script>
 
-  <title> 用Charles抓ssl的包 | 钟灵毓秀 </title>
+  <title>  IOS中的__block关键字简单使用 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +257,7 @@
             
             
               
-                用Charles抓ssl的包
+                 IOS中的__block关键字简单使用
               
             
           </h1>
@@ -263,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-04T11:15:57+08:00" content="2016-06-04">
-              2016-06-04
+            <time itemprop="dateCreated" datetime="2017-01-10T17:11:27+08:00" content="2017-01-10">
+              2017-01-10
             </time>
           </span>
 
@@ -274,8 +280,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/04/2016/6月/用Charles抓ssl的包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/04/2016/6月/用Charles抓ssl的包/" itemprop="commentsCount"></span>
+                <a href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/10/2017/1月/IOS中的-block关键字简单使用/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -303,7 +309,13 @@
       
 
       
-        <h1 id="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈"><a href="#我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈" class="headerlink" title="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈"></a>我们都知道用ssl抓包非常麻烦很多的小伙伴不会，<a href="http://www.brianjcoleman.com/tutorial-testing-ssl-using-charles-proxy-on-an-ios-device/" target="_blank" rel="external">这里</a>有一个非常详细的教程，在这里做个标记，留着学习哈</h1>
+        <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
+<h3 id="2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><a href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？" class="headerlink" title="2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？"></a>2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</h3><p>答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)</p>
+<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3><p>答:NSInterger的值发生变化,需要添加__block进行修饰.</p>
+<p>示例代码</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSMutableArray</span> * testArray = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">__block <span class="built_in">NSInteger</span> foo = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (^testBlock)() = ^&#123;</span><br><span class="line">  </span><br><span class="line">    [testArray addObject:<span class="string">@"99"</span>];</span><br><span class="line">    </span><br><span class="line">    foo = <span class="number">50</span>;</span><br><span class="line">&#125;;</span><br><span class="line">testBlock();</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,testArray);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,foo);</span><br></pre></td></tr></table></figure>
+<p> 打印结果:<br> 2017-01-10 17:47:45.201 block内存测试[4768:2423415] (<br>    1,<br>    2,<br>    3,<br>    99<br>)<br>2017-01-10 17:47:45.201 block内存测试[4768:2423415] 50</p>
+
       
     </div>
 
@@ -322,22 +334,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/内存管理/" rel="tag">#内存管理</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/02/2016/6月/iOS开发资源终极汇总-转/" rel="next" title="iOS开发资源终极汇总<转>">
-                <i class="fa fa-chevron-left"></i> iOS开发资源终极汇总<转>
+              <a href="/2016/12/25/2016/12月/Gitlab的安装升级以及汉化操作说明/" rel="next" title="Gitlab的安装，升级，以及汉化操作说明">
+                <i class="fa fa-chevron-left"></i> Gitlab的安装，升级，以及汉化操作说明
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/01/2016/7月/透明导航栏需要注意的几点问题/" rel="prev" title="透明导航栏需要注意的几点问题">
-                透明导航栏需要注意的几点问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -363,8 +377,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/04/2016/6月/用Charles抓ssl的包/"
-           data-title="用Charles抓ssl的包" data-url="http://lp380490944.github.io/2016/06/04/2016/6月/用Charles抓ssl的包/">
+      <div class="ds-thread" data-thread-key="2017/01/10/2017/1月/IOS中的-block关键字简单使用/"
+           data-title=" IOS中的__block关键字简单使用" data-url="http://lp380490944.github.io/2017/01/10/2017/1月/IOS中的-block关键字简单使用/">
       </div>
     
   </div>
@@ -484,7 +498,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈"><span class="nav-number">1.</span> <span class="nav-text">我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-block-什么开始后使用-？"><span class="nav-number">1.</span> <span class="nav-text">1.__block 什么开始后使用 ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><span class="nav-number">2.</span> <span class="nav-text">2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><span class="nav-number">3.</span> <span class="nav-text">3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</span></a></li></ol></div>
             
           </div>
         </section>

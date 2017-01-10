@@ -253,6 +253,112 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/" itemprop="url">
+                   IOS中的__block关键字简单使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-10T17:11:27+08:00" content="2017-01-10">
+              2017-01-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/10/2017/1月/IOS中的-block关键字简单使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
+<h3 id="2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><a href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？" class="headerlink" title="2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？"></a>2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</h3><p>答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)</p>
+<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3><p>答:NSInterger的值发生变化,需要添加__block进行修饰.</p>
+<p>示例代码</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSMutableArray</span> * testArray = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">__block <span class="built_in">NSInteger</span> foo = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (^testBlock)() = ^&#123;</span><br><span class="line">  </span><br><span class="line">    [testArray addObject:<span class="string">@"99"</span>];</span><br><span class="line">    </span><br><span class="line">    foo = <span class="number">50</span>;</span><br><span class="line">&#125;;</span><br><span class="line">testBlock();</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,testArray);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,foo);</span><br></pre></td></tr></table></figure>
+<p> 打印结果:<br> 2017-01-10 17:47:45.201 block内存测试[4768:2423415] (<br>    1,<br>    2,<br>    3,<br>    99<br>)<br>2017-01-10 17:47:45.201 block内存测试[4768:2423415] 50</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/25/2016/12月/Gitlab的安装升级以及汉化操作说明/" itemprop="url">
                   Gitlab的安装，升级，以及汉化操作说明
                 </a>
@@ -1286,115 +1392,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/2016/6月/iOS开发资源终极汇总-转/" itemprop="url">
-                  iOS开发资源终极汇总<转>
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T11:04:05+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/2016/6月/iOS开发资源终极汇总-转/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/2016/6月/iOS开发资源终极汇总-转/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><em>自己总结的iOS、mac开源项目及库。 github排名 <a href="https://github.com/trending,github搜索：https://github.com/search">https://github.com/trending,github搜索：https://github.com/search</a></em></p>
-<ul>
-<li><p>UI下拉刷新</p>
-</li>
-<li><p>EGOTableViewPullRefresh - 最早的下拉刷新控件。</p>
-</li>
-<li>SVPullToRefresh - 下拉刷新控件。<br>MJRefresh - 仅需一行代码就可以为UITableView或者CollectionView加上下拉刷新或者上拉刷新功能。可以自定义上下拉刷新的文字说明。具体使用看“使用方法”。 （国人写）<br>XHRefreshControl - XHRefreshControl 是一款高扩展性、低耦合度的下拉刷新、上提加载更多的组件。（国人写）<br>CBStoreHouseRefreshControl - 一个效果很酷炫的下拉刷新控件。<br>BreakOutToRefresh - 一个下拉刷新打砖块的开源 Swift 库，能让用户在等待下拉刷新的时候边玩撞球游戏边等待。<br>KYJellyPullToRefresh - 实现弹性物理效果的下拉刷新，神奇的贝塞尔曲线，配合UIDynamic写的一个拟物的下拉刷新动画。<br>MHYahooParallaxView - 类似于Yahoo Weather和News Digest首屏的视差滚动。<br>SDRefreshView - 简单易用的上拉和下拉刷新（多版本细节适配）。<br>ZLSwiftRefresh - swift下拉刷新/上拉加载更多，支持自定义动画，集成简单，兼容UITableView/CollectionView/ScrollView/WebView。<br>BreakOutToRefresh - swift，上拉和下拉刷新。<br>GearRefreshControl - swift，上拉和下拉刷新。<br>refresher - swift，上拉和下拉刷新。<br>可展开/收缩的下拉菜单–SvpplyTable - 一个可展开可收缩的下拉菜单，类似Svpply app。<br>ODRefreshControl - 原iOS6上的橡皮糖刷新样式，很有意思。现在也很多大的 App 在用，比如虾米音乐和 QQ 客户端。<br>PullToMakeSoup - PullToMakeSoup, 自定义下拉刷新的动画效果：煮饭, Yalantis新作！<br>TwitterCover - Twitter iOS客户端的下拉封面模糊效果。<br>Replace-iOS - Replace-iOS 让人眼前一亮的下拉刷新（iOS）。<br>Animations - 封装了一下，使用的时候只要两行代码。一些动画的飞机稿，都是一些单独分离出来的用于测试的子动画，现在统一归类一下。<br>PullToBounce - 下拉刷新的动画 for UIScrollView。<br>　　模糊效果
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/2016/6月/iOS开发资源终极汇总-转/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1440,7 +1437,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1457,7 +1454,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1523,7 +1520,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
