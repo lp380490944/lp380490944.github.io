@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。">
+<meta name="description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" IOS中的__block关键字简单使用">
 <meta property="og:url" content="http://lp380490944.github.io/2017/01/10/2017/1月/IOS中的-block关键字简单使用/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。">
-<meta property="og:updated_time" content="2017-07-12T15:52:11.000Z">
+<meta property="og:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
+<meta property="og:updated_time" content="2017-07-12T15:56:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" IOS中的__block关键字简单使用">
-<meta name="twitter:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。">
+<meta name="twitter:description" content="1.__block 什么开始后使用 ？结论: 在block里面修改局部变量的值都要使用__Block修饰。
+2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)
+3.在block里对NSInterger的值进行修改,这个">
 
 
 
@@ -304,9 +310,9 @@
 
       
         <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
-<a id="more"></a>
 <h3 id="2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><a href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？" class="headerlink" title="2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？"></a>2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</h3><p>答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)</p>
-<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3><p>答:NSInterger的值发生变化,需要添加__block进行修饰.</p>
+<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3><a id="more"></a>
+<p>答:NSInterger的值发生变化,需要添加__block进行修饰.</p>
 <p>示例代码</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSMutableArray</span> * testArray = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">__block <span class="built_in">NSInteger</span> foo = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (^testBlock)() = ^&#123;</span><br><span class="line">  </span><br><span class="line">    [testArray addObject:<span class="string">@"99"</span>];</span><br><span class="line">    </span><br><span class="line">    foo = <span class="number">50</span>;</span><br><span class="line">&#125;;</span><br><span class="line">testBlock();</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,testArray);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,foo);</span><br></pre></td></tr></table></figure>
 <p> 打印结果:<br> 2017-01-10 17:47:45.201 block内存测试[4768:2423415] (<br>    1,<br>    2,<br>    3,<br>    99<br>)<br>2017-01-10 17:47:45.201 block内存测试[4768:2423415] 50</p>

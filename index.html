@@ -304,6 +304,8 @@
       
         
           <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
+<h3 id="2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><a href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？" class="headerlink" title="2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？"></a>2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</h3><p>答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)</p>
+<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/#more" rel="contents">
               阅读全文 &raquo;
