@@ -303,15 +303,12 @@
 
       
         
-          
-            <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
-<h3 id="2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？"><a href="#2-在block中对一个数组执行添加操作，这个数组需要声明成-block么？" class="headerlink" title="2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？"></a>2.在block中对一个数组执行添加操作，这个数组需要声明成__block么？</h3><p>答案：不需要声明成__block ,因为testArray的指针并没有改变(往数组里面添加对象，数组的指针是没有改变的，只是指针指向的内存里面的内容变了)</p>
-<h3 id="3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？"><a href="#3-在block里对NSInterger的值进行修改-这个NSIterger变量是否需要用-block修饰？" class="headerlink" title="3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？"></a>3.在block里对NSInterger的值进行修改,这个NSIterger变量是否需要用__block修饰？</h3><p>答:NSInterger的值发生变化,需要添加__block进行修饰.</p>
-<p>示例代码</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSMutableArray</span> * testArray = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">__block <span class="built_in">NSInteger</span> foo = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (^testBlock)() = ^&#123;</span><br><span class="line">  </span><br><span class="line">    [testArray addObject:<span class="string">@"99"</span>];</span><br><span class="line">    </span><br><span class="line">    foo = <span class="number">50</span>;</span><br><span class="line">&#125;;</span><br><span class="line">testBlock();</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,testArray);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,foo);</span><br></pre></td></tr></table></figure>
-<p> 打印结果:<br> 2017-01-10 17:47:45.201 block内存测试[4768:2423415] (<br>    1,<br>    2,<br>    3,<br>    99<br>)<br>2017-01-10 17:47:45.201 block内存测试[4768:2423415] 50</p>
-
-          
+          <h3 id="1-block-什么开始后使用-？"><a href="#1-block-什么开始后使用-？" class="headerlink" title="1.__block 什么开始后使用 ？"></a>1.__block 什么开始后使用 ？</h3><p>结论: 在block里面修改局部变量的值都要使用__Block修饰。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -409,64 +406,12 @@
 
       
         
-          
-            <h1 id="Gitlab的安装，升级，以及汉化操作说明"><a href="#Gitlab的安装，升级，以及汉化操作说明" class="headerlink" title="Gitlab的安装，升级，以及汉化操作说明"></a>Gitlab的安装，升级，以及汉化操作说明</h1><p>注：仅指在CentOS6.5的64位版本上，进行Gitlab的相关安装，升级，汉化说明。</p>
-<h2 id="Gitlab的安装"><a href="#Gitlab的安装" class="headerlink" title="Gitlab的安装"></a>Gitlab的安装</h2><ol>
-<li><p>按顺序执行以下命令：</p>
-<p> sudo yum install curl openssh-server openssh-clients postfix cronie</p>
-<p> sudo service postfix start</p>
-<p> sudo chkconfig postfix on</p>
-<p> sudo lokkit -s http -s ssh</p>
-</li>
-<li><p>从清华镜像上下载rpm安装包。<a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6/" target="_blank" rel="external">下载页面</a></p>
-</li>
-<li><p>在服务器上的安装包所在目录执行安装命令。比如：8.14.0版本</p>
-<p> sudo rpm -i gitlab-ce-8.14.0-ce.0.el6.x86_64.rpm</p>
-</li>
-<li><p>执行配置命令。</p>
-<p> sudo gitlab-ctl reconfigure</p>
-</li>
-</ol>
-<p>完成上述步骤即实现Gitlab的原版安装。</p>
-<p>注：如果服务器有专门的数据硬盘，用于存储版本库，请将该硬盘挂载在目录/var/opt下。并请在配置文件/etc/fstab中增加服务器启动自动挂载该数据盘。</p>
-<h2 id="Gitlab的升级"><a href="#Gitlab的升级" class="headerlink" title="Gitlab的升级"></a>Gitlab的升级</h2><ol>
-<li><p>从清华镜像上下载rpm安装包。</p>
-</li>
-<li><p>停止unicorn、sidekiq：</p>
-<p> sudo gitlab-ctl stop unicorn</p>
-<p> sudo gitlab-ctl stop sidekiq</p>
-</li>
-<li><p>备份数据：</p>
-<p> sudo gitlab-rake gitlab:backup:create</p>
-</li>
-<li><p>升级安装新的rpm包：</p>
-<p> sudo rpm -Uvh gitlab-ce-8.14.0-ce.0.el6.x86_64.rpm</p>
-</li>
-<li><p>执行配置命令。</p>
-<p> sudo gitlab-ctl reconfigure</p>
-</li>
-</ol>
-<p>完成上述步骤即实现Gitlab的升级。</p>
-<h2 id="Gitlab的汉化"><a href="#Gitlab的汉化" class="headerlink" title="Gitlab的汉化"></a>Gitlab的汉化</h2><ol>
-<li><p>下载汉化包后上传服务器后解压。<a href="https://github.com/marbleqi/gitlab-ce-zh/archive/8-14-0-zh-rel.zip" target="_blank" rel="external">下载链接</a></p>
-</li>
-<li><p>停止Gitlab服务。</p>
-<p> sudo gitlab-ctl stop</p>
-</li>
-<li><p>备份服务器上的/opt/gitlab/embedded/service/gitlab-rails目录。<br>注：该目录下的内容主要是web应用部分，也是当前项目仓库的起始版本，也是汉化包要覆盖的目录。</p>
-</li>
-<li><p>将解压后的汉化包覆盖服务器上的/opt/gitlab/embedded/service/gitlab-rails目录。</p>
-</li>
-<li><p>启动Gitlab服务。</p>
-<p> sudo gitlab-ctl start</p>
-</li>
-<li><p>重新执行配置命令。</p>
-<p> sudo gitlab-ctl reconfigure</p>
-</li>
-</ol>
-<p>完成上述步骤即实现汉化。</p>
-
-          
+          <h1 id="Gitlab的安装，升级，以及汉化操作说明"><a href="#Gitlab的安装，升级，以及汉化操作说明" class="headerlink" title="Gitlab的安装，升级，以及汉化操作说明"></a>Gitlab的安装，升级，以及汉化操作说明</h1><p>注：仅指在CentOS6.5的64位版本上，进行Gitlab的相关安装，升级，汉化说明。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/25/2016/12月/Gitlab的安装升级以及汉化操作说明/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
