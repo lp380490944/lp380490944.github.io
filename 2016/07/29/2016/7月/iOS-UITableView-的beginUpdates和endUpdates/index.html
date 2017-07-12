@@ -1,17 +1,90 @@
+<!doctype html>
 
- <!DOCTYPE HTML>
-<html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8">
+
+
   
-    <title>iOS UITableView 的beginUpdates和endUpdates | 钟灵毓秀</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="Bluce Liu">
-    
 
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta name="description" content="iOS UITableView 的beginUpdates和endUpdates今天在看大神写的代码的时候发现了这样的一段12345678910111213141516171819if (adapter.cellType == kShowTextCellNormalType) &amp;#123;        adapter.cellType = kShowTextCellExpendType;">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS UITableView 的beginUpdates和endUpdates今天在看大神写的代码的时候发现了这样的一段12345678910111213141516171819if (adapter.cellType == kShowTextCellNormalType) &amp;#123;        adapter.cellType = kShowTextCellExpendType;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS UITableView 的beginUpdates和endUpdates">
 <meta property="og:url" content="http://lp380490944.github.io/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/index.html">
@@ -24,85 +97,215 @@
 <meta name="twitter:description" content="iOS UITableView 的beginUpdates和endUpdates今天在看大神写的代码的时候发现了这样的一段12345678910111213141516171819if (adapter.cellType == kShowTextCellNormalType) &amp;#123;        adapter.cellType = kShowTextCellExpendType;">
 <meta name="twitter:image" content="http://images.cnitblog.com/blog/493542/201402/061151017595013.png">
 
-    
-    <link rel="alternative" href="/atom.xml" title="钟灵毓秀" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> iOS UITableView 的beginUpdates和endUpdates | 钟灵毓秀 </title>
 </head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="钟灵毓秀" title="钟灵毓秀"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="钟灵毓秀">钟灵毓秀</a></h1>
-				<h2 class="blog-motto">刘攀的博客</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:lp380490944.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+
+
+
+
+
+
+
+
+
+
+  
+  
     
-      <a href="/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" title="iOS UITableView 的beginUpdates和endUpdates" itemprop="url">iOS UITableView 的beginUpdates和endUpdates</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Bluce Liu" target="_blank" itemprop="author">Bluce Liu</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-29T08:21:04.000Z" itemprop="datePublished"> 发表于 2016-07-29</time>
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">钟灵毓秀</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">刘攀的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-UITableView-的beginUpdates和endUpdates"><span class="toc-number">1.</span> <span class="toc-text">iOS UITableView 的beginUpdates和endUpdates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#今天在看大神写的代码的时候发现了这样的一段"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">今天在看大神写的代码的时候发现了这样的一段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一般的想要点击cell高度的时候可以在"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">一般的想要点击cell高度的时候可以在123456789改变cell的数据源然后调用 ```objectivec	  [tableView beginUpdates];	  [tableView endUpdates];</span></a></li></ol></li></ol></li></ol></li></ol>
-		
-		</div>
-		
-		<h1 id="iOS-UITableView-的beginUpdates和endUpdates"><a href="#iOS-UITableView-的beginUpdates和endUpdates" class="headerlink" title="iOS UITableView 的beginUpdates和endUpdates"></a>iOS UITableView 的beginUpdates和endUpdates</h1><h4 id="今天在看大神写的代码的时候发现了这样的一段"><a href="#今天在看大神写的代码的时候发现了这样的一段" class="headerlink" title="今天在看大神写的代码的时候发现了这样的一段"></a>今天在看大神写的代码的时候发现了这样的一段</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (adapter.cellType == kShowTextCellNormalType) &#123;</span><br><span class="line">    </span><br><span class="line">    adapter.cellType = kShowTextCellExpendType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.expendStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> expendState];</span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    adapter.cellType = kShowTextCellNormalType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.normalStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> normalState];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS UITableView 的beginUpdates和endUpdates
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-29T16:21:04+08:00" content="2016-07-29">
+              2016-07-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="iOS-UITableView-的beginUpdates和endUpdates"><a href="#iOS-UITableView-的beginUpdates和endUpdates" class="headerlink" title="iOS UITableView 的beginUpdates和endUpdates"></a>iOS UITableView 的beginUpdates和endUpdates</h1><h4 id="今天在看大神写的代码的时候发现了这样的一段"><a href="#今天在看大神写的代码的时候发现了这样的一段" class="headerlink" title="今天在看大神写的代码的时候发现了这样的一段"></a>今天在看大神写的代码的时候发现了这样的一段</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (adapter.cellType == kShowTextCellNormalType) &#123;</span><br><span class="line">    </span><br><span class="line">    adapter.cellType = kShowTextCellExpendType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.expendStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> expendState];</span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    adapter.cellType = kShowTextCellNormalType;</span><br><span class="line">    </span><br><span class="line">    adapter.cellHeight = model.normalStringHeight;</span><br><span class="line">    [<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">    [<span class="keyword">self</span>.tableView endUpdates];</span><br><span class="line">    [<span class="keyword">self</span> normalState];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里只看关键的两句<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="keyword">self</span>.tableView beginUpdates];</span><br><span class="line">[<span class="keyword">self</span>.tableView endUpdates];</span><br></pre></td></tr></table></figure></p>
 <p>   第一次遇到这样的写法很是诧异看了一下苹果的官方文档是这样解释道的：</p>
 <blockquote>
@@ -112,395 +315,349 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        [<span class="built_in">CATransaction</span> begin];</span><br><span class="line"></span><br><span class="line">		[<span class="built_in">CATransaction</span> setCompletionBlock:^&#123;</span><br><span class="line">		    <span class="comment">// animation has finished</span></span><br><span class="line">		&#125;];</span><br><span class="line">		</span><br><span class="line">		[tableView beginUpdates];</span><br><span class="line">		<span class="comment">// do some work</span></span><br><span class="line">		[tableView endUpdates];</span><br><span class="line">		</span><br><span class="line">		[<span class="built_in">CATransaction</span> commit];</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line"><span class="meta">######  这段代码来自stackoverflow，它的作用就是在tableview的动画结束后，执行需要的操作。这段代码好用的原因就是beginUpdates本质上就是添加了一个动画事务，即CATransaction，当然这个事务可能包含许多操作，比如会重新调整每个cell的高度（但是默认不会重新加载cell）。如果你仅仅更改了UITableView的cell的样式，那么应该试试能否通过调用beginUpdates 和 reloadRowsAtIndexPaths 来实现效果，而不是调用tableview的reloadData方法去重新加载全部的cell！</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">带有动画效果重新加载cell的代码</span><br><span class="line"></span><br><span class="line">```objectivec	</span><br><span class="line">		[tableView beginUpdates];</span><br><span class="line">		[tableView reloadRowsAtIndexPaths:[<span class="built_in">NSArray</span> arrayWithObject:tmp] withRowAnimation:<span class="built_in">UITableViewRowAnimationAutomatic</span>];</span><br><span class="line">		[tableView endUpdates];</span><br></pre></td></tr></table></figure>
 <h4 id="一般的想要点击cell高度的时候可以在"><a href="#一般的想要点击cell高度的时候可以在" class="headerlink" title="一般的想要点击cell高度的时候可以在"></a>一般的想要点击cell高度的时候可以在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">改变cell的数据源然后调用 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```objectivec</span><br><span class="line"></span><br><span class="line">	  [tableView beginUpdates];</span><br><span class="line">	  [tableView endUpdates];</span><br></pre></td></tr></table></figure></h4><p>就会自动的调用<code>heightForRow</code>方法了</p>
 <p><img src="http://images.cnitblog.com/blog/493542/201402/061151017595013.png" alt="此图转自网络"></p>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/25/2016/7月/使用jsonModel需要注意的/" rel="next" title="使用jsonModel需要注意的">
+                <i class="fa fa-chevron-left"></i> 使用jsonModel需要注意的
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/25/2016/12月/Gitlab的安装升级以及汉化操作说明/" rel="prev" title="Gitlab的安装，升级，以及汉化操作说明">
+                Gitlab的安装，升级，以及汉化操作说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
 
 
-</div>
 
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://lp380490944.github.io/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/" data-title="iOS UITableView 的beginUpdates和endUpdates | 钟灵毓秀" data-tsina="null" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2016/12/25/2016/12月/Gitlab的安装升级以及汉化操作说明/" title="Gitlab的安装，升级，以及汉化操作说明">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Gitlab的安装，升级，以及汉化操作说明</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2016/07/25/2016/7月/使用jsonModel需要注意的/"  title="使用jsonModel需要注意的">
- <strong>下一篇：</strong><br/> 
- <span>使用jsonModel需要注意的
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-UITableView-的beginUpdates和endUpdates"><span class="toc-number">1.</span> <span class="toc-text">iOS UITableView 的beginUpdates和endUpdates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#今天在看大神写的代码的时候发现了这样的一段"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">今天在看大神写的代码的时候发现了这样的一段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一般的想要点击cell高度的时候可以在"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">一般的想要点击cell高度的时候可以在123456789改变cell的数据源然后调用 ```objectivec	  [tableView beginUpdates];	  [tableView endUpdates];</span></a></li></ol></li></ol></li></ol></li></ol>
- 
+    <div class="post-spread">
+      
+    </div>
   </div>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
 
-  
+          </div>
+          
 
 
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/Mac/" title="Mac">Mac<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>1</sup></a></li>
-		  
-		
-		  
-		
-		  
-			<li><a href="/categories/lessons/" title="lessons">lessons<sup>2</sup></a></li>
-		  
-		
-		</ul>
-</div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/"
+           data-title="iOS UITableView 的beginUpdates和endUpdates" data-url="http://lp380490944.github.io/2016/07/29/2016/7月/iOS-UITableView-的beginUpdates和endUpdates/">
+      </div>
+    
+  </div>
 
 
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/lessons/" title="lessons">lessons<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/tableview/" title="tableview">tableview<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/gitlab/" title="gitlab">gitlab<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/开源、第三方/" title="开源、第三方">开源、第三方<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
+        </div>
         
-          <li>
-            
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
+          
   
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
-</div>
-
-
-</aside>
-</div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
+  </div>
 
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
-		
-		<a href="/about" target="_blank" title="Bluce Liu">Bluce Liu</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
       
-      $('#toc.toc-aside').css('display', 'none');
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/myphoto.jpg"
+               alt="Bluce Liu" />
+          <p class="site-author-name" itemprop="name">Bluce Liu</p>
+          <p class="site-description motion-element" itemprop="description">爱编程，爱晚起，偶尔也忙到深夜/n 喜欢学习，努力工作，也享受生活/n 我酷爱技术，崇尚简单的快乐和幸福/n 我不是码农，我是程序员/n 我和你一样，为理想而奋斗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
         
-    }
-  });
-});
-</script>
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lp380490944" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lp380490944" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/bluce.li1?ref=bookmarks" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-UITableView-的beginUpdates和endUpdates"><span class="nav-number">1.</span> <span class="nav-text">iOS UITableView 的beginUpdates和endUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#今天在看大神写的代码的时候发现了这样的一段"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">今天在看大神写的代码的时候发现了这样的一段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一般的想要点击cell高度的时候可以在"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">一般的想要点击cell高度的时候可以在123456789改变cell的数据源然后调用 ```objectivec	  [tableView beginUpdates];	  [tableView endUpdates];</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bluce Liu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
 
 <script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-}); 
 </script>
 
 
 
-<!-- Analytics Begin -->
 
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
 
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
+  
 
 
-<!-- MathJax End -->
 
-<!-- Tiny_search Begin -->
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-<!-- Tiny_search End -->
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  </body>
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lp380490944"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
 </html>
