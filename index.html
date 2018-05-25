@@ -253,6 +253,127 @@
             
               
                 
+                <a class="post-title-link" href="/2018/05/25/Nginx入门指南/" itemprop="url">
+                  Nginx入门指南
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-25T22:43:28+08:00" content="2018-05-25">
+              2018-05-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/05/25/Nginx入门指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/25/Nginx入门指南/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="基本操作指令"><a href="#基本操作指令" class="headerlink" title="基本操作指令"></a>基本操作指令</h3><ul>
+<li>nginx -t 测试配置是否正确</li>
+<li>nginx -s reload 加载最新配置</li>
+<li>nginx -s stop 立即停止</li>
+<li>nginx  -s quit 优雅停止（完成当前任务后再退出）</li>
+<li>nginx -s reopen 重新打开日志</li>
+</ul>
+<h4 id="Nginx-全局配置"><a href="#Nginx-全局配置" class="headerlink" title="Nginx 全局配置"></a>Nginx 全局配置</h4><p>worker_processes  工作进程数 取决于CPU数量x核数</p>
+<p>event: worker_connections  最大进程数</p>
+<h5 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h5><ul>
+<li><p>基于域名的虚拟主机</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;#监听端口号</span><br><span class="line">    server_name mantou360.com;#监听域名 如有多个空格隔开</span><br><span class="line">        location / &#123;</span><br><span class="line">        root html/dddd;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>只用nginx -s reload 就可以加载新的配置了。如果是PHP页面需要单独配置解析的location</p>
+<h5 id="日志管理"><a href="#日志管理" class="headerlink" title="日志管理"></a>日志管理</h5><h4 id="nginx的反向代理"><a href="#nginx的反向代理" class="headerlink" title="nginx的反向代理"></a>nginx的反向代理</h4><blockquote>
+<p>用正则表达式来匹配图片请求到另外一台服务器上去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; location ~ \.(jpeg|jpg|png|gif)$ &#123;</span><br><span class="line">&gt;     proxy_pass http://baidu.com:80;</span><br><span class="line">&gt; 	proxy_set_header  X-Forwarded-For $remote_addr;#把用户的真实ip带到被反向代理的服务器。服务器就能收到用户的真实ip了。</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>nginx -s reload 就可以了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/" itemprop="url">
                    IOS中的__block关键字简单使用
                 </a>
@@ -1239,106 +1360,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/04/2016/6月/用Charles抓ssl的包/" itemprop="url">
-                  用Charles抓ssl的包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-04T11:15:57+08:00" content="2016-06-04">
-              2016-06-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/04/2016/6月/用Charles抓ssl的包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/04/2016/6月/用Charles抓ssl的包/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈"><a href="#我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈" class="headerlink" title="我们都知道用ssl抓包非常麻烦很多的小伙伴不会，这里有一个非常详细的教程，在这里做个标记，留着学习哈"></a>我们都知道用ssl抓包非常麻烦很多的小伙伴不会，<a href="http://www.brianjcoleman.com/tutorial-testing-ssl-using-charles-proxy-on-an-ios-device/" target="_blank" rel="external">这里</a>有一个非常详细的教程，在这里做个标记，留着学习哈</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1384,7 +1405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1467,7 +1488,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
