@@ -61,7 +61,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="多线程," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -77,34 +77,47 @@
 
 
 
-<meta name="description" content="##处理耗时任务
-###两个同步搞定
+<meta name="description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+
+提交选择并排序
+
+提交后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="处理耗时任务">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/24/2016/处理耗时任务/index.html">
+<meta property="og:title" content="Git-Rebase-I-命令使用详解">
+<meta property="og:url" content="http://lp380490944.github.io/2018/07/26/2018/git-rebase-i-命令使用详解/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="##处理耗时任务
-###两个同步搞定
+<meta property="og:description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
-<meta property="og:updated_time" content="2016-05-25T02:51:30.000Z">
+
+提交选择并排序
+
+提交后">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b58389e41ef7.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b5838d4aedf6.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b583904d30fe.png">
+<meta property="og:updated_time" content="2018-07-25T16:02:19.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="处理耗时任务">
-<meta name="twitter:description" content="##处理耗时任务
-###两个同步搞定
+<meta name="twitter:title" content="Git-Rebase-I-命令使用详解">
+<meta name="twitter:description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
-一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：
-dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&amp;quot;img&amp;quot;: @&amp;quot;https://camo.githubu">
+
+提交选择并排序
+
+提交后">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/25/5b58389e41ef7.png">
 
 
 
@@ -122,7 +135,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
   };
 </script>
 
-  <title> 处理耗时任务 | 钟灵毓秀 </title>
+  <title> Git-Rebase-I-命令使用详解 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +275,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
             
             
               
-                处理耗时任务
+                Git-Rebase-I-命令使用详解
               
             
           </h1>
@@ -274,8 +287,8 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T23:28:22+08:00" content="2016-05-24">
-              2016-05-24
+            <time itemprop="dateCreated" datetime="2018-07-26T00:01:53+08:00" content="2018-07-26">
+              2018-07-26
             </time>
           </span>
 
@@ -285,8 +298,8 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/24/2016/处理耗时任务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/2016/处理耗时任务/" itemprop="commentsCount"></span>
+                <a href="/2018/07/26/2018/git-rebase-i-命令使用详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/26/2018/git-rebase-i-命令使用详解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,40 +327,17 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
       
 
       
-        <p>##处理耗时任务</p>
-<p>###两个同步搞定</p>
-<ul>
-<li><p>一般处理数据花费时间较长，但是最后刷新ui在主线程 处理代码如下：</p>
-<pre><code>dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-    NSArray * array = @[
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;如果再看到关于纯代码,xib或storyboard,使用哪种方式进行UI布局更合适的讨论,请推荐他们先试用下 Masonry. Masonry,像xib一样快速,同时拥有作为纯代码方式的灵活性 — github关注度 7800 + 是有原因的!&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;无论如何,你总是需要一个提示框.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;SVProgressHUD是简单易用的显示器,用于指示一个持续进行的任务的进度.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;RestKit 是一个用于更好支持RESTful风格服务器接口的iOS库,可直接将联网获取的json/xml数据转换为iOS对象.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;FMDB 是SQLite的Objective-C封装库.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;Pop 是一个可扩展的动画引擎,可用于实现任意iOS对象的任意属性的动态变化,支持一般动画,弹性动画和渐变动画三种类型.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;高度可定制的应用欢迎页通用解决方案,可高度定制,不要仅限于现有的demo&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;JVFloatLabeledTextField 是注重用户体验的”浮动标签模式”(Float Label Patter)的第一个实现,可以有效解决移动设备上进行表单输入时,无法边看表单提示边进行输入的困境,用户体验非常好.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;用于为应用添加常用的上拉加载更多与下拉刷新效果,适用 UIScrollView、UITableView、UICollectionView、UIWebView.&quot;},
-                        @{@&quot;img&quot;: @&quot;https://camo.githubusercontent.com/be57d040ec0ce5d6467fb73564c6bcb6c76d5a7b/687474703a2f2f6472696262626c652e73332e616d617a6f6e6177732e636f6d2f75736572732f363431302f73637265656e73686f74732f313235343433392f666f726d2d616e696d6174696f6e2d5f6769665f2e676966&quot;, @&quot;intro&quot;: @&quot;iOS-blur使用一种巧妙的方式,为任意视图添加一种非常奇妙的模糊效果.&quot;}
-
-                        ];
-
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LPModel * model = [LPModel new];
-        model.imgUrl = @&quot;https://raw.githubusercontent.com/ealeksandrov/EAIntroView/master/Screenshot02.png&quot;;
-        model.content = [obj objectForKey:@&quot;intro&quot;];
-        [self.dataList addObject:model];
-
-    }];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        [self.tableView reloadData];
-    });
-});
-</code></pre></li>
+        <h3 id="git-高级功能使用详解"><a href="#git-高级功能使用详解" class="headerlink" title="git 高级功能使用详解"></a>git 高级功能使用详解</h3><ul>
+<li><p>rebase -i  提供交互式的 rebase 方法</p>
+<p><strong>git rebase -i HEAD~4</strong></p>
+<p>的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过<strong>pick</strong>按钮来来删除某个提交</p>
+<p>提交前<img src="https://i.loli.net/2018/07/25/5b58389e41ef7.png" alt="5b58389e41ef7.png"></p>
+</li>
 </ul>
+<p>提交选择并排序</p>
+<p><img src="https://i.loli.net/2018/07/25/5b5838d4aedf6.png" alt="5b5838d4aedf6.png"></p>
+<p>提交后</p>
+<p><img src="https://i.loli.net/2018/07/25/5b583904d30fe.png" alt="5b583904d30fe.png"></p>
 
       
     </div>
@@ -367,28 +357,18 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/多线程/" rel="tag">#多线程</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/24/2016/my-frist-post/" rel="next" title="My Frist Post">
-                <i class="fa fa-chevron-left"></i> My Frist Post
+              <a href="/2018/05/25/2018/Nginx入门指南/" rel="next" title="Nginx入门指南">
+                <i class="fa fa-chevron-left"></i> Nginx入门指南
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/25/2016/iterm2_快捷键大全/" rel="prev" title="iTerm2 快捷键大全">
-                iTerm2 快捷键大全 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -414,8 +394,8 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/24/2016/处理耗时任务/"
-           data-title="处理耗时任务" data-url="http://lp380490944.github.io/2016/05/24/2016/处理耗时任务/">
+      <div class="ds-thread" data-thread-key="2018/07/26/2018/git-rebase-i-命令使用详解/"
+           data-title="Git-Rebase-I-命令使用详解" data-url="http://lp380490944.github.io/2018/07/26/2018/git-rebase-i-命令使用详解/">
       </div>
     
   </div>
@@ -535,7 +515,7 @@ dispatch_sync(dispatch_get_global_queue(0, 0), ^{
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-高级功能使用详解"><span class="nav-number">1.</span> <span class="nav-text">git 高级功能使用详解</span></a></li></ol></div>
             
           </div>
         </section>
