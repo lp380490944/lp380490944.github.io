@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -84,55 +84,47 @@
 
 
 
-<meta name="description" content="#分享一些我收集的酷站
+<meta name="description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
 
+提交选择并排序
 
-站名
-链接
-介绍
-
-
-
-
-知笔墨
-http://zhibimo.com/
-这是李笑来老师出的一个很好网站">
+提交后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="收集一些酷站">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/26/2016/5月/收集一些酷站/index.html">
+<meta property="og:title" content="Git Rebase -I 命令使用详解">
+<meta property="og:url" content="http://lp380490944.github.io/2018/07/25/2018/git rebase -i  功能能使用详解/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="#分享一些我收集的酷站
+<meta property="og:description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
 
+提交选择并排序
 
-站名
-链接
-介绍
-
-
-
-
-知笔墨
-http://zhibimo.com/
-这是李笑来老师出的一个很好网站">
-<meta property="og:updated_time" content="2016-05-26T02:46:20.000Z">
+提交后">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b58389e41ef7.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b5838d4aedf6.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/25/5b583904d30fe.png">
+<meta property="og:updated_time" content="2018-07-25T09:06:01.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="收集一些酷站">
-<meta name="twitter:description" content="#分享一些我收集的酷站
+<meta name="twitter:title" content="Git Rebase -I 命令使用详解">
+<meta name="twitter:description" content="git 高级功能使用详解
+rebase -i  提供交互式的 rebase 方法
+git rebase -i HEAD~4
+的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过pick按钮来来删除某个提交
+提交前
 
 
+提交选择并排序
 
-站名
-链接
-介绍
-
-
-
-
-知笔墨
-http://zhibimo.com/
-这是李笑来老师出的一个很好网站">
+提交后">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/25/5b58389e41ef7.png">
 
 
 
@@ -150,7 +142,7 @@ http://zhibimo.com/
   };
 </script>
 
-  <title> 收集一些酷站 | 钟灵毓秀 </title>
+  <title> Git Rebase -I 命令使用详解 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,10 +270,8 @@ http://zhibimo.com/
   
   
   
-    
-  
 
-  <article class="post post-type-normal  post-sticky" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -292,7 +282,7 @@ http://zhibimo.com/
             
             
               
-                收集一些酷站
+                Git Rebase -I 命令使用详解
               
             
           </h1>
@@ -304,8 +294,8 @@ http://zhibimo.com/
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T10:07:51+08:00" content="2016-05-26">
-              2016-05-26
+            <time itemprop="dateCreated" datetime="2018-07-25T17:47:34+08:00" content="2018-07-25">
+              2018-07-25
             </time>
           </span>
 
@@ -315,8 +305,8 @@ http://zhibimo.com/
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/26/2016/5月/收集一些酷站/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/2016/5月/收集一些酷站/" itemprop="commentsCount"></span>
+                <a href="/2018/07/25/2018/git rebase -i  功能能使用详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/25/2018/git rebase -i  功能能使用详解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -344,23 +334,17 @@ http://zhibimo.com/
       
 
       
-        <p>#分享一些我收集的酷站</p>
-<table>
-<thead>
-<tr>
-<th>站名</th>
-<th>链接</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>知笔墨</td>
-<td><a href="http://zhibimo.com/" target="_blank" rel="external">http://zhibimo.com/</a></td>
-<td>这是李笑来老师出的一个很好网站</td>
-</tr>
-</tbody>
-</table>
+        <h3 id="git-高级功能使用详解"><a href="#git-高级功能使用详解" class="headerlink" title="git 高级功能使用详解"></a>git 高级功能使用详解</h3><ul>
+<li><p>rebase -i  提供交互式的 rebase 方法</p>
+<p><strong>git rebase -i HEAD~4</strong></p>
+<p>的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过<strong>pick</strong>按钮来来删除某个提交</p>
+<p>提交前<img src="https://i.loli.net/2018/07/25/5b58389e41ef7.png" alt="5b58389e41ef7.png"></p>
+</li>
+</ul>
+<p>提交选择并排序</p>
+<p><img src="https://i.loli.net/2018/07/25/5b5838d4aedf6.png" alt="5b5838d4aedf6.png"></p>
+<p>提交后</p>
+<p><img src="https://i.loli.net/2018/07/25/5b583904d30fe.png" alt="5b583904d30fe.png"></p>
 
       
     </div>
@@ -380,22 +364,24 @@ http://zhibimo.com/
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/25/2016/5月/关于xib的动态桥接/" rel="next" title="关于Xib的动态桥接">
-                <i class="fa fa-chevron-left"></i> 关于Xib的动态桥接
+              <a href="/2018/05/25/Nginx入门指南/" rel="next" title="Nginx入门指南">
+                <i class="fa fa-chevron-left"></i> Nginx入门指南
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/26/2016/5月/Mac使用的奇淫巧计/" rel="prev" title="Mac使用的奇淫巧计">
-                Mac使用的奇淫巧计 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,8 +407,8 @@ http://zhibimo.com/
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/26/2016/5月/收集一些酷站/"
-           data-title="收集一些酷站" data-url="http://lp380490944.github.io/2016/05/26/2016/5月/收集一些酷站/">
+      <div class="ds-thread" data-thread-key="2018/07/25/2018/git rebase -i  功能能使用详解/"
+           data-title="Git Rebase -I 命令使用详解" data-url="http://lp380490944.github.io/2018/07/25/2018/git rebase -i  功能能使用详解/">
       </div>
     
   </div>
@@ -542,7 +528,7 @@ http://zhibimo.com/
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-高级功能使用详解"><span class="nav-number">1.</span> <span class="nav-text">git 高级功能使用详解</span></a></li></ol></div>
             
           </div>
         </section>
