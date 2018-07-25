@@ -253,117 +253,6 @@
             
               
                 
-                <a class="post-title-link" href="/2018/07/25/2018/git rebase -i  功能能使用详解/" itemprop="url">
-                  Git Rebase -I 命令使用详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-07-25T17:47:34+08:00" content="2018-07-25">
-              2018-07-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/07/25/2018/git rebase -i  功能能使用详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/25/2018/git rebase -i  功能能使用详解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="git-高级功能使用详解"><a href="#git-高级功能使用详解" class="headerlink" title="git 高级功能使用详解"></a>git 高级功能使用详解</h3><ul>
-<li><p>rebase -i  提供交互式的 rebase 方法</p>
-<p><strong>git rebase -i HEAD~4</strong></p>
-<p>的含义就是在当前位置取前面的4个提交内容创建一个新的分支：提供可视化的方式 用鼠标拖拽排序通过<strong>pick</strong>按钮来来删除某个提交</p>
-<p>提交前<img src="https://i.loli.net/2018/07/25/5b58389e41ef7.png" alt="5b58389e41ef7.png"></p>
-</li>
-</ul>
-<p>提交选择并排序</p>
-<p><img src="https://i.loli.net/2018/07/25/5b5838d4aedf6.png" alt="5b5838d4aedf6.png"></p>
-<p>提交后</p>
-<p><img src="https://i.loli.net/2018/07/25/5b583904d30fe.png" alt="5b583904d30fe.png"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2018/05/25/Nginx入门指南/" itemprop="url">
                   Nginx入门指南
                 </a>
@@ -1365,6 +1254,112 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/01/2016/7月/透明导航栏需要注意的几点问题/" itemprop="url">
+                  透明导航栏需要注意的几点问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-01T10:38:35+08:00" content="2016-07-01">
+              2016-07-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/01/2016/7月/透明导航栏需要注意的几点问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/01/2016/7月/透明导航栏需要注意的几点问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="透明导航栏需要注意的几点问题"><a href="#透明导航栏需要注意的几点问题" class="headerlink" title="透明导航栏需要注意的几点问题"></a>透明导航栏需要注意的几点问题</h1><h4 id="导航栏的透明度设置"><a href="#导航栏的透明度设置" class="headerlink" title="导航栏的透明度设置"></a>导航栏的透明度设置</h4><p>  项目要求导航栏渐变透明效果这里使用的是第三方LTNavigationbar3000多的星星，可是 按照demo使用发现没有效果，完全没有。后来终于被细心的同事大神发现 继承自basenavc而basenavi里面有了一句坑爹的话</p>
+<pre><code>self.navigationBar.translucent = NO;
+</code></pre><p>  竟然是NO！NO！好吧，英文不好原来是透明度的意思，把透明度关闭了当然不行啦。。</p>
+<p>  然后就有效果了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/01/2016/7月/透明导航栏需要注意的几点问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1410,7 +1405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1427,7 +1422,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
