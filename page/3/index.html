@@ -387,8 +387,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">
-                  关于tableView数组越界的问题处理
+                <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">
+                  My Frist Post
                 </a>
               
             
@@ -412,8 +412,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/24/2016/关于tableview数组越界的问题处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="commentsCount"></span>
+                <a href="/2016/05/24/2016/my-frist-post/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/2016/my-frist-post/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -438,29 +438,12 @@
       
         
           
-            <p>#关于tableView数组越界的问题处理</p>
-<p>###使用懒加载</p>
+            <p>###这是我的第一篇博客必须纪念一下哈非常的艰辛：看了很多的网站才学会是不是自己太笨了呢</p>
 <ul>
-<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<pre><code>[self.dataArray removeAllObjects];
-</code></pre></li>
-</ul>
-<ul>
-<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<pre><code>if(self.dataArray.count != 0){
-
- MOdel * model = self.dataArray[indexPath.row];
-}
-</code></pre></li>
-</ul>
-<ul>
-<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
-<pre><code>if(!indexpath.row &gt; self.dataArray.count){
-
-Model* model = slef.dataArray[indexpath.row];
-
-}
-</code></pre></li>
+<li><p>第一个介绍的很详细：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">原文</a>但是太繁琐</p>
+</li>
+<li><p>其实 主要用的是第二个：<a href="http://www.jianshu.com/p/821fe67e712b" target="_blank" rel="external">原文</a></p>
+</li>
 </ul>
 
           

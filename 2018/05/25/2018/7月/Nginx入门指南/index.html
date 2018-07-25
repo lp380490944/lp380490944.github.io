@@ -84,16 +84,40 @@
 
 
 
-<meta name="description" content="分享一个mac的小技巧">
+<meta name="description" content="基本操作指令
+nginx -t 测试配置是否正确
+nginx -s reload 加载最新配置
+nginx -s stop 立即停止
+nginx  -s quit 优雅停止（完成当前任务后再退出）
+nginx -s reopen 重新打开日志
+
+Nginx 全局配置worker_processes  工作进程数 取决于CPU数量x核数
+event: worker_connections  最大进程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分享一个Mac的小技巧">
-<meta property="og:url" content="http://lp380490944.github.io/2016/03/30/2016/2016-03-30mac技巧/index.html">
+<meta property="og:title" content="Nginx入门指南">
+<meta property="og:url" content="http://lp380490944.github.io/2018/05/25/2018/7月/Nginx入门指南/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="分享一个mac的小技巧">
-<meta property="og:updated_time" content="2016-05-25T02:22:58.000Z">
+<meta property="og:description" content="基本操作指令
+nginx -t 测试配置是否正确
+nginx -s reload 加载最新配置
+nginx -s stop 立即停止
+nginx  -s quit 优雅停止（完成当前任务后再退出）
+nginx -s reopen 重新打开日志
+
+Nginx 全局配置worker_processes  工作进程数 取决于CPU数量x核数
+event: worker_connections  最大进程">
+<meta property="og:updated_time" content="2018-05-25T14:44:24.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分享一个Mac的小技巧">
-<meta name="twitter:description" content="分享一个mac的小技巧">
+<meta name="twitter:title" content="Nginx入门指南">
+<meta name="twitter:description" content="基本操作指令
+nginx -t 测试配置是否正确
+nginx -s reload 加载最新配置
+nginx -s stop 立即停止
+nginx  -s quit 优雅停止（完成当前任务后再退出）
+nginx -s reopen 重新打开日志
+
+Nginx 全局配置worker_processes  工作进程数 取决于CPU数量x核数
+event: worker_connections  最大进程">
 
 
 
@@ -111,7 +135,7 @@
   };
 </script>
 
-  <title> 分享一个Mac的小技巧 | 钟灵毓秀 </title>
+  <title> Nginx入门指南 | 钟灵毓秀 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +275,7 @@
             
             
               
-                分享一个Mac的小技巧
+                Nginx入门指南
               
             
           </h1>
@@ -263,38 +287,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-30T16:10:57+08:00" content="2016-03-30">
-              2016-03-30
+            <time itemprop="dateCreated" datetime="2018-05-25T22:43:28+08:00" content="2018-05-25">
+              2018-05-25
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/30/2016/2016-03-30mac技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/30/2016/2016-03-30mac技巧/" itemprop="commentsCount"></span>
+                <a href="/2018/05/25/2018/7月/Nginx入门指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/25/2018/7月/Nginx入门指南/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,13 +327,27 @@
       
 
       
-        <p>#分享一个mac的小技巧</p>
-<p>今天在整理下载的文件夹的时候发现想要把下载的文件存入不同的文件夹就想着把文件夹剪切了。但是没有发现  只有拖拽和复制粘贴再删除非常麻烦，于是乎在网上搜索下 使用的是（Google哦）</p>
-<hr>
-<ul>
-<li>CMD + C 复制就可以了 </li>
-<li>粘贴的时候选择option + CMD + V 就是剪切粘贴了。是不是非常的方便呢。</li>
+        <h3 id="基本操作指令"><a href="#基本操作指令" class="headerlink" title="基本操作指令"></a>基本操作指令</h3><ul>
+<li>nginx -t 测试配置是否正确</li>
+<li>nginx -s reload 加载最新配置</li>
+<li>nginx -s stop 立即停止</li>
+<li>nginx  -s quit 优雅停止（完成当前任务后再退出）</li>
+<li>nginx -s reopen 重新打开日志</li>
 </ul>
+<h4 id="Nginx-全局配置"><a href="#Nginx-全局配置" class="headerlink" title="Nginx 全局配置"></a>Nginx 全局配置</h4><p>worker_processes  工作进程数 取决于CPU数量x核数</p>
+<p>event: worker_connections  最大进程数</p>
+<h5 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h5><ul>
+<li><p>基于域名的虚拟主机</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;#监听端口号</span><br><span class="line">    server_name mantou360.com;#监听域名 如有多个空格隔开</span><br><span class="line">        location / &#123;</span><br><span class="line">        root html/dddd;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>只用nginx -s reload 就可以加载新的配置了。如果是PHP页面需要单独配置解析的location</p>
+<h5 id="日志管理"><a href="#日志管理" class="headerlink" title="日志管理"></a>日志管理</h5><h4 id="nginx的反向代理"><a href="#nginx的反向代理" class="headerlink" title="nginx的反向代理"></a>nginx的反向代理</h4><blockquote>
+<p>用正则表达式来匹配图片请求到另外一台服务器上去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; location ~ \.(jpeg|jpg|png|gif)$ &#123;</span><br><span class="line">&gt;     proxy_pass http://baidu.com:80;</span><br><span class="line">&gt; 	proxy_set_header  X-Forwarded-For $remote_addr;#把用户的真实ip带到被反向代理的服务器。服务器就能收到用户的真实ip了。</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>nginx -s reload 就可以了</p>
 
       
     </div>
@@ -353,17 +372,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/29/2015/2015-11-2-iOS学习之Socket使用简明教程－ AsyncSocket/" rel="next" title="iOS学习之Socket使用简明教程－ AsyncSocket">
-                <i class="fa fa-chevron-left"></i> iOS学习之Socket使用简明教程－ AsyncSocket
+              <a href="/2017/01/10/2017/1月/IOS中的-block关键字简单使用/" rel="next" title=" IOS中的__block关键字简单使用">
+                <i class="fa fa-chevron-left"></i>  IOS中的__block关键字简单使用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/24/2016/my-frist-post/" rel="prev" title="My Frist Post">
-                My Frist Post <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -389,8 +404,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/30/2016/2016-03-30mac技巧/"
-           data-title="分享一个Mac的小技巧" data-url="http://lp380490944.github.io/2016/03/30/2016/2016-03-30mac技巧/">
+      <div class="ds-thread" data-thread-key="2018/05/25/2018/7月/Nginx入门指南/"
+           data-title="Nginx入门指南" data-url="http://lp380490944.github.io/2018/05/25/2018/7月/Nginx入门指南/">
       </div>
     
   </div>
@@ -510,7 +525,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作指令"><span class="nav-number">1.</span> <span class="nav-text">基本操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx-全局配置"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx 全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置虚拟主机"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置虚拟主机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日志管理"><span class="nav-number">1.1.2.</span> <span class="nav-text">日志管理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx的反向代理"><span class="nav-number">1.2.</span> <span class="nav-text">nginx的反向代理</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
