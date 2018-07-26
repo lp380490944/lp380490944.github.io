@@ -335,7 +335,8 @@
           <blockquote>
 <p>在使用git的时候我们难免会修改或者添加错了远端的URL 这个时候就需要我们重新删除之后再添加这里有三种方法</p>
 </blockquote>
-<h3 id="1-直接修改"><a href="#1-直接修改" class="headerlink" title="1.直接修改"></a>1.直接修改</h3><figure class="highlight plain"><figcaption><span>remote set-url origin [url]```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.先删除在修改</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">//删除</span><br><span class="line">git remote rm origin</span><br><span class="line">//添加</span><br><span class="line">git remote add origin [url]</span><br></pre></td></tr></table></figure>
+<h3 id="1-直接修改"><a href="#1-直接修改" class="headerlink" title="1.直接修改"></a>1.直接修改</h3><p>git remote set-url origin [url]</p>
+<h3 id="2-先删除在修改"><a href="#2-先删除在修改" class="headerlink" title="2.先删除在修改"></a>2.先删除在修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//删除</span><br><span class="line">git remote rm origin</span><br><span class="line">//添加</span><br><span class="line">git remote add origin [url]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/26/git修改远端地址/#more" rel="contents">
