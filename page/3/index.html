@@ -381,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/05/24/2016/my-frist-post/">
+    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/05/24/2016/关于tableview数组越界的问题处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bluce Liu">
@@ -400,7 +400,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">My Frist Post</a></h1>
+                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">关于tableView数组越界的问题处理</a></h1>
         
 
         <div class="post-meta">
@@ -452,12 +452,29 @@
       
         
           
-            <p>###这是我的第一篇博客必须纪念一下哈非常的艰辛：看了很多的网站才学会是不是自己太笨了呢</p>
+            <p>#关于tableView数组越界的问题处理</p>
+<p>###使用懒加载</p>
 <ul>
-<li><p>第一个介绍的很详细：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">原文</a>但是太繁琐</p>
-</li>
-<li><p>其实 主要用的是第二个：<a href="http://www.jianshu.com/p/821fe67e712b" target="_blank" rel="external">原文</a></p>
-</li>
+<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
+<pre><code>[self.dataArray removeAllObjects];
+</code></pre></li>
+</ul>
+<ul>
+<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
+<pre><code>if(self.dataArray.count != 0){
+
+ MOdel * model = self.dataArray[indexPath.row];
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
+<pre><code>if(!indexpath.row &gt; self.dataArray.count){
+
+Model* model = slef.dataArray[indexpath.row];
+
+}
+</code></pre></li>
 </ul>
 
           
@@ -660,7 +677,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/05/24/2016/关于tableview数组越界的问题处理/">
+    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/05/24/2016/my-frist-post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bluce Liu">
@@ -679,7 +696,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/05/24/2016/关于tableview数组越界的问题处理/" itemprop="url">关于tableView数组越界的问题处理</a></h1>
+                <a class="post-title-link" href="/2016/05/24/2016/my-frist-post/" itemprop="url">My Frist Post</a></h1>
         
 
         <div class="post-meta">
@@ -731,29 +748,12 @@
       
         
           
-            <p>#关于tableView数组越界的问题处理</p>
-<p>###使用懒加载</p>
+            <p>###这是我的第一篇博客必须纪念一下哈非常的艰辛：看了很多的网站才学会是不是自己太笨了呢</p>
 <ul>
-<li><p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<pre><code>[self.dataArray removeAllObjects];
-</code></pre></li>
-</ul>
-<ul>
-<li><p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<pre><code>if(self.dataArray.count != 0){
-
- MOdel * model = self.dataArray[indexPath.row];
-}
-</code></pre></li>
-</ul>
-<ul>
-<li><p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理：</p>
-<pre><code>if(!indexpath.row &gt; self.dataArray.count){
-
-Model* model = slef.dataArray[indexpath.row];
-
-}
-</code></pre></li>
+<li><p>第一个介绍的很详细：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">原文</a>但是太繁琐</p>
+</li>
+<li><p>其实 主要用的是第二个：<a href="http://www.jianshu.com/p/821fe67e712b" target="_blank" rel="external">原文</a></p>
+</li>
 </ul>
 
           
@@ -899,152 +899,6 @@ Model* model = slef.dataArray[indexpath.row];
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/30/2016/2016-03-30mac技巧/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bluce Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="钟灵毓秀">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/" itemprop="url">iOS中获取各种文件的目录路径的方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-29T16:27:58+08:00">
-                2015-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          精选
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1337,6 +1191,152 @@ Model* model = slef.dataArray[indexpath.row];
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/12/29/2015/2015-11-17-Block详解/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bluce Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="钟灵毓秀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/" itemprop="url">iOS中获取各种文件的目录路径的方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-29T16:27:58+08:00">
+                2015-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          精选
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/12/29/2015/2015-10-31-IOS中获取各种文件的目录路径的方法/">
               阅读全文 &raquo;
             </a>
           </div>
