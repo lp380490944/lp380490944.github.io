@@ -282,152 +282,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2018/07/30/post利用国内服务器进行Shadowsocks-转发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bluce Liu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="钟灵毓秀">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/30/post利用国内服务器进行Shadowsocks-转发/" itemprop="url">post利用国内服务器进行Shadowsocks-转发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T14:28:49+08:00">
-                2018-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>说一下背景。本来是有两台香港的服务器的。但是不知道具体是什么原因。某些香港的ip段被youtube封了。</p>
-<ul>
-<li>这也不是个例讨论在<a href="https://www.v2ex.com/t/368608#reply85" target="_blank" rel="external">v2ex</a>上<br>现在由于在国内洛杉矶的服务器带宽本来很高。但是网速还是很慢。于是乎就想着中转下。虽然我走了就很多的弯路。但是其实回头想想还是很简单的。<br>主要就是两行代码的事儿。 </li>
-</ul>
-</blockquote>
-<p><em>这里介绍的是centos6下的操作</em></p>
-<ul>
-<li>安装socat 优点儿:支持UDP and TCP 端口转发。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y socat</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Socat使用"><a href="#Socat使用" class="headerlink" title="Socat使用"></a>Socat使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup socat TCP4-LISTEN:2333,reuseaddr,fork TCP4:233.233.233.233:6666 &gt;&gt; /root/socat.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
-<p><em>nohup</em> 是后台运行</p>
-<ul>
-<li><p>TCP4-LISTEN:2333*此处的端口是转发的服务器端口注意不是shadowsocks 服务器。后面的是shadowsocks服务器ipv4地址+ 端口号</p>
-</li>
-<li><p>fork TCP4:233.233.233.233:6666*这里需要填写的就是被转发的服务器的ip和端口也就是ss的sever_ip 和sever_port</p>
-</li>
-</ul>
-<p><em>/root/socat.log 2&gt;&amp;1 &amp;</em>转发的日志记录 我就是看了日志发现自己的端口已经被占用了。另外需要注意的是ucloud的服务器需要在网站上配置防火墙才行。放行对应端口。</p>
-<p><strong> 转发UDP很简单，只要把 TCP4 改成 UDP4 就行了！</strong></p>
-<h3 id="停止转发"><a href="#停止转发" class="headerlink" title="停止转发"></a>停止转发</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep socat</span><br><span class="line">#输入上面的命令找到socat程序的PID，然后用下面的命令KILL掉这个PID进程（PID是个数字，自己替换下面的&quot;pid&quot;）。</span><br><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure>
-<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove socat</span><br></pre></td></tr></table></figure>
-<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>####### 防火墙是最重要的一切问题其实都是防火墙的原因。</p>
-<p>如果你的是 centos7以上没有 iptable配置防火墙看<a href="http://linux.it.net.cn/CentOS/fast/2014/1102/7635.html" target="_blank" rel="external">这里</a></p>
-<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>还是CentOS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.local</span><br><span class="line">vi /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure></p>
-<p>这篇文章只是做个记录。怕以后忘记。很感谢网上的大神们的分享。<br>装逼就到这里。看详细原文的<a href="https://doub.io/ss-jc40/" target="_blank" rel="external">走起</a>(小心墙撞头。😄)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2018/07/30/利用国内服务器进行Shadowsocks-中转/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1648,11 +1502,137 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bluce Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="钟灵毓秀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/" itemprop="url">NSString为何要用copy？而不是strong？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-21T11:17:00+08:00">
+                2016-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>  这里仅仅是一个备注。 </strong></p>
+<h4 id="在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"><a href="#在一些model的属性中我们常常使用的是-copy而不是strong-这到底是为什么呢？平时用的时候倒是看不出来但是-到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。" class="headerlink" title="在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。"></a>在一些model的属性中我们常常使用的是 copy而不是strong 这到底是为什么呢？平时用的时候倒是看不出来但是 到了关键时候可能就是一个大坑了。。这里我们来稍微的深究一下哈。。</h4><p>这里我们创建一个model类</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Model</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> * name;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/21/2016/7月/NSString为何要用copy？而不是strong？/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1698,7 +1678,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
