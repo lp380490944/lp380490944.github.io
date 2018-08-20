@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -94,25 +94,16 @@
 
 
 
-<meta name="description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
-但是我知道了 ：
-self.view.transform=CGAffineTransformIdentity；
-  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
+<meta name="description" content="如果合并了两个不同开始提交的仓库的时候，在2.9.2之后的git会发现这两个仓库可能不是同一个，为了防止开发者上传错误，于是给出如下的提示refusing to merge unrelated histories1234```如果我在github新建了一个仓库 写了readme ，让后再把本地的一个已经存在的仓库上传到github的时候。会发现github的仓库和本地的仓库没有共同的commit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 仿射变换CGAffineTransform详解">
-<meta property="og:url" content="http://lp380490944.github.io/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/index.html">
+<meta property="og:title" content="Git Pull Refusing to Merge Unrelated Histories">
+<meta property="og:url" content="http://lp380490944.github.io/2018/08/20/git-pull-refusing-to-merge-unrelated-histories/index.html">
 <meta property="og:site_name" content="钟灵毓秀">
-<meta property="og:description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
-但是我知道了 ：
-self.view.transform=CGAffineTransformIdentity；
-  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
-<meta property="og:updated_time" content="2016-05-25T06:42:31.000Z">
+<meta property="og:description" content="如果合并了两个不同开始提交的仓库的时候，在2.9.2之后的git会发现这两个仓库可能不是同一个，为了防止开发者上传错误，于是给出如下的提示refusing to merge unrelated histories1234```如果我在github新建了一个仓库 写了readme ，让后再把本地的一个已经存在的仓库上传到github的时候。会发现github的仓库和本地的仓库没有共同的commit">
+<meta property="og:updated_time" content="2018-08-20T03:16:42.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 仿射变换CGAffineTransform详解">
-<meta name="twitter:description" content="iOS 仿射变换CGAffineTransform详解-原文在这里根本看不懂
-但是我知道了 ：
-self.view.transform=CGAffineTransformIdentity；
-  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固">
+<meta name="twitter:title" content="Git Pull Refusing to Merge Unrelated Histories">
+<meta name="twitter:description" content="如果合并了两个不同开始提交的仓库的时候，在2.9.2之后的git会发现这两个仓库可能不是同一个，为了防止开发者上传错误，于是给出如下的提示refusing to merge unrelated histories1234```如果我在github新建了一个仓库 写了readme ，让后再把本地的一个已经存在的仓库上传到github的时候。会发现github的仓库和本地的仓库没有共同的commit">
 
 
 
@@ -141,13 +132,13 @@ self.view.transform=CGAffineTransformIdentity；
 
 
 
-  <link rel="canonical" href="http://lp380490944.github.io/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/"/>
+  <link rel="canonical" href="http://lp380490944.github.io/2018/08/20/git-pull-refusing-to-merge-unrelated-histories/"/>
 
 
 
 
 
-  <title>iOS 仿射变换CGAffineTransform详解 | 钟灵毓秀</title>
+  <title>Git Pull Refusing to Merge Unrelated Histories | 钟灵毓秀</title>
   
 
 
@@ -290,7 +281,7 @@ self.view.transform=CGAffineTransformIdentity；
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2016/05/25/2016/5月/iOS-仿射变换CGAffineTransform详解/">
+    <link itemprop="mainEntityOfPage" href="http://lp380490944.github.io/2018/08/20/git-pull-refusing-to-merge-unrelated-histories/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bluce Liu">
@@ -307,7 +298,7 @@ self.view.transform=CGAffineTransformIdentity；
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS 仿射变换CGAffineTransform详解</h1>
+          <h1 class="post-title" itemprop="name headline">Git Pull Refusing to Merge Unrelated Histories</h1>
         
 
         <div class="post-meta">
@@ -319,8 +310,8 @@ self.view.transform=CGAffineTransformIdentity；
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-25T14:36:49+08:00">
-                2016-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T11:02:09+08:00">
+                2018-08-20
               </time>
             
 
@@ -357,10 +348,8 @@ self.view.transform=CGAffineTransformIdentity；
       
 
       
-        <h1 id="iOS-仿射变换CGAffineTransform详解"><a href="#iOS-仿射变换CGAffineTransform详解" class="headerlink" title="iOS 仿射变换CGAffineTransform详解"></a>iOS 仿射变换CGAffineTransform详解</h1><p>-原文在<a href="http://www.jianshu.com/p/6c09d138b31d" target="_blank" rel="external">这里</a>根本看不懂</p>
-<p>但是我知道了 ：</p>
-<pre><code>self.view.transform=CGAffineTransformIdentity；
-</code></pre><p>  这句话的 作用是 重新初始化（也就是重置 坐标系）要不然只能播放一次。不加这句的话，再点击播放也不会因为坐标系是改变过的，没有重置 而且  CGAffineTransformIdentity； 是系统给的固定值。暂时就知道这些。</p>
+        <p>如果合并了两个不同开始提交的仓库的时候，在2.9.2之后的git会发现这两个仓库可能不是同一个，为了防止开发者上传错误，于是给出如下的提示<br><figure class="highlight plain"><figcaption><span>refusing to merge unrelated histories</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">如果我在github新建了一个仓库 写了readme ，让后再把本地的一个已经存在的仓库上传到github的时候。会发现github的仓库和本地的仓库没有共同的commit 所以不让提交，认为是写错了origin 如果开发者确定就是要用的origin就可以使用--allow-unrelated-histories告诉git自己是确定的</span><br><span class="line"> 遇到无法提交的问题最好是先pull一下使用</span><br><span class="line"> ```git pull origin master``` 发现无法pull git 输出```refusing to merge unrelated histories ```我们就需要把两个不同的项目合并git pull 之后需要添加 --allow-unrelated-histories告诉git需要不相关的历史合并如果我们的源是origin， 分支是master那么我们就需要这么写```git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+<p> 如果设置过了默认的分支就可以<br> <code>git pull --allow--unrelated--histories</code><br> 这样就解决问题了bingo!</p>
 
       
     </div>
@@ -376,6 +365,12 @@ self.view.transform=CGAffineTransformIdentity；
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
 
       
       
@@ -385,8 +380,8 @@ self.view.transform=CGAffineTransformIdentity；
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/25/2015/2015-10-29-HTTP和FTP协议的区别/" rel="next" title="HTTP和FTP协议的区别">
-                <i class="fa fa-chevron-left"></i> HTTP和FTP协议的区别
+              <a href="/2018/08/17/2018/正确创建pch文件/" rel="next" title="正确创建Pch文件">
+                <i class="fa fa-chevron-left"></i> 正确创建Pch文件
               </a>
             
           </div>
@@ -394,10 +389,6 @@ self.view.transform=CGAffineTransformIdentity；
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/25/2016/5月/关于xib的动态桥接/" rel="prev" title="关于Xib的动态桥接">
-                关于Xib的动态桥接 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,17 +440,8 @@ self.view.transform=CGAffineTransformIdentity；
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -521,22 +503,6 @@ self.view.transform=CGAffineTransformIdentity；
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-仿射变换CGAffineTransform详解"><span class="nav-number">1.</span> <span class="nav-text">iOS 仿射变换CGAffineTransform详解</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
