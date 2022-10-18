@@ -1,0 +1,706 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RSS,XML," />
+
+
+
+
+
+  <link rel="alternate" href="/rss.xml" title="Swift学徒" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为了实践本文，抽时间给博客添加了 RSS 订阅，中间还遇到了各种问题。 
+XML 解析XMLParserXML 跟 JSON 一样，也是常用的的数据格式。苹果提供了 XMLParser类用来解析 XML 文档。
+XMLParser常用的两个方法，分别用来初始化和开始解析操作。
+123init(data: Data)func parse()
+XMLParserDelegate对 XML 的解析实际上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS[Swift] 中 XML 解析与 RSS 阅读器的制作">
+<meta property="og:url" content="http://swift.diagon.me/Swift-XML-XMLParser-RSS/index.html">
+<meta property="og:site_name" content="Swift学徒">
+<meta property="og:description" content="为了实践本文，抽时间给博客添加了 RSS 订阅，中间还遇到了各种问题。 
+XML 解析XMLParserXML 跟 JSON 一样，也是常用的的数据格式。苹果提供了 XMLParser类用来解析 XML 文档。
+XMLParser常用的两个方法，分别用来初始化和开始解析操作。
+123init(data: Data)func parse()
+XMLParserDelegate对 XML 的解析实际上">
+<meta property="og:updated_time" content="2017-02-27T04:04:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS[Swift] 中 XML 解析与 RSS 阅读器的制作">
+<meta name="twitter:description" content="为了实践本文，抽时间给博客添加了 RSS 订阅，中间还遇到了各种问题。 
+XML 解析XMLParserXML 跟 JSON 一样，也是常用的的数据格式。苹果提供了 XMLParser类用来解析 XML 文档。
+XMLParser常用的两个方法，分别用来初始化和开始解析操作。
+123init(data: Data)func parse()
+XMLParserDelegate对 XML 的解析实际上">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swift.diagon.me/Swift-XML-XMLParser-RSS/"/>
+
+
+
+
+
+  <title> iOS[Swift] 中 XML 解析与 RSS 阅读器的制作 | Swift学徒 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d1b9ca1ddd64ef2206b43ea10ec9d25";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Swift学徒</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">笨办法学Swift</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://swift.diagon.me/Swift-XML-XMLParser-RSS/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="万恶胖为首">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Swift学徒">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Swift学徒" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS[Swift] 中 XML 解析与 RSS 阅读器的制作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T00:00:00+08:00">
+                2017-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了实践本文，抽时间给博客添加了 <a href="http://swift.diagon.me/rss.xml">RSS 订阅</a>，中间还遇到了<a href="http://swift.diagon.me/Hexo-RSS-Next-XML-feed-UTF-8/">各种问题</a>。 </p>
+<h2 id="XML-解析"><a href="#XML-解析" class="headerlink" title="XML 解析"></a>XML 解析</h2><h3 id="XMLParser"><a href="#XMLParser" class="headerlink" title="XMLParser"></a>XMLParser</h3><p>XML 跟 JSON 一样，也是常用的的数据格式。苹果提供了 <code>XMLParser</code>类用来解析 XML 文档。</p>
+<p><code>XMLParser</code>常用的两个方法，分别用来初始化和开始解析操作。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">init</span>(data: <span class="type">Data</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parse</span><span class="params">()</span></span></div></pre></td></tr></table></figure>
+<h3 id="XMLParserDelegate"><a href="#XMLParserDelegate" class="headerlink" title="XMLParserDelegate"></a>XMLParserDelegate</h3><p>对 XML 的解析实际上是实现 <code>XMLParserDelegate</code> 中的几个方法。<code>XMLParserDelegate</code>方法都是可选的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开始解析时调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parserDidStartDocument</span><span class="params">(XMLParser)</span></span></div><div class="line"></div><div class="line"><span class="comment">// 遇到一个开始标签时调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(XMLParser, didStartElement: String, namespaceURI: String?, qualifiedName: String?, attributes: [String : String] = [:])</span></span></div><div class="line"></div><div class="line"><span class="comment">// 遇到字符串时调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(XMLParser, foundCharacters: String)</span></span></div><div class="line"></div><div class="line"><span class="comment">// 遇到结束标签时调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(XMLParser, didEndElement: String, namespaceURI: String?, qualifiedName: String?)</span></span></div><div class="line"></div><div class="line"><span class="comment">// 成功完成解析时调用</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parserDidEndDocument</span><span class="params">(XMLParser)</span></span></div></pre></td></tr></table></figure>
+<h2 id="解析-RSS"><a href="#解析-RSS" class="headerlink" title="解析 RSS"></a>解析 RSS</h2><h3 id="解析过程分析"><a href="#解析过程分析" class="headerlink" title="解析过程分析"></a>解析过程分析</h3><p>RSS 是一种内容分享格式规范，通常使用 XML 格式实现。观察本博客的<a href="http://swift.diagon.me/rss.xml">RSS</a>。发现每篇日志都包含在一个<code>&lt;item&gt;</code>闭合标签中，而一篇日志的三个要素，标题、日期、内容分别使用的标签为<code>&lt;title&gt;</code>,<code>&lt;pubDate&gt;</code>,<code>&lt;description&gt;</code>。我们在解析 XML 时保存这三块内容即可。</p>
+<p>首先我们声明几个 property 存储当前的内容。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentElement = <span class="string">""</span> </div><div class="line"><span class="keyword">var</span> currentTitle = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> currentDescription = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> currentPubDate = <span class="string">""</span></div></pre></td></tr></table></figure>
+<p>当<code>elementName</code>是 <code>&quot;item&quot;</code>时，说明接下来要解析该<code>&lt;item&gt;</code>包含的内容，即一篇独立的文章。这时候我们将标题、日期、内容 property 设置为空字符串。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(<span class="number">_</span> parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])</span></span> &#123;</div><div class="line"></div><div class="line">  currentElement = elementName</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> currentElement == <span class="string">"item"</span> &#123;</div><div class="line">    currentTitle = <span class="string">""</span></div><div class="line">    currentDescription = <span class="string">""</span></div><div class="line">    currentPubDate = <span class="string">""</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来每遇到一个字符，将该字符追加到相应的 property 中。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(<span class="number">_</span> parser: XMLParser, foundCharacters string: String)</span></span> &#123;</div><div class="line">  <span class="comment">/// Note: current string may only contain part of info.</span></div><div class="line">  <span class="keyword">switch</span> currentElement &#123;</div><div class="line">  <span class="keyword">case</span> <span class="string">"title"</span>:</div><div class="line">    currentTitle += string</div><div class="line">  <span class="keyword">case</span> <span class="string">"description"</span>:</div><div class="line">    currentDescription += string</div><div class="line">  <span class="keyword">case</span> <span class="string">"pubDate"</span>:</div><div class="line">    currentPubDate += string</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    <span class="keyword">break</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>标签<code>item</code>结束时生成该篇文章的 model，存入数组容器。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> rssItems = [(title: <span class="type">String</span>, description: <span class="type">String</span>, pubDate: <span class="type">String</span>)]()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(<span class="number">_</span> parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> elementName == <span class="string">"item"</span> &#123;</div><div class="line">      <span class="keyword">let</span> rssItem = (title: currentTitle, description: currentDescription, pubDate: currentPubDate)</div><div class="line">      rssItems.append(rssItem)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解析结束后更新 UI：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parserDidEndDocument</span><span class="params">(<span class="number">_</span> parser: XMLParser)</span></span> &#123;</div><div class="line">	<span class="comment">// update UI</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如遇解析错误，打印出来方便调试。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">parser</span><span class="params">(<span class="number">_</span> parser: XMLParser, parseErrorOccurred parseError: Error)</span></span> &#123;</div><div class="line">  <span class="built_in">print</span>(parseError.localizedDescription)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>完整的项目代码点<a href="https://github.com/Vernsu/SwiftBlogDemo" target="_blank" rel="external">这里(Github)</a>下载。</p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wxqrcode.jpg" alt="万恶胖为首 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注公众号（ID：SwiftBetter），进一步探讨交流。</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RSS/" rel="tag"># RSS</a>
+          
+            <a href="/tags/XML/" rel="tag"># XML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Hexo-RSS-Next-XML-feed-UTF-8/" rel="next" title="Hexo 博客框架添加 RSS 订阅">
+                <i class="fa fa-chevron-left"></i> Hexo 博客框架添加 RSS 订阅
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/iOS-Swift-HTTP-TCP-IP-WebSocket-Socket/" rel="prev" title="iOS 客户端开发需要掌握的 HTTP 知识">
+                iOS 客户端开发需要掌握的 HTTP 知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="万恶胖为首" />
+          <p class="site-author-name" itemprop="name">万恶胖为首</p>
+          <p class="site-description motion-element" itemprop="description">笨办法学Swift</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-解析"><span class="nav-number">1.</span> <span class="nav-text">XML 解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLParser"><span class="nav-number">1.1.</span> <span class="nav-text">XMLParser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLParserDelegate"><span class="nav-number">1.2.</span> <span class="nav-text">XMLParserDelegate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析-RSS"><span class="nav-number">2.</span> <span class="nav-text">解析 RSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析过程分析"><span class="nav-number">2.1.</span> <span class="nav-text">解析过程分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">2.2.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">万恶胖为首</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

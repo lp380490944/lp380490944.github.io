@@ -1,0 +1,725 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="架构," />
+
+
+
+
+
+  <link rel="alternate" href="/rss.xml" title="Swift学徒" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="MVVM 构成MVVM 看上去和 MVP 很像：
+
+显然，MVVM 也将 ViewController 视为 View。之前我们说了 MVC 中的 Controller 里有大量表示逻辑，ViewModel 就是承载这些表示逻辑的东西。
+MVVM 的 ViewModel 和 MVP的 Presenter 相比，多了数据绑定机制。一旦 ViewModel 所对应的 Model 发生变化，ViewMo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 架构模式之 MVVM">
+<meta property="og:url" content="http://swift.diagon.me/Pattern-MVVM/index.html">
+<meta property="og:site_name" content="Swift学徒">
+<meta property="og:description" content="MVVM 构成MVVM 看上去和 MVP 很像：
+
+显然，MVVM 也将 ViewController 视为 View。之前我们说了 MVC 中的 Controller 里有大量表示逻辑，ViewModel 就是承载这些表示逻辑的东西。
+MVVM 的 ViewModel 和 MVP的 Presenter 相比，多了数据绑定机制。一旦 ViewModel 所对应的 Model 发生变化，ViewMo">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fd8t675iqaj314g0ek768.jpg">
+<meta property="og:updated_time" content="2017-03-06T11:40:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 架构模式之 MVVM">
+<meta name="twitter:description" content="MVVM 构成MVVM 看上去和 MVP 很像：
+
+显然，MVVM 也将 ViewController 视为 View。之前我们说了 MVC 中的 Controller 里有大量表示逻辑，ViewModel 就是承载这些表示逻辑的东西。
+MVVM 的 ViewModel 和 MVP的 Presenter 相比，多了数据绑定机制。一旦 ViewModel 所对应的 Model 发生变化，ViewMo">
+<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fd8t675iqaj314g0ek768.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swift.diagon.me/Pattern-MVVM/"/>
+
+
+
+
+
+  <title> iOS 架构模式之 MVVM | Swift学徒 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d1b9ca1ddd64ef2206b43ea10ec9d25";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Swift学徒</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">笨办法学Swift</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://swift.diagon.me/Pattern-MVVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="万恶胖为首">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Swift学徒">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Swift学徒" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 架构模式之 MVVM
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-04T00:00:00+08:00">
+                2017-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/架构/" itemprop="url" rel="index">
+                    <span itemprop="name">架构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="MVVM-构成"><a href="#MVVM-构成" class="headerlink" title="MVVM 构成"></a>MVVM 构成</h3><p>MVVM 看上去和 MVP 很像：</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fd8t675iqaj314g0ek768.jpg" alt=""></p>
+<p>显然，MVVM 也将 ViewController 视为 View。之前我们说了 MVC 中的 Controller 里有大量表示逻辑，ViewModel 就是承载这些表示逻辑的东西。</p>
+<p>MVVM 的 ViewModel 和 MVP的 Presenter 相比，多了数据绑定机制。一旦 ViewModel 所对应的 Model 发生变化，ViewModel 的属性也会发生变化，而相对应的 View 也随即产生变化。绑定机制既有很明显的强大优点——自动连接 View 和 Model，也有很明显的缺点——更高的耦合度，更复杂的代码逻辑。</p>
+<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p>实现绑定一般有两种方式：</p>
+<ul>
+<li>基于KVO的绑定：比如 <a href="https://github.com/Raizlabs/RZDataBinding" target="_blank" rel="external">RZDataBinding</a> 和 <a href="https://github.com/SwiftBond/Bond" target="_blank" rel="external">SwiftBond</a></li>
+<li><a href="https://gist.github.com/JaviLorbada/4a7bd6129275ebefd5a6" target="_blank" rel="external">函数响应式编程</a>：比如像 <a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a>、<a href="https://github.com/ReactiveX/RxSwift/" target="_blank" rel="external">RxSwift</a> 或者 <a href="https://github.com/mxcl/PromiseKit" target="_blank" rel="external">PromiseKit</a></li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>FRF 框架 和 KVO过度复杂，我们使用 showGreeting 方法 和 greetingDidChange 回调方法来达成这个目的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">import</span> UIKit</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123; <span class="comment">// Model</span></div><div class="line">    <span class="keyword">let</span> firstName: <span class="type">String</span></div><div class="line">    <span class="keyword">let</span> lastName: <span class="type">String</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingViewModelProtocol</span>: <span class="title">class</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> greeting: <span class="type">String</span>? &#123; <span class="keyword">get</span> &#125;</div><div class="line">    <span class="keyword">var</span> greetingDidChange: ((<span class="type">GreetingViewModelProtocol</span>) -&gt; ())? &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125; <span class="comment">// function to call when greeting did change</span></div><div class="line">    <span class="keyword">init</span>(person: <span class="type">Person</span>)</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewModel</span> : <span class="title">GreetingViewModelProtocol</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> person: <span class="type">Person</span></div><div class="line">    <span class="keyword">var</span> greeting: <span class="type">String</span>? &#123;</div><div class="line">        <span class="keyword">didSet</span> &#123;</div><div class="line">            <span class="keyword">self</span>.greetingDidChange?(<span class="keyword">self</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> greetingDidChange: ((<span class="type">GreetingViewModelProtocol</span>) -&gt; ())?</div><div class="line">    <span class="keyword">required</span> <span class="keyword">init</span>(person: <span class="type">Person</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.person = person</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">self</span>.greeting = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="keyword">self</span>.person.firstName + <span class="string">" "</span> + <span class="keyword">self</span>.person.lastName</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewController</span> : <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> viewModel: <span class="type">GreetingViewModelProtocol</span>! &#123;</div><div class="line">        <span class="keyword">didSet</span> &#123;</div><div class="line">            <span class="keyword">self</span>.viewModel.greetingDidChange = &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] viewModel <span class="keyword">in</span></div><div class="line">                <span class="keyword">self</span>.greetingLabel.text = viewModel.greeting</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> showGreetingButton = <span class="type">UIButton</span>()</div><div class="line">    <span class="keyword">let</span> greetingLabel = <span class="type">UILabel</span>()</div><div class="line"> </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">self</span>.showGreetingButton.addTarget(<span class="keyword">self</span>.viewModel, action: <span class="string">"showGreeting"</span>, forControlEvents: .<span class="type">TouchUpInside</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 布局代码</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// MVVM</span></div><div class="line"><span class="keyword">let</span> model = <span class="type">Person</span>(firstName: <span class="string">"David"</span>, lastName: <span class="string">"Blaine"</span>)</div><div class="line"><span class="keyword">let</span> viewModel = <span class="type">GreetingViewModel</span>(person: model)</div><div class="line"><span class="keyword">let</span> view = <span class="type">GreetingViewController</span>()</div><div class="line">view.viewModel = viewModel</div></pre></td></tr></table></figure>
+<p>抛开绑定机制不说，ViewModel 做的就是表示逻辑的载体，最简单的实现就是在 ViewController 中调用：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.greetingLabel.text = <span class="keyword">self</span>.viewModel.greeting</div></pre></td></tr></table></figure>
+<p>我们评估下之前提出的架构特点：</p>
+<ol>
+<li>职能均分：分隔的很清楚。事实上，MVVM的View要比MVP中的View承担的责任多。因为前者通过ViewModel的设置绑定来更新状态，而后者只监听Presenter的事件但并不会对自己有什么更新。</li>
+<li>容易测试：确实易于测试。如果我们没有将表示逻辑移入 ViewModel，我们将不得不实例化一个完整的 ViewController 以及伴随的 View，然后去比较我们 View 中的数值。但另一方面，数据绑定机制使得 定位 bug 变得更难了。数据绑定使程序异常能快速的传递到其他位置，在 View 上发现的 bug 有可能是由 ViewModel 造成的，也有可能是由 Model 造成的，传递链越长，对 Bug 的定位就越困难。</li>
+<li>易用，维护成本低：在我们例子中的代码量和 MVP 的差不多，但是在实际开发中，使用了诸如 ReativeCocoa 这样的第三方库 ，MVVM 代码量将会小的多。 </li>
+</ol>
+<h3 id="架构模式选择"><a href="#架构模式选择" class="headerlink" title="架构模式选择"></a>架构模式选择</h3><p>没有完美的架构模式，只有适用于你的 App 业务场景和团队的架构模式。比如数据逻辑简单、注重视觉展示的页面，原始的 MVC 可能是最优解。而 MVP 的特点是有更好的灵活性和扩展性。MVVM 可以兼容当前使用 MVC架构模式 。</p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wxqrcode.jpg" alt="万恶胖为首 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注公众号（ID：SwiftBetter），进一步探讨交流。</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/架构/" rel="tag"># 架构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Pattern-MVP/" rel="next" title="iOS 架构模式之 MVP">
+                <i class="fa fa-chevron-left"></i> iOS 架构模式之 MVP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/iOS-CommonLibs-Swift/" rel="prev" title="iOS 开发常用第三方库 [Swift 版]">
+                iOS 开发常用第三方库 [Swift 版] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="万恶胖为首" />
+          <p class="site-author-name" itemprop="name">万恶胖为首</p>
+          <p class="site-description motion-element" itemprop="description">笨办法学Swift</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM-构成"><span class="nav-number">1.</span> <span class="nav-text">MVVM 构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定"><span class="nav-number">2.</span> <span class="nav-text">绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构模式选择"><span class="nav-number">4.</span> <span class="nav-text">架构模式选择</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">万恶胖为首</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

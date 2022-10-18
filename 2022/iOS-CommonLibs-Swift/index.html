@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="第三方库," />
+
+
+
+
+
+  <link rel="alternate" href="/rss.xml" title="Swift学徒" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="网络
+Alamofire 强大的网络基础库
+ShadowsocksX-NG 新一代的 ShadowsocksX
+Moya 基于 Alamofire 的网络抽象层
+Reachability.swift 检测网络可用性
+VPNOn VPN
+Starscream Websockets
+
+
+
+
+JSON
+
+SwiftyJSON 处理 JSON 数据
+ObjectMappe 处理 JSON 数据
+Arg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 开发常用第三方库 [Swift 版]">
+<meta property="og:url" content="http://swift.diagon.me/iOS-CommonLibs-Swift/index.html">
+<meta property="og:site_name" content="Swift学徒">
+<meta property="og:description" content="网络
+Alamofire 强大的网络基础库
+ShadowsocksX-NG 新一代的 ShadowsocksX
+Moya 基于 Alamofire 的网络抽象层
+Reachability.swift 检测网络可用性
+VPNOn VPN
+Starscream Websockets
+
+
+
+
+JSON
+
+SwiftyJSON 处理 JSON 数据
+ObjectMappe 处理 JSON 数据
+Arg">
+<meta property="og:updated_time" content="2017-03-19T05:42:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 开发常用第三方库 [Swift 版]">
+<meta name="twitter:description" content="网络
+Alamofire 强大的网络基础库
+ShadowsocksX-NG 新一代的 ShadowsocksX
+Moya 基于 Alamofire 的网络抽象层
+Reachability.swift 检测网络可用性
+VPNOn VPN
+Starscream Websockets
+
+
+
+
+JSON
+
+SwiftyJSON 处理 JSON 数据
+ObjectMappe 处理 JSON 数据
+Arg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swift.diagon.me/iOS-CommonLibs-Swift/"/>
+
+
+
+
+
+  <title> iOS 开发常用第三方库 [Swift 版] | Swift学徒 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d1b9ca1ddd64ef2206b43ea10ec9d25";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Swift学徒</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">笨办法学Swift</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://swift.diagon.me/iOS-CommonLibs-Swift/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="万恶胖为首">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Swift学徒">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Swift学徒" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 开发常用第三方库 [Swift 版]
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T00:00:00+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href=""></a></p>
+<ul>
+<li>网络<ul>
+<li><a href="https://github.com/Alamofire/Alamofire" target="_blank" rel="external">Alamofire</a> 强大的网络基础库</li>
+<li><a href="https://github.com/shadowsocks/ShadowsocksX-NG" target="_blank" rel="external">ShadowsocksX-NG</a> 新一代的 ShadowsocksX</li>
+<li><a href="https://github.com/Moya/Moya" target="_blank" rel="external">Moya</a> 基于 Alamofire 的网络抽象层</li>
+<li><a href="https://github.com/ashleymills/Reachability.swift" target="_blank" rel="external">Reachability.swift</a> 检测网络可用性</li>
+<li><a href="https://github.com/lexrus/VPNOn" target="_blank" rel="external">VPNOn</a> VPN</li>
+<li><a href="https://github.com/daltoniam/Starscream" target="_blank" rel="external">Starscream</a> Websockets</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>JSON</p>
+<ul>
+<li><a href="https://github.com/SwiftyJSON/SwiftyJSON" target="_blank" rel="external">SwiftyJSON</a> 处理 JSON 数据</li>
+<li><a href="https://github.com/Hearst-DD/ObjectMapper" target="_blank" rel="external">ObjectMappe</a> 处理 JSON 数据</li>
+<li><a href="https://github.com/thoughtbot/Argo" target="_blank" rel="external">Argo</a> 处理 JSON 数据</li>
+<li><a href="https://github.com/Ahmed-Ali/JSONExport" target="_blank" rel="external">JSONExport</a> 输出 JSON 转换代码的工具</li>
+</ul>
+</li>
+<li><p>布局</p>
+<ul>
+<li><a href="https://github.com/SnapKit/SnapKit" target="_blank" rel="external">SnapKit</a> Autolayout 库</li>
+<li><a href="https://github.com/robb/Cartography" target="_blank" rel="external">Cartography</a> Autolayout 库</li>
+<li><a href="https://github.com/mamaral/Neon" target="_blank" rel="external">Neon</a> 强大的布局框架</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>图片</p>
+<ul>
+<li><a href="https://github.com/BradLarson/GPUImage2" target="_blank" rel="external">GPUImage2</a> 基于 GPU 处理图片与视频    </li>
+<li><a href="https://github.com/onevcat/Kingfisher" target="_blank" rel="external">Kingfisher</a>  异步图片缓存库</li>
+<li><a href="https://github.com/Alamofire/AlamofireImage" target="_blank" rel="external">AlamofireImage</a> AlamofireImage</li>
+<li><a href="https://github.com/kean/Nuke" target="_blank" rel="external">Nuke</a> 图片加载和缓存</li>
+</ul>
+</li>
+<li><p>服务端</p>
+<ul>
+<li><a href="https://github.com/PerfectlySoft/Perfect" target="_blank" rel="external">Perfect</a> </li>
+<li><a href="https://github.com/vapor/vapor" target="_blank" rel="external">vapor</a></li>
+<li><a href="https://github.com/IBM-Swift/Kitura" target="_blank" rel="external">Kitura</a>    </li>
+</ul>
+</li>
+<li><p>编程方式</p>
+<ul>
+<li><a href="https://github.com/mxcl/PromiseKit" target="_blank" rel="external">PromiseKit</a> 轻量级异步编程库</li>
+<li><a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a> ReactiveCocoa</li>
+<li><a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="external">RxSwift</a> RxSwift</li>
+<li><a href="https://github.com/duemunk/Async" target="_blank" rel="external">Async</a> GCD 异步编程语法糖</li>
+<li><a href="https://github.com/ankurp/Dollar" target="_blank" rel="external">Dollar</a>为 Swift 编程语言提供函数式编程的助手方法</li>
+<li><a href="https://github.com/ReactiveKit/Bond" target="_blank" rel="external">Bond</a> 绑定库</li>
+<li><a href="https://github.com/typelift/Swiftz" target="_blank" rel="external">Swiftz</a> 函数式编程</li>
+</ul>
+</li>
+<li><p>学习资源</p>
+<ul>
+<li><a href="https://github.com/raywenderlich/swift-algorithm-club" target="_blank" rel="external">swift-algorithm-club</a> 算法和数据结构</li>
+<li><a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">awesome-ios</a>awesome-ios</li>
+<li><a href="https://github.com/dkhamsing/open-source-ios-apps" target="_blank" rel="external">open-source-ios-apps</a> 收集 iOS 开源项目</li>
+<li><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">SwiftGuide</a> Swift 学习资源</li>
+<li><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">awesome-swift</a> awesome-swift</li>
+<li><a href="https://github.com/allenwong/30DaysofSwift" target="_blank" rel="external">30DaysofSwift</a> 30DaysofSwift</li>
+<li><a href="https://github.com/soapyigu/Swift30Projects" target="_blank" rel="external">Swift30Projects</a> Swift30Projects</li>
+<li><a href="https://github.com/ochococo/Design-Patterns-In-Swift" target="_blank" rel="external">Design-Patterns-In-Swift</a> Swift 实现设计模式</li>
+<li><a href="https://github.com/collinhundley/Swift-AI" target="_blank" rel="external">Swift-AI</a> 机器学习</li>
+<li><a href="https://github.com/larrynatalicio/15DaysofAnimationsinSwift" target="_blank" rel="external">15DaysofAnimationsinSwift</a> 学习动画教程</li>
+</ul>
+</li>
+<li><p>性能</p>
+<ul>
+<li><a href="https://github.com/zixun/GodEye" target="_blank" rel="external">GodEye</a> 自动显示 Log,Crash,Network,ANR,Leak,CPU,RAM,FPS,NetFlow等信息</li>
+<li><a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">SwiftLint</a> SwiftLint</li>
+<li><a href="https://github.com/Quick/Quick" target="_blank" rel="external">Quick</a> 一个测试框架</li>
+<li><a href="https://github.com/mattt/Surge" target="_blank" rel="external">Surge</a>基于苹果 Accelerate 高性能计算框架封装库</li>
+</ul>
+</li>
+<li><p>数据</p>
+<ul>
+<li><a href="https://github.com/stephencelis/SQLite.swift" target="_blank" rel="external">SQLite.swift</a> SQLite.swift</li>
+<li><a href="https://github.com/krzyzanowskim/CryptoSwift" target="_blank" rel="external">CryptoSwift</a>CryptoSwift 是一个用 Swift 写的加密工具包，支持多种加密算法，如MD5、SHA1、AES-128等</li>
+<li><a href="https://github.com/Haneke/HanekeSwift" target="_blank" rel="external">HanekeSwift</a> 轻量级的缓存库</li>
+<li><a href="https://github.com/SwiftGen/SwiftGen" target="_blank" rel="external">SwiftGen</a>快速生成ios资源，如国际化、图片等</li>
+<li><a href="https://github.com/mac-cain13/R.swift" target="_blank" rel="external">R.swift</a> 安全的获取文件资源</li>
+<li><a href="https://github.com/radex/SwiftyUserDefaults" target="_blank" rel="external">SwiftyUserDefaults</a> NSUserDefaults</li>
+<li><a href="https://github.com/delba/Permission" target="_blank" rel="external">Permission</a> 各种系统权限</li>
+</ul>
+</li>
+<li>架构<ul>
+<li><a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a> 包依赖管理</li>
+<li><a href="https://github.com/apple/swift-package-manager" target="_blank" rel="external">swift-package-manager</a> Swift 包管理工具</li>
+<li><a href="https://github.com/ReSwift/ReSwift" target="_blank" rel="external">ReSwift</a> 单项的数据流</li>
+<li><a href="https://github.com/pNre/ExSwift" target="_blank" rel="external">ExSwift</a> Swift 类型扩展</li>
+<li><a href="https://github.com/SwiftCarlos/Swift" target="_blank" rel="external">Reusable Swift</a> 可重用的代码</li>
+<li><a href="https://github.com/SwifterSwift/SwifterSwift" target="_blank" rel="external">SwifterSwift</a> 提高生产力的类型扩展</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>开源项目</p>
+<ul>
+<li><a href="https://github.com/kickstarter/ios-oss" target="_blank" rel="external">kickstarter</a> 一个众筹平台</li>
+<li><a href="https://github.com/CatchChat/Yep" target="_blank" rel="external">Yep</a> 遇见天才</li>
+</ul>
+</li>
+<li><p>UI控件</p>
+<ul>
+<li>图表<ul>
+<li><a href="https://github.com/danielgindi/Charts" target="_blank" rel="external">Charts</a> 柱状图，饼状图等</li>
+<li><a href="https://github.com/philackm/Scrollable-GraphView" target="_blank" rel="external">Scrollable-GraphView</a> 可以滚动的曲线图</li>
+</ul>
+</li>
+<li>TableView<ul>
+<li><a href="https://github.com/marty-suzuki/ReverseExtension" target="_blank" rel="external">ReverseExtension</a> 颠倒的 TableView</li>
+<li><a href="https://github.com/jerkoch/SwipeCellKit" target="_blank" rel="external">SwipeCellKit</a> 可滑动操作的 TableViewCell</li>
+<li><a href="https://github.com/xmartlabs/Eureka" target="_blank" rel="external">Eureka</a> Eureka可以帮你简单优雅的实现动态table-view表单。</li>
+</ul>
+</li>
+<li>Cell<ul>
+<li><a href="https://github.com/Ramotion/folding-cell" target="_blank" rel="external">folding-cell</a> 可扩展收缩的 Cell</li>
+</ul>
+</li>
+<li>导航栏<ul>
+<li><a href="https://github.com/andreamazz/AMScrollingNavbar" target="_blank" rel="external">AMScrollingNavbar</a> 能够跟随 UIScrollView 滚动的 UINavigationBar    </li>
+</ul>
+</li>
+<li>TabBar<ul>
+<li><a href="https://github.com/Ramotion/animated-tab-bar" target="_blank" rel="external">animated-tab-bar</a> animated-tab-bar</li>
+</ul>
+</li>
+<li>提示<ul>
+<li><a href="https://github.com/nickoneill/PermissionScope" target="_blank" rel="external">PermissionScope</a> 智能的 iOS 权限 提醒</li>
+<li><a href="https://github.com/vikmeup/SCLAlertView-Swift" target="_blank" rel="external">SCLAlertView-Swift</a> 丰富的弹窗效果</li>
+</ul>
+</li>
+<li>分段<ul>
+<li><a href="https://github.com/uacaps/PageMenu" target="_blank" rel="external">PageMenu</a> 分段控制器</li>
+<li><a href="https://github.com/xmartlabs/XLPagerTabStrip" target="_blank" rel="external">XLPagerTabStrip</a> 安卓风格的分段控制器</li>
+</ul>
+</li>
+<li>TextField<ul>
+<li><a href="https://github.com/raulriera/TextFieldEffects" target="_blank" rel="external">TextFieldEffects</a> 感应式的 TextField</li>
+</ul>
+</li>
+<li>Collection<ul>
+<li><a href="https://github.com/Ramotion/expanding-collection" target="_blank" rel="external">expanding-collection</a> a card peek/pop controller </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动画</p>
+<ul>
+<li><a href="https://github.com/lkzhao/Hero" target="_blank" rel="external">Hero</a>优雅的过渡效果</li>
+<li><a href="https://github.com/MengTo/Spring" target="_blank" rel="external">Spring</a> 动画库</li>
+<li><a href="https://github.com/storehouse/Advance" target="_blank" rel="external">Advance</a> 动画框架</li>
+<li><a href="https://github.com/CosmicMind/Material" target="_blank" rel="external">Material</a> 一个扁平化设计的动画库</li>
+<li><a href="https://github.com/lexrus/LTMorphingLabel" target="_blank" rel="external">LTMorphingLabel</a> UILabel 的变形动画效果</li>
+<li><a href="https://github.com/IBAnimatable/IBAnimatable" target="_blank" rel="external">IBAnimatable</a> Interface Builder with IBAnimatable</li>
+<li><a href="https://github.com/ninjaprox/NVActivityIndicatorView" target="_blank" rel="external">NVActivityIndicatorView</a> Loading 动画</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wxqrcode.jpg" alt="万恶胖为首 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注公众号（ID：SwiftBetter），进一步探讨交流。</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/第三方库/" rel="tag"># 第三方库</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Pattern-MVVM/" rel="next" title="iOS 架构模式之 MVVM">
+                <i class="fa fa-chevron-left"></i> iOS 架构模式之 MVVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="万恶胖为首" />
+          <p class="site-author-name" itemprop="name">万恶胖为首</p>
+          <p class="site-description motion-element" itemprop="description">笨办法学Swift</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">万恶胖为首</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

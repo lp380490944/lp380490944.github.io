@@ -1,0 +1,770 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="UIView动画," />
+
+
+
+
+
+  <link rel="alternate" href="/rss.xml" title="Swift学徒" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="UIView Animation 是被设计来让开发者更简单的创建动画效果，避免使用复杂的 Core Animation。
+本文将介绍 UIView Animation 的常用 API。
+下图是一个普通的登录页面：
+
+第一个动画第一个动画效果是当用户打开 app 时，页面的 UI 元素从屏幕外移动到屏幕内。
+在viewWillAppear中,将这几个元素移出屏幕：
+123heading.center">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIView Animation 1：基础动画效果">
+<meta property="og:url" content="http://swift.diagon.me/UIView-Animation-getting-start/index.html">
+<meta property="og:site_name" content="Swift学徒">
+<meta property="og:description" content="UIView Animation 是被设计来让开发者更简单的创建动画效果，避免使用复杂的 Core Animation。
+本文将介绍 UIView Animation 的常用 API。
+下图是一个普通的登录页面：
+
+第一个动画第一个动画效果是当用户打开 app 时，页面的 UI 元素从屏幕外移动到屏幕内。
+在viewWillAppear中,将这几个元素移出屏幕：
+123heading.center">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79ly1fczhze1z9zj30ac0a1gm6.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fczilnuiebj30ac0baq3c.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fczj8hdmz6g30a309cwfb.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79ly1fczm9miadhg30a30dkdhq.gif">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fczllm4fjqg30a309cta9.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fczllqhd5ng30a309cmyw.gif">
+<meta property="og:updated_time" content="2017-02-27T04:05:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIView Animation 1：基础动画效果">
+<meta name="twitter:description" content="UIView Animation 是被设计来让开发者更简单的创建动画效果，避免使用复杂的 Core Animation。
+本文将介绍 UIView Animation 的常用 API。
+下图是一个普通的登录页面：
+
+第一个动画第一个动画效果是当用户打开 app 时，页面的 UI 元素从屏幕外移动到屏幕内。
+在viewWillAppear中,将这几个元素移出屏幕：
+123heading.center">
+<meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNc79ly1fczhze1z9zj30ac0a1gm6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://swift.diagon.me/UIView-Animation-getting-start/"/>
+
+
+
+
+
+  <title> UIView Animation 1：基础动画效果 | Swift学徒 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d1b9ca1ddd64ef2206b43ea10ec9d25";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Swift学徒</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">笨办法学Swift</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://swift.diagon.me/UIView-Animation-getting-start/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="万恶胖为首">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Swift学徒">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Swift学徒" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UIView Animation 1：基础动画效果
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T00:00:00+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS动画/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS动画</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>UIView Animation 是被设计来让开发者更简单的创建动画效果，避免使用复杂的 Core Animation。</p>
+<p>本文将介绍 UIView Animation 的常用 API。</p>
+<p>下图是一个普通的登录页面：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fczhze1z9zj30ac0a1gm6.jpg" alt=""></p>
+<h2 id="第一个动画"><a href="#第一个动画" class="headerlink" title="第一个动画"></a>第一个动画</h2><p>第一个动画效果是当用户打开 app 时，页面的 UI 元素从屏幕外移动到屏幕内。</p>
+<p>在<code>viewWillAppear</code>中,将这几个元素移出屏幕：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">heading.center.x  -= view.bounds.width</div><div class="line">username.center.x -= view.bounds.width</div><div class="line">password.center.x -= view.bounds.width</div></pre></td></tr></table></figure>
+<p>目前这几个元素的位置相当于在当前屏幕左侧新建了一个对称屏幕中的位置。</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fczilnuiebj30ac0baq3c.jpg" alt=""></p>
+<p>现在可以在页面显示后，将这几个元素移动回原位置，为了避免所有元素同步显示显得呆板，可以设置显示的先后顺序。在<code>viewDidAppear</code>中：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>) &#123;</div><div class="line">    <span class="keyword">self</span>.heading.center.x += <span class="keyword">self</span>.view.bounds.width</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.3</span>, options: [], animations: &#123; </div><div class="line">    <span class="keyword">self</span>.username.center.x += <span class="keyword">self</span>.view.bounds.width</div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div><div class="line">    </div><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.4</span>, options: [], animations: &#123; </div><div class="line">    <span class="keyword">self</span>.password.center.x += <span class="keyword">self</span>.view.bounds.width</div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p><code>option</code> 是一组自定义的选项，这里先传入<code>[]</code>，表示没有特殊选项。</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fczj8hdmz6g30a309cwfb.gif" alt=""></p>
+<h2 id="可以添加动画的属性"><a href="#可以添加动画的属性" class="headerlink" title="可以添加动画的属性"></a>可以添加动画的属性</h2><p>不是所有的 UIView 属性都可以添加动画，以下是可以使用动画的属性。</p>
+<h3 id="位置和大小"><a href="#位置和大小" class="headerlink" title="位置和大小"></a>位置和大小</h3><p>对视图位置和大小的修改可以产生扩张，收缩，移动效果。以下是相关的属性：</p>
+<ul>
+<li>bounds：在视图的 frame 中重新安排视图的内容的位置</li>
+<li>frame：移动或缩放视图</li>
+<li>center：移动视图到新位置</li>
+</ul>
+<p>你可以修改这些属性或者这些属性的成员。比如通过 <code>center.y</code> 改变竖直位置，通过<code>frame.size.width</code>来缩放。</p>
+<h3 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h3><p>可以改变视图的背景色或透明度。</p>
+<ul>
+<li>backgroundColor</li>
+<li>alpha：可以制造淡入淡出的效果。</li>
+</ul>
+<p>对云朵使用淡入动画:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.5</span>, options: [], animations: &#123;</div><div class="line">    <span class="keyword">self</span>.cloud1.alpha = <span class="number">1.0</span></div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.7</span>, options: [], animations: &#123;</div><div class="line">    <span class="keyword">self</span>.cloud2.alpha = <span class="number">1.0</span></div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.9</span>, options: [], animations: &#123;</div><div class="line">    <span class="keyword">self</span>.cloud3.alpha = <span class="number">1.0</span></div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">1.0</span>, options: [], animations: &#123;</div><div class="line">    <span class="keyword">self</span>.cloud4.alpha = <span class="number">1.0</span></div><div class="line">&#125;, completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fczm9miadhg30a30dkdhq.gif" alt=""></p>
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><ul>
+<li>transform： 旋转，缩放</li>
+</ul>
+<p>底层是仿射变换。可以使用跟强大的缩放因子和旋转角度，而不是详细的 bounds 和  center。</p>
+<h2 id="动画选项"><a href="#动画选项" class="headerlink" title="动画选项"></a>动画选项</h2><p>接下来我们了解之前提到的 <code>option</code>。<code>UIViewAnimationOptions</code>罗列了所有的<code>option</code>，可以通过组合不同的<code>option</code>。</p>
+<h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><ul>
+<li>.repeat 包含这个选项可以使动画永远重复</li>
+<li>.autoreverse 这个选项只能和 <code>.repeat</code>组合起来用。让你的动画先正向播放，再逆向播放。</li>
+</ul>
+<p>修改代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.4</span>,</div><div class="line">               options: .<span class="keyword">repeat</span>,</div><div class="line">               animations: &#123;</div><div class="line">                <span class="keyword">self</span>.password.center.x += <span class="keyword">self</span>.view.bounds.width</div><div class="line">                &#125;,</div><div class="line">               completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fczllm4fjqg30a309cta9.gif" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.5</span>, delay: <span class="number">0.4</span>,</div><div class="line">               options: [.<span class="keyword">repeat</span>,.autoreverse] ,</div><div class="line">               animations: &#123;</div><div class="line">                <span class="keyword">self</span>.password.center.x += <span class="keyword">self</span>.view.bounds.width</div><div class="line">                &#125;,</div><div class="line">               completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fczllqhd5ng30a309cmyw.gif" alt=""></p>
+<p>注意 swift 为了方便使用，在只有一个 <code>option</code> 时 允许不将其放在 <code>[]</code> 中。</p>
+<h3 id="动画缓动（Animation-easing）"><a href="#动画缓动（Animation-easing）" class="headerlink" title="动画缓动（Animation easing）"></a>动画缓动（Animation easing）</h3><p>物理世界的运动不一直是匀速的，不仅速度是变动的，而且加速度也是变动的。<br>常用的 easing option：</p>
+<ul>
+<li>.curveLinear： 用于没有加速度的动画。</li>
+<li>.curveEaseIn： 用于开始时加速。</li>
+<li>.curveEaseOut： 用于结束时减速。</li>
+<li>.curveEaseInOut： 用于开始时加速，结束时减速。</li>
+</ul>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wxqrcode.jpg" alt="万恶胖为首 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注公众号（ID：SwiftBetter），进一步探讨交流。</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIView动画/" rel="tag"># UIView动画</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/swift-enum-associated-values/" rel="next" title="Swift 中枚举的关联值">
+                <i class="fa fa-chevron-left"></i> Swift 中枚举的关联值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/AsyncDisplayKit-1/" rel="prev" title="AsyncDisplayKit 教程(1)：介绍">
+                AsyncDisplayKit 教程(1)：介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="万恶胖为首" />
+          <p class="site-author-name" itemprop="name">万恶胖为首</p>
+          <p class="site-description motion-element" itemprop="description">笨办法学Swift</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个动画"><span class="nav-number">1.</span> <span class="nav-text">第一个动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可以添加动画的属性"><span class="nav-number">2.</span> <span class="nav-text">可以添加动画的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#位置和大小"><span class="nav-number">2.1.</span> <span class="nav-text">位置和大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外观"><span class="nav-number">2.2.</span> <span class="nav-text">外观</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变形"><span class="nav-number">2.3.</span> <span class="nav-text">变形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画选项"><span class="nav-number">3.</span> <span class="nav-text">动画选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重复"><span class="nav-number">3.1.</span> <span class="nav-text">重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画缓动（Animation-easing）"><span class="nav-number">3.2.</span> <span class="nav-text">动画缓动（Animation easing）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">万恶胖为首</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
